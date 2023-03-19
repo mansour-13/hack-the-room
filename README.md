@@ -1,21 +1,27 @@
-# Welcome to *api-hack-the-room* --- 🤖Hack the Room 🕋
-- Access endpoint under https://api-hack-the-room.bulbt.com/greeting
-- For testing out all default endpoints have a look at [endpoints.http](endpoints.http)
+# AngularGithubPages
 
-## For teachers
-### Steps for setting up a new spring-boot project
-1. Fork this project with a new name e.g. `api-java-islands`
-2. Set required secret `SSH_KEY_PRIVATE` for the fork
-3. Enable Github Actions workflow explictly by click on Actions for each repo, then showing: *Workflows aren’t being run on this forked repository .. Go ahead and enable them.*
-4. Create a new application in dokku: `ssh -t dokku@168.119.171.224 apps:create api-java-islands`
-5. Parametrize project with following script
-```bash
-brew install gnu-sed
-grep -ilr "api-hack-the-room" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/api-hack-the-room/api-hack-the-room/g
-```
-6. Push changes, CI/CD should be triggered now and go through
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
+## Development server
 
-## Todos 🛠️
-- Block `h2-console` for deployed version, not save to expose this to the internet
-- Document AI service with endpoints
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
