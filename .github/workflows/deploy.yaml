@@ -24,4 +24,5 @@ jobs:
         with:
           branch: main
           git_remote_url: 'ssh://dokku@168.119.171.224/server'
+          git_push_flags: '--force'
           ssh_private_key: ${{ secrets.SSH_KEY_PRIVATE }}
