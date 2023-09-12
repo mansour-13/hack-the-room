@@ -10,3 +10,7 @@
 
 ## Notes
 - Currently set to `git_push_flags: '--force'` (not needed if you do not have several repos pushing to same remote)
+
+## About the application
+- Whenever you access a endpoint which is protected by Spring Security a custom form is displayed
+- After logging in the `JSESSIONID` is stored in the cookies and sent for every request
