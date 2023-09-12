@@ -20,7 +20,9 @@ public class GreetingController {
     public GreetingResponseDTO getGreeting(){
         Optional<User> test = userRepository.findByUserName("newuser");
         if(test.isPresent()){
+            System.out.println("Print out roles");
             System.out.println(test.get().getUserName());
+            System.out.println("test.get().getRoles() = " + test.get().getRoles());
         }else {
             System.err.println("User with name not found:" + "newuser");
         }

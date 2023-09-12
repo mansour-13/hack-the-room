@@ -15,5 +15,11 @@ username=newuser
 &password=newpassword
 
 
-### Access blocked ressource
+### Access blocked ressource (user)
 GET http://localhost:8080/greeting-user
+
+### Access blocked ressource (admin)
+GET http://localhost:8080/greeting-admin
+
+### Debug user
+GET http://localhost:8080/greeting

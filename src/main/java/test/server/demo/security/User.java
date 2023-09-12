@@ -17,8 +17,9 @@ public class User {
 
     public User() {
         // Per default every user receivers normal rights
-        // Add ",ADMIN" for additional admin rights
-        this.roles = "USER";
+        // Make sure that you prefix with ROLE_
+        // Add ",ROLE_ADMIN" for additional admin rights
+        this.roles = "ROLE_USER";
         // Per default each user is active
         this.active = true;
     }
