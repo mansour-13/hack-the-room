@@ -9,7 +9,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Not very safe - ok for not complicating things for you final project;)
+        // Deactivates "Same Origin Policy"
+        // Not very safe - ok for not complicating things in final project;)
         registry.addMapping("/**").allowedMethods("*");
     }
 }

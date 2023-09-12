@@ -1,4 +1,5 @@
 # README
+- Accessable under https://server.bulbt.com/greeting
 
 ## ⭐️ How to change the template
 - 1.Rename repo to `new_project_name`

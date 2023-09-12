@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class GreetingController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
+    @GetMapping("/greeting")
+    public GreetingResponseDTO getGreeting(){
+        return new GreetingResponseDTO("Hi from backend","frontend");
     }
 }
