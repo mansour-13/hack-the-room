@@ -1,1 +1,8 @@
-<p>home works!</p>
+<hr>
+<h1>Home component</h1>
+<button (click)="getGreeting()">Get Greeting</button>
+<div *ngIf="greeting">
+  <div>Message: {{greeting.message}}</div>
+  <div>Audience: {{greeting.audience}}</div>
+</div>
+<hr>
