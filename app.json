@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dokku": {
-      "predeploy": "echo 'Checking in!' && ls -alF"
+      "predeploy": "cd /app/www && npm install && npm run build --if-present"
     }
   }
 }
