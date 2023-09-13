@@ -28,7 +28,8 @@ public class SecurityConfiguration {
         final CorsConfiguration configuration = new CorsConfiguration();
 
         // Enable all origins or specify your allowed origins
-        configuration.setAllowedOriginPatterns(Arrays.asList("https://*.bulbt.com", "github.io", "http://localhost:63342", "http://localhost:4200"));
+        // TODO: Change Cross-Origin to Github Org
+        configuration.setAllowedOriginPatterns(Arrays.asList("https://*.bulbt.com", "*.github.io", "http://localhost:63342", "http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
