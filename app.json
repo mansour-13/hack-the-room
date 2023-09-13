@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dokku": {
-      "predeploy": "npm install && npm run build --if-present && mv docs/* /app/www/"
+      "predeploy": "npm install && npm run build --if-present && mv docs/* ."
     }
   }
 }
