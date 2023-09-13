@@ -8,6 +8,12 @@ import {Greeting, HelloWorldService} from "../hello-world.service";
 })
 export class HomeComponent {
   greeting ? : Greeting;
+  greetingUser ?: Greeting;
+  info ? : any;
+  credentials : { username: string, password: string } = {
+    username: '',
+    password: ''
+  };
 
   constructor(private helloWorldService : HelloWorldService) {
   }
@@ -16,6 +22,24 @@ export class HomeComponent {
   getGreeting() {
     this.helloWorldService.getGreeting().subscribe(
       result => this.greeting = result
+    );
+  }
+
+  getGreetingUser() {
+    this.helloWorldService.getGreetingUser().subscribe(
+      {
+        next: result => this.greetingUser = result,
+        error: err => this.info = err
+      }
+    );
+  }
+
+  sendLogin() {
+    this.helloWorldService.postLogin(this.credentials).subscribe(
+      {
+        next: result => this.info = "✅ Logged-In",
+        error: err => this.info = err
+      }
     );
   }
 }
