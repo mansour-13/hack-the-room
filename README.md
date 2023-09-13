@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Current url: http://java-private.github.io/angular-template/
 
 ## Todos
-- Add http call to server
+- Add logout functionality (just delete the cookie)
 
 ## Development server
 
