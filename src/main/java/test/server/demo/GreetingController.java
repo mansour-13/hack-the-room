@@ -13,7 +13,7 @@ public class GreetingController {
 
     @GetMapping("/")
     public GreetingResponseDTO getHome(){
-        return new GreetingResponseDTO("Hi from backend","frontend");
+        return new GreetingResponseDTO("Root route of backend","frontend:not-logged-in");
     }
 
     @GetMapping("/greeting")
@@ -27,7 +27,7 @@ public class GreetingController {
             System.err.println("User with name not found:" + "newuser");
         }
 
-        return new GreetingResponseDTO("Hi from backend","frontend");
+        return new GreetingResponseDTO("Hi from backend","frontend:not-logged-in");
     }
 
     @GetMapping("/greeting-user")

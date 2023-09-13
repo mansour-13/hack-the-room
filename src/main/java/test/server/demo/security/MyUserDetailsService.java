@@ -12,10 +12,20 @@ import java.util.Optional;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
+    final
     UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public MyUserDetailsService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        // Create default user
+        User normalUser = new User();
+        normalUser.setUserName("username");
+        normalUser.setPassword("password");
+        saveUser(normalUser);
+    }
+
 
     // UserDetails is the representation of the login request of a user
     @Override
