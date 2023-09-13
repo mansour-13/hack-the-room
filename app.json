@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dokku": {
-      "predeploy": "cd /app/www && npm install -g @angular/cli@latest && npm install && npm run build --if-present"
+      "predeploy": "echo '[1]' && ls -alF /app && echo '[2]' && ls -alF /app/www && echo '[3]' && ls -alF ."
     }
   }
 }
