@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dokku": {
-      "predeploy": "mv /app/www/docs/* /app/www/"
+      "predeploy": "echo 'Hello World'"
     }
   }
 }
