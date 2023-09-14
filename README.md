@@ -3,10 +3,18 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 ## ⭐️ How to adapt this template
 - If the repo name changes - account for this in `package.json/build` step (to change base-ref for routing)
-- Current url: http://java-private.github.io/angular-template/
+- Current url: http://angular-template.github.io/angular-template/
 
-## Todos
-- Add logout functionality (just delete the cookie)
+- Or use the following bash script
+```bash
+brew install gnu-sed
+# Frontend 
+grep -ilr "angular-template" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/angular-template/java-islands/g
+ 
+# Backend
+grep -ilr "spring-boot-template" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/api-java-islands/g
+```
+
 
 ## Development server
 

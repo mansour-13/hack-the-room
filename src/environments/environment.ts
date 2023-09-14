@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl : "https://server.bulbt.com"
+  baseUrl : "https://spring-boot-template.bulbt.com"
 };
