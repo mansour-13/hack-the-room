@@ -9,6 +9,11 @@
 - 3.Github Actions workflow should be changed to the dokku project created for the template copy (not `server`) anymore
 - 4.Procfile jar name should be changed to `new_project_name`
 - API will be availble under `new_project_name.bulbt.com`
+- Or use the following bash script
+```bash
+brew install gnu-sed
+grep -ilr "spring-boot-template" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/java-islands/g
+```
 
 ## About the application
 - Whenever you access a endpoint which is protected by Spring Security a custom form is displayed
