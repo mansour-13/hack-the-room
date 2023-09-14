@@ -1,18 +1,18 @@
-# Welcome to *angular-template*
+# Welcome to *hack-the-room*
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 ## ⭐️ How to adapt this template
 - If the repo name changes - account for this in `package.json/build` step (to change base-ref for routing)
-- Current url: https://angular-template.bulbt.com
+- Current url: https://hack-the-room.bulbt.com
 
 - Or use the following bash script
 ```bash
 brew install gnu-sed
 # Frontend 
-grep -ilr "angular-template" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/angular-template/java-islands/g
+grep -ilr "hack-the-room" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/hack-the-room/hack-the-room/g
  
 # Backend
-grep -ilr "spring-boot-template" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/api-java-islands/g
+grep -ilr "api-hack-the-room" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/api-hack-the-room/api-hack-the-room/g
 ```
 
 
