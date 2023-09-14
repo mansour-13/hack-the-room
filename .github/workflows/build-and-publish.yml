@@ -23,8 +23,8 @@ jobs:
         with:
           branch: main
           command: review-apps:create
-          git_remote_url: 'ssh://dokku@168.119.171.224/angular-template'
-          git_push_flags: '--force'
+          review_app_name: angular-template  # name shown in url
+          git_remote_url: 'ssh://dokku@168.119.171.224/angular-template' # remote repo
           ssh_private_key: ${{ secrets.SSH_KEY_PRIVATE }}
       - name: Push to dokku
         uses: dokku/github-action@master
