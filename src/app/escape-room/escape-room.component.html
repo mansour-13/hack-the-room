@@ -1,0 +1,17 @@
+<div class="background-image">
+  <div class="button-container1">
+    <button (click)="playAudio()" class="play-button">{{buttonText}}</button>
+  </div>
+  <div class="container">
+    <p class="text">{{intro}}</p>
+  </div>
+  <div class="button-container2">
+    <button routerLink="/" class="left-button">Back to Menu</button>
+    <button class="right-button">Start Mission</button>
+  </div>
+  <audio #audioPlayer (ended)="audioEnded()">
+    <source src="assets/sounds/intro.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+</div>

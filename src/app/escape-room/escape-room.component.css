@@ -1,0 +1,53 @@
+.background-image {
+  background-image: url("../../assets/pictures/cockpi_micro.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  background-position: center center;
+}
+.container {
+  /* Stil für den Hauptinhalt */
+  min-height: calc(100vh - 60px); /* Höhe des Viewports abzüglich der Höhe des Fußbereichs */
+}
+.button-container1 {
+  display: flex;
+  justify-content: center; /* Horizontal in der Mitte ausrichten */
+}
+
+.button-container2 {
+  display: flex;
+  justify-content: space-between; /* Buttons gleichmäßig am Footer verteilen */
+  align-items: center; /* Buttons vertikal zentrieren */
+  height: 60px; /* Höhe des Fußbereichs */
+}
+
+.left-button,
+.right-button {
+  padding: 10px 20px; /* Einstellen der Padding für die Buttons */
+  color: whitesmoke ; /* Textfarbe */
+  background-color: transparent; /* Hintergrundfarbe der Buttons */
+  border-color: black; /* Kein Rand */
+  cursor: pointer; /* Zeiger beim Überfahren mit der Maus */
+}
+.left-button {
+  margin-left: 50px; /* Abstand zwischen den Buttons */
+  padding: 10px 20px; /* Einstellen der Padding für die Buttons */
+}
+.play-button{
+  background-color: yellowgreen; /* Hintergrundfarbe der Buttons */
+}
+
+.right-button {
+
+  margin-right: 50px; /* Abstand zwischen den Buttons */
+}
+.text{
+  display: flex;
+  color: whitesmoke;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* Optional: Text horizontal zentrieren */
+}

@@ -10,6 +10,8 @@ import {FormsModule} from "@angular/forms";
 import {CookieInterceptor} from "./cookie.interceptor";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { EscapeRoomComponent } from './escape-room/escape-room.component';
+import {AudioService} from "./audio.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { RegisterComponent } from './register/register.component';
     AboutComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EscapeRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { RegisterComponent } from './register/register.component';
       provide: HTTP_INTERCEPTORS,
       useClass: CookieInterceptor,
       multi: true,
-    },
+    },AudioService
   ],
   bootstrap: [AppComponent]
 })
