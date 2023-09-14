@@ -1,5 +1,5 @@
-# Welcome to *spring-boot-template*
-- Access endpoint under https://spring-boot-template.bulbt.com/greeting
+# Welcome to *api-hack-the-room*
+- Access endpoint under https://api-hack-the-room.bulbt.com/greeting
 - For testing out all default endpoints have a look at [endpoints.http](endpoints.http)
 
 
@@ -12,7 +12,7 @@
 - Or use the following bash script
 ```bash
 brew install gnu-sed
-grep -ilr "spring-boot-template" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/api-java-islands/g
+grep -ilr "api-hack-the-room" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/api-hack-the-room/api-hack-the-room/g
 ```
 
 ## About the application

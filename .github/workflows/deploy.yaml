@@ -24,13 +24,13 @@ jobs:
         with:
           branch: main
           command: review-apps:create
-          review_app_name: spring-boot-template # name shown in url
-          git_remote_url: 'ssh://dokku@168.119.171.224/spring-boot-template' # remote repo
+          review_app_name: api-hack-the-room # name shown in url
+          git_remote_url: 'ssh://dokku@168.119.171.224/api-hack-the-room' # remote repo
           ssh_private_key: ${{ secrets.SSH_KEY_PRIVATE }}
       - name: Push to dokku
         uses: dokku/github-action@master
         with:
           branch: main
-          git_remote_url: 'ssh://dokku@168.119.171.224/spring-boot-template'
+          git_remote_url: 'ssh://dokku@168.119.171.224/api-hack-the-room'
           git_push_flags: '--force'
           ssh_private_key: ${{ secrets.SSH_KEY_PRIVATE }}
