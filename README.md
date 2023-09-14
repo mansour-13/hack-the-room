@@ -1,5 +1,7 @@
 # README
-- Accessable under https://server.bulbt.com/greeting
+- Access endpoint under https://spring-boot-template.bulbt.com/greeting
+- For testing out all default endpoints have a look at [endpoints.http](endpoints.http)
+
 
 ## ⭐️ How to change the template
 - 1.Rename repo to `new_project_name`
@@ -7,9 +9,6 @@
 - 3.Github Actions workflow should be changed to the dokku project created for the template copy (not `server`) anymore
 - 4.Procfile jar name should be changed to `new_project_name`
 - API will be availble under `new_project_name.bulbt.com`
-
-## Notes
-- Currently set to `git_push_flags: '--force'` (not needed if you do not have several repos pushing to same remote)
 
 ## About the application
 - Whenever you access a endpoint which is protected by Spring Security a custom form is displayed
