@@ -21,7 +21,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -29,8 +28,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration {
-    @Autowired
-    private MyUserDetailsService userDetailsService;
+    private final MyUserDetailsService userDetailsService;
+
+    public SecurityConfiguration(MyUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
 
     @Bean
@@ -38,8 +40,7 @@ public class SecurityConfiguration {
         final CorsConfiguration configuration = new CorsConfiguration();
 
         // Enable all origins or specify your allowed origins
-        // TODO: Change Cross-Origin to Github Org
-        configuration.setAllowedOriginPatterns(Arrays.asList("https://*.bulbt.com", "*.github.io", "http://localhost:63342", "http://localhost:4200"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("https://*.bulbt.com", "http://localhost:63342", "http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type", "Credentials"));
@@ -49,6 +50,7 @@ public class SecurityConfiguration {
 
         return source;
     }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -57,10 +59,10 @@ public class SecurityConfiguration {
                 .csrf().disable()
                 .formLogin(withDefaults())
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers(HttpMethod.POST,"/register").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/login").permitAll()
-                        .requestMatchers("/","/greeting","/logout").permitAll()
-                        .requestMatchers("/greeting-user").hasAnyRole("USER","ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers("/", "/greeting", "/logout").permitAll()
+                        .requestMatchers("/greeting-user").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/greeting-admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -71,13 +73,13 @@ public class SecurityConfiguration {
                 .formLogin()
                 .successHandler((req, res, auth) -> res.setStatus(HttpStatus.NO_CONTENT.value()))
                 .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-        // Same for logout
-        .and()
+                // Same for logout
+                .and()
                 .logout()
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT))
-        // Generic error response
-        // 401-UNAUTHORIZED when anonymous user tries to access protected URLs
-            .and()
+                // Generic error response
+                // 401-UNAUTHORIZED when anonymous user tries to access protected URLs
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
 

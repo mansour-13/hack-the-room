@@ -1,4 +1,4 @@
-package test.server.demo.security;
+package test.server.demo.user;
 
 import jakarta.persistence.*;
 
