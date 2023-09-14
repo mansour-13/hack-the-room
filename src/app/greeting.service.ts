@@ -12,7 +12,7 @@ export interface Greeting{
 @Injectable({
   providedIn: 'root'
 })
-export class HelloWorldService {
+export class GreetingService {
   constructor(private client : HttpClient) { }
 
   getGreeting() : Observable<Greeting>{
@@ -23,18 +23,4 @@ export class HelloWorldService {
     return this.client.get<Greeting>(environment.baseUrl + "/greeting-user");
   }
 
-  postLogin(credentials: { username: string, password: string }) : Observable<string> {
-      let httpParams = new HttpParams()
-        .append("username", credentials.username)
-        .append("password", credentials.password);
-
-      let headers = new HttpHeaders()
-        .append("Content-Type","application/x-www-form-urlencoded");
-
-      return this.client.post<string>(environment.baseUrl + "/login",{},{
-        headers: headers,
-        params: httpParams,
-        withCredentials: true // needed to that the cookie from the reponse is stored
-      });
-  }
 }

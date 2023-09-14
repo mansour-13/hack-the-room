@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Greeting, HelloWorldService} from "../hello-world.service";
+import {Greeting, GreetingService} from "../greeting.service";
 
 @Component({
   selector: 'app-home',
@@ -10,12 +10,8 @@ export class HomeComponent {
   greeting ? : Greeting;
   greetingUser ?: Greeting;
   info ? : any;
-  credentials : { username: string, password: string } = {
-    username: '',
-    password: ''
-  };
 
-  constructor(private helloWorldService : HelloWorldService) {
+  constructor(private helloWorldService : GreetingService) {
   }
 
 
@@ -34,12 +30,4 @@ export class HomeComponent {
     );
   }
 
-  sendLogin() {
-    this.helloWorldService.postLogin(this.credentials).subscribe(
-      {
-        next: result => this.info = "✅ Logged-In",
-        error: err => this.info = err
-      }
-    );
-  }
 }

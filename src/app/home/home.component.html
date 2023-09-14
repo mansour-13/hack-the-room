@@ -17,12 +17,3 @@
 {{info | json }}
 </div>
 
-<hr>
-<h4>Do login</h4>
-<form>
-  <label>Name:</label>
-  <input name="username" [(ngModel)]="credentials.username">
-  <label>Password:</label>
-  <input name="password" [(ngModel)]="credentials.password">
-  <button (click)="sendLogin()">Post candidate</button>
-</form>

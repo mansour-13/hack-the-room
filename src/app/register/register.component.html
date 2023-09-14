@@ -1,0 +1,15 @@
+<hr>
+<h4>Do register</h4>
+<form>
+  <label>Name:</label>
+  <input name="username" [(ngModel)]="credentials.username">
+  <label>Password:</label>
+  <input name="password" [(ngModel)]="credentials.password">
+  <button (click)="register()">Register</button>
+</form>
+
+<div *ngIf="info">
+  {{info | json }}
+</div>
+
+<hr>
