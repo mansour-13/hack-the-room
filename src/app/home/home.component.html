@@ -1,5 +1,10 @@
+<body>
+<p class="title">Hack the Room</p>
+<nav>
+  <a routerLink="/login">Login</a> ||
+  <a routerLink="/register">Register</a>
+</nav>
 <hr>
-<h1>Home component</h1>
 <button (click)="getGreeting()">Get Greeting</button>
 <div *ngIf="greeting">
   <div>Message: {{greeting.message}}</div>
@@ -16,4 +21,16 @@
 <div *ngIf="info">
 {{info | json }}
 </div>
+
+<div>
+  <button [disabled]="!greetingUser" routerLink="/escape-room">Start Game</button>
+  <br>
+  <button routerLink="/about">About Game</button>
+  <br>
+  <button routerLink="/high-score">High Scores</button>
+</div>
+</body>
+
+
+
 
