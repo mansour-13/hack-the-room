@@ -1,4 +1,4 @@
-# Welcome to *api-hack-the-room*
+# Welcome to *api-hack-the-room* --- 🤖Hack the Room 🕋
 - Access endpoint under https://api-hack-the-room.bulbt.com/greeting
 - For testing out all default endpoints have a look at [endpoints.http](endpoints.http)
 
