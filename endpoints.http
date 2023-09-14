@@ -14,6 +14,8 @@ Content-Type: application/x-www-form-urlencoded
 username=newuser
 &password=newpassword
 
+### Logout request to localhost
+POST http://localhost:8080/logout
 
 ### Access blocked ressource (user)
 GET http://localhost:8080/greeting-user
@@ -23,3 +25,29 @@ GET http://localhost:8080/greeting-admin
 
 ### Debug user
 GET http://localhost:8080/greeting
+
+### [Deployed] Register a new user
+POST https://server.bulbt.com/register
+Content-Type: application/json
+
+{
+  "userName": "newuser",
+  "password": "newpassword"
+}
+
+### [Deployed] Login request to localhost
+POST https://server.bulbt.com/login
+Content-Type: application/x-www-form-urlencoded
+
+username=newuser
+&password=newpassword
+
+
+### [Deployed] Access blocked ressource (user)
+GET https://server.bulbt.com/greeting-user
+
+### [Deployed] Access blocked ressource (admin)
+GET https://server.bulbt.com/greeting-admin
+
+### [Deployed] Debug user
+GET https://server.bulbt.com/greeting
