@@ -1,18 +1,21 @@
 <body>
-<p class="title">Hack the Room</p>
-<nav>
-  <a routerLink="/login">Login</a> ||
-  <a routerLink="/register">Register</a>
+<nav class="nav-buttons">
+  <button class="nav-button" routerLink="/login">Login</button>
+  <button class="nav-button" routerLink="/register">Register</button>
 </nav>
-<hr>
-<button (click)="getGreeting()">Get Greeting</button>
-<div *ngIf="greeting">
-  <div>Message: {{greeting.message}}</div>
-  <div>Audience: {{greeting.audience}}</div>
-</div>
-<hr>
 
-<button (click)="getGreetingUser()">Get Greeting (User)</button>
+<p class="title">Hack the Room</p>
+
+<hr>
+<!--<button (click)="getGreeting()">Get Greeting</button>-->
+<!--<div *ngIf="greeting">-->
+<!--  <div>Message: {{greeting.message}}</div>-->
+<!--  <div>Audience: {{greeting.audience}}</div>-->
+<!--</div>-->
+<!--<hr>-->
+
+<!--<button (click)="getGreetingUser()">Get Greeting (User)</button>-->
+
 <div *ngIf="greetingUser">
   <div>Message: {{greetingUser.message}}</div>
   <div>Audience: {{greetingUser.audience}}</div>
@@ -23,11 +26,11 @@
 </div>
 
 <div>
-  <button [disabled]="!greetingUser" routerLink="/escape-room">Start Game</button>
+  <button class="button" routerLink="/escape-room">Start Game</button>
   <br>
-  <button routerLink="/about">About Game</button>
+  <button class="button" routerLink="/about">About Game</button>
   <br>
-  <button routerLink="/high-score">High Scores</button>
+  <button class="button" routerLink="/high-score">High Scores</button>
 </div>
 </body>
 

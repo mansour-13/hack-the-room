@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,15 +13,24 @@ export class RegisterComponent {
     password: ''
   };
   info?: any;
+  private isLoading: boolean = false;
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService, private router: Router) {
   }
 
   register() {
     this.authService.register(this.credentials).subscribe(
       {
-        next: result => this.info = "✅ Registered", // TODO Here you could do a redirect to the home page
-        error: err => this.info = err
+        next: result => {
+          this.info = "✅ Registered Successfully";
+          this.isLoading = false;
+          setTimeout(() => {
+            this.router.navigate(["/login"]);}, 3000);
+          },
+        error: err => {
+          this.info = err;
+          this.isLoading = false;
+        }
       }
     );
   }

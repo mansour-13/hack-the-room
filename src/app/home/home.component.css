@@ -10,7 +10,13 @@ body {
   margin: 0;
 }
 
-button {
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.button {
   position: relative;
   padding: 10px;
   font-size: 24px;
@@ -20,6 +26,14 @@ button {
   cursor: pointer;
 }
 
+.nav-button {
+  position: relative;
+  padding: 10px;
+  font-size: 20px;
+  margin: 30px 10px 10px;
+  text-align: center;
+  cursor: pointer;
+}
 
 .title {
   color: lightblue;
