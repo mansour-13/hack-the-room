@@ -1,4 +1,4 @@
-# README
+# Welcome to *spring-boot-template*
 - Access endpoint under https://spring-boot-template.bulbt.com/greeting
 - For testing out all default endpoints have a look at [endpoints.http](endpoints.http)
 
@@ -12,7 +12,7 @@
 - Or use the following bash script
 ```bash
 brew install gnu-sed
-grep -ilr "spring-boot-template" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/java-islands/g
+grep -ilr "spring-boot-template" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/api-java-islands/g
 ```
 
 ## About the application
