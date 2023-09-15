@@ -10,6 +10,7 @@ import {HighScoreComponent} from "./high-score/high-score.component";
 import {AnimationTextComponent} from "./animation-text/animation-text.component";
 import {AceEditorComponent} from "./ace-editor/ace-editor.component";
 
+
 const routes: Routes = [
   {path : "", component: HomeComponent},
   {path : "about", component: AboutComponent},

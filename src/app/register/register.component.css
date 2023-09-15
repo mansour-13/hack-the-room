@@ -1,0 +1,81 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background-image: url("../../assets/Login.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1000px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.nav-button {
+  position: relative;
+  padding: 10px;
+  font-size: 15px;
+  margin: 30px 10px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.title {
+  color: lightblue;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 100px;
+  -webkit-text-stroke: 1px white;
+}
+
+.login-container {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(244, 244, 244, 0.6);
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-container .info {
+  font-size: 20px;
+  margin-top: 15px;
+  color: #ff0000;
+  text-align: center;
+}
+
+

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Greeting, GreetingService} from "../greeting.service";
+import {LoginComponent} from "../login/login.component";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,17 @@ import {Greeting, GreetingService} from "../greeting.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  greeting ? : Greeting;
+  greeting ?: Greeting;
   greetingUser ?: Greeting;
-  info ? : any;
+  info ?: any;
+  username: string | undefined;
 
-  constructor(private helloWorldService : GreetingService) {
+  constructor(private helloWorldService: GreetingService, private authService: AuthService) {
+    this.username = authService.getUsername();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.getIsLoggedIn();
   }
 
 
@@ -29,5 +37,22 @@ export class HomeComponent {
       }
     );
   }
+
+  sendLogout() {
+    this.authService.postLogout().subscribe(
+      {
+        next: result => {
+          this.info = "🚪 Logged-Out!";
+          this.authService.logout();
+        },
+
+        error: err => {
+          this.info = err;
+        }
+      }
+    );
+  }
+
+
 
 }

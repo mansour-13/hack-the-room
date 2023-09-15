@@ -1,12 +1,18 @@
 <body>
 <nav class="nav-buttons">
-  <button class="nav-button" routerLink="/login">Login</button>
-  <button class="nav-button" routerLink="/register">Register</button>
+  <button *ngIf="isLoggedIn()" class="nav-button" (click)="sendLogout()">Logout</button>
+  <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/login">Login</button>
+  <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/register">Register</button>
 </nav>
 
 <p class="title">Hack the Room</p>
 
-<hr>
+<div>
+  <div *ngIf="isLoggedIn()" class="welcome">Welcome {{this.username}}</div>
+  <div *ngIf="!isLoggedIn()" style="font-weight: bold">Ready to Play? Log in or Sign Up to Unlock the Game</div>
+</div>
+
+<!--<hr>-->
 <!--<button (click)="getGreeting()">Get Greeting</button>-->
 <!--<div *ngIf="greeting">-->
 <!--  <div>Message: {{greeting.message}}</div>-->
@@ -15,18 +21,17 @@
 <!--<hr>-->
 
 <!--<button (click)="getGreetingUser()">Get Greeting (User)</button>-->
+<!--<div *ngIf="greetingUser">-->
+<!--  <div>Message: {{greetingUser.message}}</div>-->
+<!--  <div>Audience: {{greetingUser.audience}}</div>-->
+<!--</div>-->
 
-<div *ngIf="greetingUser">
-  <div>Message: {{greetingUser.message}}</div>
-  <div>Audience: {{greetingUser.audience}}</div>
-</div>
-
-<div *ngIf="info">
-{{info | json }}
-</div>
+<!--<div *ngIf="info">-->
+<!--{{info | json }}-->
+<!--</div>-->
 
 <div>
-  <button class="button" routerLink="/escape-room">Start Game</button>
+  <button [disabled]="!isLoggedIn()" class="button" routerLink="/escape-room">Start Game</button>
   <br>
   <button class="button" routerLink="/about">About Game</button>
   <br>

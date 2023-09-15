@@ -42,3 +42,11 @@ body {
   margin: 70px;
   -webkit-text-stroke: 1px white;
 }
+
+.welcome {
+  color: darkblue;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px;
+  -webkit-text-stroke: 1px gold;
+}

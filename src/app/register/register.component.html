@@ -1,15 +1,22 @@
-<hr>
-<h4>Do register</h4>
-<form>
-  <label>Name:</label>
-  <input name="username" [(ngModel)]="credentials.username">
-  <label>Password:</label>
-  <input name="password" [(ngModel)]="credentials.password">
-  <button (click)="register()">Register</button>
-</form>
+<body>
+<nav class="nav-buttons">
+  <button class="nav-button" routerLink="/">Back to Homepage</button>
+  </nav>
+<p class="title">Registration</p>
+<div class="login-container">
+  <form>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [(ngModel)]="credentials.username">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" [(ngModel)]="credentials.password">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword">
+    <button (click)="register()">Register Now</button>
 
-<div *ngIf="info">
-  {{info | json }}
+  </form>
+
+  <div class="info" *ngIf="info">
+    {{info | json }}
+  </div>
 </div>
-
-<hr>
+</body>

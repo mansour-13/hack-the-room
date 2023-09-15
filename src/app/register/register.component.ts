@@ -13,23 +13,25 @@ export class RegisterComponent {
     password: ''
   };
   info?: any;
-  private isLoading: boolean = false;
+  confirmPassword = '';
 
   constructor(private authService : AuthService, private router: Router) {
   }
 
   register() {
+    if (this.credentials.password !== this.confirmPassword) {
+      this.info = 'Passwords do not match';
+      return;
+    }
     this.authService.register(this.credentials).subscribe(
       {
         next: result => {
-          this.info = "✅ Registered Successfully";
-          this.isLoading = false;
+          this.info = "Registered Successfully";
           setTimeout(() => {
             this.router.navigate(["/login"]);}, 3000);
           },
         error: err => {
-          this.info = err;
-          this.isLoading = false;
+          this.info = err.error;
         }
       }
     );

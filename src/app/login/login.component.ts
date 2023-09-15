@@ -13,7 +13,6 @@ export class LoginComponent {
     password: ''
   };
   info?: any;
-  private isLoading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -23,22 +22,12 @@ export class LoginComponent {
       {
         next: result => {
           this.info = "✅ Logged-In";
-          this.isLoading = false;
+          this.authService.login();
           this.router.navigate(["/"]);
         },
         error: err => {
-          this.info = err;
-          this.isLoading = false;
+          this.info = "Invalid Username or Password";
         }
-      }
-    );
-  }
-
-  sendLogout() {
-    this.authService.postLogout().subscribe(
-      {
-        next: result => this.info = "🚪 Logged-Out!", // TODO Here you could do a redirect to the home page
-        error: err => this.info = err
       }
     );
   }
