@@ -20,6 +20,7 @@ public class AiService {
 
     public String prompt(String content) {
         String url = "https://ai.bulbt.com/gpt";
+        // String url = "http://localhost:8090/gpt";
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
                 // Do not share this on the internet please 🤞
                 .queryParam("secret", "useaiforthebetter")
