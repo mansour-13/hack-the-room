@@ -3,6 +3,11 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {HttpClient} from "@angular/common/http";
 import {concatMap, delay, of} from "rxjs";
 
+import { Input } from '@angular/core';
+
+//This is the import for the JSON file in the assets folder
+// import animationTextData from 'src/assets/animationText.json';
+
 @Component({
   selector: 'app-animation-text',
   templateUrl: './animation-text.component.html',
@@ -18,27 +23,65 @@ import {concatMap, delay, of} from "rxjs";
 })
 export class AnimationTextComponent implements OnInit {
 
+  @Input() intro: string[] | undefined; // This is the input from the parent component
+
   currentBlock = '';
   // currentWordIndex = 0;
   textBlockIndex = 0;
 
   textBlocks: string[] = [];
   displayText: string = '';
-  private API_URL = "http://localhost:3000/articles"; // Adjust the URL accordingly
 
-  constructor(private http: HttpClient) { }
+  // This version uses the JSON file through an API call
+  // private API_URL = "http://localhost:3000/articles"; // Adjust the URL accordingly
+
+  // constructor(private http: HttpClient) { }
+
+  // This version uses the JSON file through an API call
+  // ngOnInit(): void {
+  //   this.http.get<any>(this.API_URL).subscribe(data => {
+  //     if (data && data.length > 0) {
+  //       data.forEach((article: { content: any; }) => {
+  //         if (article.content) {
+  //           this.textBlocks = [...this.textBlocks, ...article.content];
+  //           console.log(this.textBlocks);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  // This version uses the JSON file in the assets folder
+  // ngOnInit(): void {
+  //   const articles = animationTextData.articles;
+  //
+  //   if (articles && articles.length > 0) {
+  //     articles.forEach((article: { content: any[]; }) => {
+  //       if (article.content) {
+  //         this.textBlocks = [...this.textBlocks, ...article.content];
+  //         console.log(this.textBlocks);
+  //       }
+  //     });
+  //   }
+  // }
+
+  // This version takes an input from the parent component
+  // ngOnInit(): void {
+  //   if (this.textData && this.textData.articles) {
+  //     this.textData.articles.forEach((article: { content: any[]; }) => {
+  //       if (article.content) {
+  //         this.textBlocks = [...this.textBlocks, ...article.content];
+  //         console.log(this.textBlocks);
+  //       }
+  //     });
+  //   }
+  // }
 
   ngOnInit(): void {
-    this.http.get<any>(this.API_URL).subscribe(data => {
-      if (data && data.length > 0) {
-        data.forEach((article: { content: any; }) => {
-          if (article.content) {
-            this.textBlocks = [...this.textBlocks, ...article.content];
-            console.log(this.textBlocks);
-          }
-        });
-      }
-    });
+    if (this.intro) {
+      this.textBlocks = [...this.textBlocks, ...this.intro];
+      console.log(this.textBlocks);
+    }
   }
 
   displayNextBlock() {
