@@ -5,13 +5,22 @@
   width: 100%;
   min-height: 100vh;
   background-position: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*padding: 2%;*/
 }
 .container {
   /* Stil für den Hauptinhalt */
-  min-height: calc(100vh - 60px); /* Höhe des Viewports abzüglich der Höhe des Fußbereichs */
+  background-color: rgba(244, 244, 244, 0.6);
+  border-radius: 10px;
+  /*min-height: calc(100vh - 60px); !* Höhe des Viewports abzüglich der Höhe des Fußbereichs *!*/
+  width: 500px;
+  padding: 1rem;
 }
 .button-container1 {
-  display: flex;
+  /*display: flex;*/
   justify-content: center; /* Horizontal in der Mitte ausrichten */
 }
 
@@ -20,6 +29,7 @@
   justify-content: space-between; /* Buttons gleichmäßig am Footer verteilen */
   align-items: center; /* Buttons vertikal zentrieren */
   height: 60px; /* Höhe des Fußbereichs */
+  width: 100%;
 }
 
 .left-button,
@@ -50,4 +60,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center; /* Optional: Text horizontal zentrieren */
+}
+
+::ng-deep app-animation-text {
+  color: red;  /* Or any color of your choice */
 }
