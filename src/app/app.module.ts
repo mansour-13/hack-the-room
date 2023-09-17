@@ -15,8 +15,7 @@ import {AudioService} from "./audio.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HighScoreComponent} from "./high-score/high-score.component";
 import {AnimationTextComponent} from "./animation-text/animation-text.component";
-import { TerminalComponent } from './terminal/terminal.component';
-import { LearnObjektComponent } from './learn-objekt/learn-objekt.component';
+import { AceEditorComponent } from './ace-editor/ace-editor.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { LearnObjektComponent } from './learn-objekt/learn-objekt.component';
     RegisterComponent,
     HighScoreComponent,
     AnimationTextComponent,
-    TerminalComponent,
-    LearnObjektComponent
+    AceEditorComponent
   ],
   imports: [
     BrowserModule,
