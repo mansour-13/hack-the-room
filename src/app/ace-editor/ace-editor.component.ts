@@ -8,6 +8,8 @@ declare var ace: any;
   selector: 'app-ace-editor',
   template: '<div id="editor" style="height: 200px"></div>' +
     '<button (click)="runCode()">Run</button>' +
+    '<button (click)="getHint()">Hint</button>' +
+
     '<div id="output">{{output}}</div>',
   styleUrls: ['./ace-editor.component.css']
 })
@@ -65,6 +67,12 @@ console.log(escapeRoom());  // If correct, this will show the passphrase.
   runCode() {
     const code = this.editor.getValue();
     this.aiService.evaluateCode(code).subscribe(response => {
+      this.output = response.result;
+    });
+  }
+  getHint() {
+    const code = this.editor.getValue();
+    this.aiService.produceAHint(code).subscribe(response => {
       this.output = response.result;
     });
   }

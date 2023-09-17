@@ -13,4 +13,7 @@ export class AiService {
   evaluateCode(code: string) {
     return this.http.post<{result: string}>(`${this.API_URL}/evaluateCode`, code);
   }
+  produceAHint(code: string) {
+    return this.http.post<{result: string}>(`${this.API_URL}/produceAHint`, code);
+  }
 }
