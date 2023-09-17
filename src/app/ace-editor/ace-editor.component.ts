@@ -43,6 +43,12 @@ function escapeRoom() {
 // Once you've solved the function, run the line below to check if you've found the correct passphrase.
 console.log(escapeRoom());  // If correct, this will show the passphrase.
 `);
+
+    // let passphrase = secret.map(char => String.fromCharCode(char)).join('');
+    // console.log(passphrase);
+    // This is the solution to the escape room
+
+
   }
   // This version uses the eval() function to execute the code
   // runCode() {
