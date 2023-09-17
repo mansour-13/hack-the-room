@@ -33,4 +33,12 @@ public class AiController {
         String result = this.aiService.prompt(promptToEvaluate);
         return ResponseEntity.ok(Collections.singletonMap("result", result));
     }
+    // Working to include this PostMapping
+    @PostMapping(value = "/produceAHint", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> produceAHint(@RequestBody String code) {
+        String promptToEvaluate = "For the given code, give the user some intermediate hints on how to solve the riddle: " + code;
+
+        String result = this.aiService.prompt(promptToEvaluate);
+        return ResponseEntity.ok(Collections.singletonMap("result", result));
+    }
 }

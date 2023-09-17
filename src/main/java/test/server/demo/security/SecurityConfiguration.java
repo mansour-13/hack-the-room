@@ -60,6 +60,7 @@ public class SecurityConfiguration {
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                         .requestMatchers("/fortuneCookie").permitAll()
                         .requestMatchers(HttpMethod.POST, "/evaluateCode").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/produceAHint").permitAll()
                         .requestMatchers("/greeting-user").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/greeting-admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
