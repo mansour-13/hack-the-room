@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AiService {
 
-  private API_URL = 'http://localhost:8080'; // Replace with your actual backend endpoint
+  private API_URL = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   evaluateCode(code: string) {
-    return this.http.post<string>(`${this.API_URL}/evaluateCode`, { code: code });
+    return this.http.post<{result: string}>(`${this.API_URL}/evaluateCode`, code);
   }
 }

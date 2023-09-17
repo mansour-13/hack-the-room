@@ -29,10 +29,20 @@ export class AceEditorComponent implements AfterViewInit {
     this.editor.renderer.setShowGutter(true);
     this.editor.getSession().setTabSize(4);
     this.editor.getSession().setUseSoftTabs(true);
-    this.editor.setValue(`function foo(items) {
-      var x = "All this is syntax highlighted";
-      return x;
-    }`);
+    this.editor.setValue(`// The encrypted passphrase is hidden within this function.
+// Can you decode it and find your way out?
+function escapeRoom() {
+    let secret = [104, 101, 108, 108, 111, 95, 119, 111, 114, 108, 100];
+
+    // Hint: Start here. The numbers above represent ASCII values. Convert them to characters to reveal the passphrase.
+    // TODO: Write a function that decodes the secret and returns the passphrase as a string.
+
+    return "???";  // This should return the decoded passphrase.
+}
+
+// Once you've solved the function, run the line below to check if you've found the correct passphrase.
+console.log(escapeRoom());  // If correct, this will show the passphrase.
+`);
   }
   // This version uses the eval() function to execute the code
   // runCode() {
@@ -49,7 +59,7 @@ export class AceEditorComponent implements AfterViewInit {
   runCode() {
     const code = this.editor.getValue();
     this.aiService.evaluateCode(code).subscribe(response => {
-      this.output = response;
+      this.output = response.result;
     });
   }
 }
