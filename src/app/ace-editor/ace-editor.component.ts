@@ -11,6 +11,7 @@ declare var ace: any;
     '<button (click)="getHint()">Hint</button>' +
 
     '<div id="output">{{output}}</div>',
+
   styleUrls: ['./ace-editor.component.css']
 })
 export class AceEditorComponent implements AfterViewInit {
@@ -25,18 +26,20 @@ export class AceEditorComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.editor = ace.edit('editor');
-    this.editor.setTheme('ace/theme/monokai');
+    this.editor.setTheme('ace/theme/ambiance');
     this.editor.session.setMode('ace/mode/javascript');
     this.editor.session.setUseWrapMode(true);
     this.editor.renderer.setShowGutter(true);
     this.editor.getSession().setTabSize(4);
     this.editor.getSession().setUseSoftTabs(true);
-    this.editor.setValue(`// The encrypted passphrase is hidden within this function.
+    this.editor.setValue(`
+    // Hint: Start here. The numbers above represent ASCII values. Convert them to characters to reveal the passphrase.
+    // The encrypted passphrase is hidden within this function.
 // Can you decode it and find your way out?
 function escapeRoom() {
     let secret = [104, 101, 108, 108, 111, 95, 119, 111, 114, 108, 100];
 
-    // Hint: Start here. The numbers above represent ASCII values. Convert them to characters to reveal the passphrase.
+
     // TODO: Write a function that decodes the secret and returns the passphrase as a string.
 
     return "???";  // This should return the decoded passphrase.
