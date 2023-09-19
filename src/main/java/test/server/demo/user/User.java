@@ -14,6 +14,8 @@ public class User {
     private String password;
     private boolean active;
     private String roles;
+    private int idxActualLearnObject;
+    private int life;
 
     public User() {
         // Per default every user receivers normal rights
@@ -22,6 +24,24 @@ public class User {
         this.roles = "ROLE_USER";
         // Per default each user is active
         this.active = true;
+        this.life = 3;
+        this.idxActualLearnObject = 1;
+    }
+
+    public int getIdxActualLearnObject() {
+        return idxActualLearnObject;
+    }
+
+    public void setIdxActualLearnObject(int idxActualLearnObject) {
+        this.idxActualLearnObject = idxActualLearnObject;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 
     public int getId() {
