@@ -20,6 +20,21 @@ public class LearnObject {
     private Time timeLimit;
     @Lob
     private byte[] image;
+
+    public LearnObject() {
+    }
+
+    public LearnObject(int id, String name, String theorie, String story, String solution, String task, Time timeLimit, byte[] image) {
+        this.id = id;
+        this.name = name;
+        this.theorie = theorie;
+        this.story = story;
+        this.solution = solution;
+        this.task = task;
+        this.timeLimit = timeLimit;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }

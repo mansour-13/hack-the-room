@@ -25,3 +25,5 @@ GET {{host}}/greeting-admin
 
 ### Public endpoint
 GET {{host}}/greeting
+###
+GET {{host}}/level/1

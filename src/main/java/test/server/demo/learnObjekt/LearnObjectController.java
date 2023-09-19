@@ -1,5 +1,6 @@
 package test.server.demo.learnObjekt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import test.server.demo.GreetingResponseDTO;
 import test.server.demo.user.User;
 
+import java.sql.Time;
 import java.util.Optional;
 
 import static org.springframework.data.repository.util.ClassUtils.ifPresent;
@@ -19,6 +21,8 @@ public class LearnObjectController {
 
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
+        LearnObject temp = new LearnObject(1,"test1","","","","",new Time(0,3,0),null);
+
     }
 
     @GetMapping("/level/{id}")

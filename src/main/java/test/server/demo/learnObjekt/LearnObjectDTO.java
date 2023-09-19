@@ -12,7 +12,7 @@ public class LearnObjectDTO {
     private String solution;
     private String task;
     private Time timeLimit;
-    private Image image;
+    private byte[] image;
 
     public LearnObjectDTO(String name) {
         this.name = name;
@@ -66,7 +66,7 @@ public class LearnObjectDTO {
         this.timeLimit = timeLimit;
     }
 
-    public Image getImages() {
+    public byte[] getImages() {
         return this.image;
     }
 
