@@ -21,8 +21,8 @@ public class LearnObjectController {
 
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
-        LearnObject temp = new LearnObject(1,"test1","","","","",new Time(0,3,0),null);
-
+        LearnObject temp = new LearnObject(1,"test1","","","","",180,null);
+        learnObjectRepository.save(temp);
     }
 
     @GetMapping("/level/{id}")

@@ -11,8 +11,8 @@ public class LearnObjectDTO {
     private String story;
     private String solution;
     private String task;
-    private Time timeLimit;
-    private byte[] image;
+    private int timeLimit;
+    private String image;
 
     public LearnObjectDTO(String name) {
         this.name = name;
@@ -58,19 +58,19 @@ public class LearnObjectDTO {
         this.task = task;
     }
 
-    public Time getTimeLimit() {
+    public int getTimeLimit() {
         return timeLimit;
     }
 
-    public void setTimeLimit(Time timeLimit) {
+    public void setTimeLimit(int timeLimit) {
         this.timeLimit = timeLimit;
     }
 
-    public byte[] getImages() {
+    public String getImages() {
         return this.image;
     }
 
-    public void setImages(Image images) {
+    public void setImages(String images) {
         this.image = image;
     }
 }

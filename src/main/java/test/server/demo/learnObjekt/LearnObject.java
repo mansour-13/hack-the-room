@@ -17,14 +17,14 @@ public class LearnObject {
     private String story;
     private String solution;
     private String task;
-    private Time timeLimit;
-    @Lob
-    private byte[] image;
+    private int timeLimit;
+
+    private String image;
 
     public LearnObject() {
     }
 
-    public LearnObject(int id, String name, String theorie, String story, String solution, String task, Time timeLimit, byte[] image) {
+    public LearnObject(int id, String name, String theorie, String story, String solution, String task, int timeLimit, String image) {
         this.id = id;
         this.name = name;
         this.theorie = theorie;
@@ -65,12 +65,12 @@ public class LearnObject {
     }
 
 
-    public Time getTimeLimit() {
+    public int getTimeLimit() {
         return timeLimit;
     }
 
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
