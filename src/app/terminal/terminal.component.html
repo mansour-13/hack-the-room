@@ -1,0 +1,5 @@
+<p>Code eingeben</p>
+<div id="editor"></div>
+<input type="text" id="textInput" [(ngModel)]="eingabeText" name="textInput">
+<button (click)="analyseText()" class="analyse-button">Compile</button>
+<p>Das Compeieren lieferte {{ ausgabeText }}</p>
