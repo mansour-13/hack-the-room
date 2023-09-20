@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,5 +30,11 @@ public class UserController {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User under this username found.");
+    }
+
+    @GetMapping("/score")
+    public ResponseEntity<List<User>>findAllByOrderByScore(){
+        List<User> temp = this.userRepository.findAllByOrderByScore();
+        return new ResponseEntity<>(temp, HttpStatus.OK);
     }
 }

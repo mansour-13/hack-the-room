@@ -27,3 +27,5 @@ GET {{host}}/greeting-admin
 GET {{host}}/greeting
 ###
 GET {{host}}/user/user1
+###
+GET {{host}}/score
