@@ -1,6 +1,7 @@
 package test.server.demo.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -10,7 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(unique=true)
+    @NotEmpty(message = "Username cannot be empty")
     private String userName;
+    @NotEmpty(message = "Username cannot be empty")
     private String password;
     private boolean active;
     private String roles;
@@ -26,6 +29,16 @@ public class User {
         this.active = true;
         this.life = 3;
         this.idxActualLearnObject = 1;
+    }
+
+    public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.idxActualLearnObject = idxActualLearnObject;
+        this.life = life;
     }
 
     public int getIdxActualLearnObject() {
