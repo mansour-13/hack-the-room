@@ -57,6 +57,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/level/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/user/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/images/*").permitAll()
                         .requestMatchers("/", "/greeting", "/logout").permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
