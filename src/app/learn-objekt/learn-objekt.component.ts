@@ -22,8 +22,6 @@ export class LearnObjektComponent implements OnInit {
             this.imageUrl = environment.baseUrl + this.level.image;
       }
     );
-
-
   }
 
   ngOnInit(): void {

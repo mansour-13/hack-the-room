@@ -16,9 +16,8 @@
   <tbody>
   <tr *ngFor="let score of highScores; let i = index" class="table-body-row">
     <td>#{{ i + 1 }} </td>
-    <td>{{ score.username }}</td>
+    <td>{{ score.userName }}</td>
     <td>{{ score.score }}</td>
-    <td>{{ score.time }}</td>
   </tr>
   </tbody>
 </table>

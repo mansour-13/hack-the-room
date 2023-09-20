@@ -12,6 +12,11 @@ export interface User {
   roles: string;
   idxActualLearnObject: number;
   life: number;
+  score: number;
+}
+export interface Highscore {
+  userName: String,
+  score : number
 }
 
 @Injectable({
@@ -26,5 +31,9 @@ export class UserService {
 
   getUserByUsername(username: string): Observable<User> {
     return this.client.get<User>(environment.baseUrl + "/user/" + username);
+  }
+
+  getScore():Observable<Highscore[]> {
+    return this.client.get<Highscore[]>(environment.baseUrl + "/score");
   }
 }
