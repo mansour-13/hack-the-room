@@ -21,8 +21,18 @@ public class LearnObjectController {
 
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
-        LearnObject temp = new LearnObject(1,"test1","","","","",180,null);
-        learnObjectRepository.save(temp);
+        LearnObject temp1 = new LearnObject(1,"Waffenkammer","","","","",180,"");
+        learnObjectRepository.save(temp1);
+/*        LearnObject temp2 = new LearnObject(1,"test1","","","","",180,"");
+        learnObjectRepository.save(temp2);
+        LearnObject temp3 = new LearnObject(1,"test1","","","","",180,"");
+        learnObjectRepository.save(temp3);
+        LearnObject temp4 = new LearnObject(1,"test1","","","","",180,"");
+        learnObjectRepository.save(temp4);
+        LearnObject temp5 = new LearnObject(1,"test1","","","","",180,"");
+        learnObjectRepository.save(temp5);
+        LearnObject temp6 = new LearnObject(1,"test1","","","","",180,"");
+        learnObjectRepository.save(temp6);*/
     }
 
     @GetMapping("/level/{id}")
