@@ -17,6 +17,9 @@ import {HighScoreComponent} from "./high-score/high-score.component";
 import {AnimationTextComponent} from "./animation-text/animation-text.component";
 import { AceEditorComponent } from './ace-editor/ace-editor.component';
 import { TimerComponent } from './timer/timer.component';
+import { TerminalComponent } from './terminal/terminal.component';
+import { LearnObjektComponent } from './learn-objekt/learn-objekt.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,11 @@ import { TimerComponent } from './timer/timer.component';
     RegisterComponent,
     HighScoreComponent,
     AnimationTextComponent,
+    TerminalComponent,
+    LearnObjektComponent,
     AceEditorComponent,
-    TimerComponent
+    TimerComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

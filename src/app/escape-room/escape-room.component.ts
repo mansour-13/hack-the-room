@@ -2,6 +2,7 @@ import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core
 import {AudioService} from "../audio.service";
 //Use import instead of hard coding the intro text
 import animationTextData from 'src/assets/animationText.json';
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-escape-room',
@@ -9,7 +10,9 @@ import animationTextData from 'src/assets/animationText.json';
   styleUrls: ['./escape-room.component.css']
 })
 export class EscapeRoomComponent implements OnInit, OnDestroy  {
-  constructor(private audioService: AudioService) {}
+
+  isStarted: boolean = false;
+  constructor(private audioService: AudioService, private userService: UserService) {}
   // intro: string = "\"Willkommen an Bord, Kadett!\"\n" +
   //   "\n" +
   //   "Die Türen der Raumstation gleiten geräuschlos auf und gewähren dir Zugang zu einem Universum voller Abenteuer und Entdeckungen. Hier beginnt deine Reise, dein Training, und deine Mission.\n" +
@@ -59,4 +62,7 @@ export class EscapeRoomComponent implements OnInit, OnDestroy  {
   }
 
 
+  startMission() {
+    this.isStarted = true;
+  }
 }

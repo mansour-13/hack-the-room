@@ -10,4 +10,7 @@
 
 .content-box {
   text-align: center;
+  color: darkblue;
+  font-size: 24px;
+  font-weight: bold;
 }

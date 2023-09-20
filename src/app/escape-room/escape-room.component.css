@@ -1,71 +1,54 @@
-.background-image {
+body {
   background-image:  url("../../assets/pictures/cockpi_micro.jpg");
   background-size: 500px 100%;
   background-repeat: no-repeat;
-  width: 100%;
-  min-height: 100vh;
-  background-position: center center;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /*padding: 2%;*/
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.nav-button {
+  position: relative;
+  padding: 10px;
+  font-size: 20px;
+  margin: 30px 10px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button {
+  position: relative;
+  padding: 10px;
+  font-size: 24px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
 }
 .container {
-  /* Stil für den Hauptinhalt */
-  background-color: rgba(244, 244, 244, 0.6);
+  background-color: rgba(244, 244, 244, 0.8);
   border-radius: 10px;
-  /*min-height: calc(100vh - 60px); !* Höhe des Viewports abzüglich der Höhe des Fußbereichs *!*/
-  width: 25vw;
-  height: auto;
+  width: 50vw;
+  height: 25vw;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.button-container1 {
-  /*display: flex;*/
-  justify-content: center; /* Horizontal in der Mitte ausrichten */
+.image-link {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.button-container2 {
-  display: flex;
-  justify-content: space-between; /* Buttons gleichmäßig am Footer verteilen */
-  align-items: center; /* Buttons vertikal zentrieren */
-  height: 60px; /* Höhe des Fußbereichs */
-  width: 100%;
-}
-
-.left-button,
-.right-button {
-  padding: 10px 20px; /* Einstellen der Padding für die Buttons */
-  color: whitesmoke ; /* Textfarbe */
-  background-color: transparent; /* Hintergrundfarbe der Buttons */
-  border-color: black; /* Kein Rand */
-  cursor: pointer; /* Zeiger beim Überfahren mit der Maus */
-}
-.left-button {
-  margin-left: 50px; /* Abstand zwischen den Buttons */
-  padding: 10px 20px; /* Einstellen der Padding für die Buttons */
-}
-.play-button{
-  background-color: yellowgreen; /* Hintergrundfarbe der Buttons */
-}
-
-.right-button {
-
-  margin-right: 50px; /* Abstand zwischen den Buttons */
-}
-.text{
-  display: flex;
-  color: whitesmoke;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; /* Optional: Text horizontal zentrieren */
-}
-
-::ng-deep app-animation-text {
-  color: red;  /* Or any color of your choice */
+.image-link img {
+  width: 150px;
+  height: auto;
 }

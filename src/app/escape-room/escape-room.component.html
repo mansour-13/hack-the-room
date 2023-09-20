@@ -1,26 +1,29 @@
-<div class="background-image" >
-  <div class="button-container1">
-    <button (click)="playAudio()" class="play-button">{{buttonText}}</button>
+<body>
+<nav class="nav-buttons">
+  <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
+  <button routerLink="/" class="nav-button">Back to Menu</button>
+</nav>
+  <div>
+    <p style="color: white">Hello</p>
+    <p style="color: white">Hello</p>
+  </div>
+  <div *ngIf="!isStarted" class="container">
+    <app-animation-text [intro]="intro"></app-animation-text>
+  </div>
+  <div *ngIf="isStarted" class="container">
+    <a routerLink="/levle/1" class="image-link">
+      <img src="../../assets/pictures/mission1.png">
+    </a>
+    <a routerLink="/levle/1" class="image-link">
+      <img src="../../assets/pictures/mission 2.png">
+    </a>
   </div>
   <div>
-    <app-timer [duration]="120"></app-timer>
-  </div>
-  <div class="container">
-
-    <app-animation-text [intro]="intro"></app-animation-text>
-
-
-<!--    <p class="text">{{intro}}</p>-->
-
-  </div>
-
-  <div class="button-container2">
-    <button routerLink="/" class="left-button">Back to Menu</button>
-    <button class="right-button">Start Mission</button>
+    <button (click)="startMission()" class="button">Start Mission</button>
   </div>
   <audio #audioPlayer (ended)="audioEnded()">
     <source src="assets/sounds/intro.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-</div>
+</body>

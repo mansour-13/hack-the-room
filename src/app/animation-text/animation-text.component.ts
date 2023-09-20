@@ -99,7 +99,7 @@ export class AnimationTextComponent implements OnInit {
 
       // Use RxJS to display words one by one with delay
       of(...words).pipe(
-        concatMap(word => of(word).pipe(delay(100)))
+        concatMap(word => of(word).pipe(delay(200)))
       ).subscribe({
         next: word => {
           this.displayText += word + ' ';
