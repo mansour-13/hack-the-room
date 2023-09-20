@@ -5,20 +5,21 @@ import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "id", "userName" }) })
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "userName"})})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(unique=true)
+    @Column(unique = true)
     @NotEmpty(message = "Username cannot be empty")
     private String userName;
     @NotEmpty(message = "Username cannot be empty")
     private String password;
     private boolean active;
     private String roles;
-    private int idxActualLearnObject;
-    private int life;
+    private int idxActualLearnObject = 1;
+    private int life = 3;
+    private int score = 0;
 
     public User() {
         // Per default every user receivers normal rights
@@ -27,8 +28,17 @@ public class User {
         this.roles = "ROLE_USER";
         // Per default each user is active
         this.active = true;
-        this.life = 3;
-        this.idxActualLearnObject = 1;
+    }
+
+    public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life, int score) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.idxActualLearnObject = idxActualLearnObject;
+        this.life = life;
+        this.score = score;
     }
 
     public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life) {
@@ -39,6 +49,14 @@ public class User {
         this.roles = roles;
         this.idxActualLearnObject = idxActualLearnObject;
         this.life = life;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public int getIdxActualLearnObject() {

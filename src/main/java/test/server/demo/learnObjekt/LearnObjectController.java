@@ -23,10 +23,10 @@ public class LearnObjectController {
         this.learnObjectRepository = learnObjectRepository;
         LearnObject temp1 = new LearnObject(1,"Waffenkammer","","","","",180,"/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
-/*        LearnObject temp2 = new LearnObject(1,"test1","","","","",180,"");
+        LearnObject temp2 = new LearnObject(2,"Objekt2","","","","",180,"");
         learnObjectRepository.save(temp2);
-        LearnObject temp3 = new LearnObject(1,"test1","","","","",180,"");
-        learnObjectRepository.save(temp3);
+        LearnObject temp3 = new LearnObject(3,"Objekt 3","","","","",180,"");
+        learnObjectRepository.save(temp3);/*
         LearnObject temp4 = new LearnObject(1,"test1","","","","",180,"");
         learnObjectRepository.save(temp4);
         LearnObject temp5 = new LearnObject(1,"test1","","","","",180,"");
