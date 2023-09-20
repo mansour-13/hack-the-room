@@ -1,12 +1,11 @@
 body {
-  background-image:  url("../../assets/pictures/cockpi_micro.jpg");
-  background-size: 500px 100%;
+  background-image: url("../../assets/pictures/cockpi_micro.jpg");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 .nav-buttons {
@@ -14,6 +13,7 @@ body {
   justify-content: flex-end;
   width: 100%;
 }
+
 .nav-button {
   position: relative;
   padding: 10px;
@@ -32,6 +32,7 @@ body {
   text-align: center;
   cursor: pointer;
 }
+
 .container {
   background-color: rgba(244, 244, 244, 0.8);
   border-radius: 10px;
@@ -42,6 +43,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .image-link {
   display: inline-block;
   text-decoration: none;
@@ -49,6 +51,43 @@ body {
 }
 
 .image-link img {
-  width: 150px;
+  width: 100px;
   height: auto;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled img {
+  width: 100px;
+  height: auto;
+}
+
+.user-info-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.title{
+  text-align: center;
+  font-size: 32px;
+  color: aqua;
+  padding: 10px;
+}
+
+.emoji {
+  font-size: 32px;
+  padding: 5px;
+  text-align: center;
+}
+

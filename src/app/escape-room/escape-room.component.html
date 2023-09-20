@@ -3,19 +3,44 @@
   <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
   <button routerLink="/" class="nav-button">Back to Menu</button>
 </nav>
-  <div>
-    <p style="color: white">Hello</p>
-    <p style="color: white">Hello</p>
-  </div>
+<table class="user-info-box">
+  <tr>
+    <th colspan="2" class="title">{{user?.userName}}</th>
+  </tr>
+  <tr>
+    <td>Life</td>
+    <td class="emoji">{{ displayHeartEmoji(user?.life) }}</td>
+  </tr>
+  <tr>
+    <td>Level</td>
+    <td class="emoji">{{ displayStarEmoji(user?.idxActualLearnObject) }}</td>
+  </tr>
+  <tr>
+    <td>Score</td>
+    <td class="emoji">{{ (user?.score) }}</td>
+  </tr>
+</table>
   <div *ngIf="!isStarted" class="container">
     <app-animation-text [intro]="intro"></app-animation-text>
   </div>
-  <div *ngIf="isStarted" class="container">
-    <a routerLink="/levle/1" class="image-link">
+  <div *ngIf="isStarted && user" class="container">
+    <a routerLink="/level/1" class="image-link" >
       <img src="../../assets/pictures/mission1.png">
     </a>
-    <a routerLink="/levle/1" class="image-link">
-      <img src="../../assets/pictures/mission 2.png">
+    <a routerLink="/level/2" [ngClass]="user.idxActualLearnObject > 1 ? 'image-link' : 'disabled'" >
+      <img src="../../assets/pictures/mission2.png">
+    </a>
+    <a routerLink="/level/3" [ngClass]="user.idxActualLearnObject > 2 ? 'image-link' : 'disabled'">
+      <img src="../../assets/pictures/mission3.png">
+    </a>
+    <a routerLink="/level/4" [ngClass]="user.idxActualLearnObject > 3 ? 'image-link' : 'disabled'">
+      <img src="../../assets/pictures/mission4.png">
+    </a>
+    <a routerLink="/level/5" [ngClass]="user.idxActualLearnObject > 4 ? 'image-link' : 'disabled'">
+      <img src="../../assets/pictures/mission5.png">
+    </a>
+    <a routerLink="/level/6" [ngClass]="user.idxActualLearnObject > 5 ? 'image-link' : 'disabled'">
+      <img src="../../assets/pictures/mission6.png">
     </a>
   </div>
   <div>
