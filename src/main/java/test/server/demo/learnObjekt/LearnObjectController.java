@@ -21,7 +21,7 @@ public class LearnObjectController {
 
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
-        LearnObject temp1 = new LearnObject(1,"Waffenkammer","","","","",180,"");
+        LearnObject temp1 = new LearnObject(1,"Waffenkammer","","","","",180,"/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
 /*        LearnObject temp2 = new LearnObject(1,"test1","","","","",180,"");
         learnObjectRepository.save(temp2);
