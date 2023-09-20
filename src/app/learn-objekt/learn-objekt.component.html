@@ -1,8 +1,10 @@
-<div>
-
-
+<div [style.background-image]="'url(' + imageUrl + ')'"  class = "background-image">
+[style.background-repeat]=" 'no-repeate' "
   <p>learn-objekt works!</p>
   <div>{{level?.name}}</div>
+
+  <div>{{level?.image}}</div>
+  <div>{{imageUrl}}</div>
 </div>
 
 <!--<app-terminal></app-terminal>-->

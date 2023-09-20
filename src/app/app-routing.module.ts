@@ -8,6 +8,7 @@ import {EscapeRoomComponent} from "./escape-room/escape-room.component";
 import {HighScoreComponent} from "./high-score/high-score.component";
 // import {ValidationJSComponent} from "./validation-js/validation-js.component";
 import {AnimationTextComponent} from "./animation-text/animation-text.component";
+import {LearnObjektComponent} from "./learn-objekt/learn-objekt.component";
 import {AceEditorComponent} from "./ace-editor/ace-editor.component";
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   // {path: 'validation', component: ValidationJSComponent},
   {path: 'animation', component: AnimationTextComponent},
   {path : "register", component: RegisterComponent},
+  {path : "learn", component: LearnObjektComponent},
   {path : "ace-editor", component: AceEditorComponent}
 ];
 

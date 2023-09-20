@@ -10,7 +10,8 @@ export interface Level{
   theory: string,
   task: string,
   timeLimit: number,
-  solution: string
+  solution: string,
+  image: string
 }
 @Injectable({
   providedIn: 'root'
