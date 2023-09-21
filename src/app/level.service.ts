@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 
 export interface Level{
   name: string,
-  story: string,
+  story: string[],
   theory: string,
   task: string,
   timeLimit: number,

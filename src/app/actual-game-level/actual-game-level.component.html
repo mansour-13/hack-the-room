@@ -2,6 +2,17 @@
   <div class="button-container1">
     <button (click)="playAudio()" class="play-button">{{buttonText}}</button>
   </div>
+
+  <div class="container" *ngIf="levelData">
+  <app-animation-text
+
+    [text]="levelData.story"
+
+    ></app-animation-text>
+  </div>
+  <div class="container" *ngIf="levelData">
+    <app-ace-editor [codeChallenge]="levelData.task"></app-ace-editor>
+  </div>
 </div>
 
 

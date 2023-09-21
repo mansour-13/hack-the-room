@@ -8,3 +8,13 @@
   align-items: center;
   justify-content: space-between;
 }
+.container {
+  background-color: rgba(244, 244, 244, 0.8);
+  border-radius: 10px;
+  width: 50vw;
+  height: 25vw;
+  /*padding: 1rem;*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}

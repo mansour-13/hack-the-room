@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import {Component, OnInit, ElementRef, AfterViewInit, Input} from '@angular/core';
 import { AiService } from "../ai-service.service";
 
 // Make sure to declare Ace if TypeScript complains about the missing type.
@@ -16,6 +16,8 @@ declare var ace: any;
 })
 export class AceEditorComponent implements AfterViewInit {
 
+  @Input() codeChallenge: string | undefined;
+
   private editor: any;
   output: string = ""; // To store the output of the code
 
@@ -32,25 +34,7 @@ export class AceEditorComponent implements AfterViewInit {
     this.editor.renderer.setShowGutter(true);
     this.editor.getSession().setTabSize(4);
     this.editor.getSession().setUseSoftTabs(true);
-    this.editor.setValue(`
-    // Hint: Start here. The numbers above represent ASCII values. Convert them to characters to reveal the passphrase.
-    // The encrypted passphrase is hidden within this function.
-// Can you decode it and find your way out?
-function escapeRoom() {
-    let secret = [104, 101, 108, 108, 111, 95, 119, 111, 114, 108, 100];
-
-
-    // TODO: Write a function that decodes the secret and returns the passphrase as a string.
-
-    return "???";  // This should return the decoded passphrase.
-}
-
-// Once you've solved the function, run the line below to check if you've found the correct passphrase.
-console.log(escapeRoom());  // If correct, this will show the passphrase.
-`);
-
-
-
+    this.editor.setValue(this.codeChallenge);
   }
 
 

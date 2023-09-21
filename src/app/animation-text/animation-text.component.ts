@@ -23,7 +23,7 @@ import { Input } from '@angular/core';
 })
 export class AnimationTextComponent implements OnInit {
 
-  @Input() intro: string[] | undefined; // This is the input from the parent component
+  @Input() text: string[] | undefined; // This is the input from the parent component
 
   currentBlock = '';
   // currentWordIndex = 0;
@@ -34,8 +34,8 @@ export class AnimationTextComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.intro) {
-      this.textBlocks = [...this.textBlocks, ...this.intro];
+    if (this.text) {
+      this.textBlocks = [...this.textBlocks, ...this.text];
       console.log(this.textBlocks);
     }
   }
