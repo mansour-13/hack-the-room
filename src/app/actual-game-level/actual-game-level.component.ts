@@ -1,23 +1,32 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Level, LevelService} from "../level.service";
 import {environment} from "../../environments/environment";
 import {AudioService} from "../audio.service";
+import {User, UserService} from "../user.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-actual-game-level',
   templateUrl: './actual-game-level.component.html',
   styleUrls: ['./actual-game-level.component.css']
 })
-export class ActualGameLevelComponent implements OnInit{
+export class ActualGameLevelComponent implements OnInit, OnDestroy {
+
   levelId: number | undefined;
+
   levelData?: Level;
+
   imageUrl: string = "";
+
+  user: User | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private levelService: LevelService,
-    private audioService: AudioService
+    private audioService: AudioService,
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
@@ -25,6 +34,15 @@ export class ActualGameLevelComponent implements OnInit{
   buttonText= "Intro";
 
   ngOnInit(): void {
+    const username = this.authService.getUsername();
+    this.userService.getUserByUsername(username).subscribe(
+      (response) => {
+        this.user = response;
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
     const levelIdParam = this.route.snapshot.paramMap.get('levelId');
     this.levelId = levelIdParam ? +levelIdParam : 0;
 
@@ -67,6 +85,20 @@ export class ActualGameLevelComponent implements OnInit{
 
   audioEnded() {
     this.buttonText = 'Intro'
+  }
+
+  displayHeartEmoji(life: number | undefined): string {
+    if (life !== undefined) {
+      return '❤️'.repeat(life);
+    }
+    return '';
+  }
+
+  displayStarEmoji(idxActualLearnObject: number | undefined): string {
+    if (idxActualLearnObject !== undefined) {
+      return '⭐️'.repeat(idxActualLearnObject);
+    }
+    return '';
   }
 
 }

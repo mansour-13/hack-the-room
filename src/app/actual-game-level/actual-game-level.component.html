@@ -5,6 +5,24 @@
     <button routerLink="/" class="nav-button">Back to Menu</button>
   </nav>
 
+  <table class="user-info-box">
+    <tr>
+      <th colspan="2" class="title">{{user?.userName}}</th>
+    </tr>
+    <tr>
+      <td>Life</td>
+      <td class="emoji">{{ displayHeartEmoji(user?.life) }}</td>
+    </tr>
+    <tr>
+      <td>Level</td>
+      <td class="emoji">{{ displayStarEmoji(user?.idxActualLearnObject) }}</td>
+    </tr>
+    <tr>
+      <td>Score</td>
+      <td class="emoji">{{ (user?.score) }}</td>
+    </tr>
+  </table>
+
   <div class="container" *ngIf="levelData">
     <app-timer
 

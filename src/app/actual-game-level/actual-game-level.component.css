@@ -24,3 +24,47 @@
   justify-content: flex-end;
   width: 100%;
 }
+
+.button {
+  position: relative;
+  padding: 10px;
+  font-size: 24px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-button {
+  position: relative;
+  padding: 10px;
+  font-size: 20px;
+  margin: 30px 10px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.user-info-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.title{
+  text-align: center;
+  font-size: 32px;
+  color: aqua;
+  padding: 10px;
+}
+
+.emoji {
+  font-size: 32px;
+  padding: 5px;
+  text-align: center;
+}
