@@ -3,6 +3,8 @@ package test.server.demo.user;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.Arrays;
+
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "userName"})})
@@ -20,6 +22,7 @@ public class User {
     private int idxActualLearnObject = 1;
     private int life = 3;
     private int score = 0;
+    private int levelscore[] = new int[6];
 
     public User() {
         // Per default every user receivers normal rights
@@ -28,6 +31,7 @@ public class User {
         this.roles = "ROLE_USER";
         // Per default each user is active
         this.active = true;
+        Arrays.fill(levelscore, 0);
     }
 
     public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life, int score) {
@@ -39,6 +43,7 @@ public class User {
         this.idxActualLearnObject = idxActualLearnObject;
         this.life = life;
         this.score = score;
+        Arrays.fill(levelscore, 0);
     }
 
     public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life) {
@@ -49,6 +54,28 @@ public class User {
         this.roles = roles;
         this.idxActualLearnObject = idxActualLearnObject;
         this.life = life;
+        Arrays.fill(levelscore, 0);
+    }
+
+    private void computeScore() {
+        for (int i = 0; i < this.idxActualLearnObject; i++) {
+            this.score += levelscore[i];
+        }
+    }
+
+    public void setLevelscore(int[] levelscore) {
+        this.levelscore = levelscore;
+        computeScore();
+    }
+
+    public void setLevelScore(int idx, int content) {
+        this.levelscore[idx] = content;
+        computeScore();
+    }
+
+    public void deleteLevelScore(int idx) {
+        this.levelscore[idx] = 0;
+        computeScore();
     }
 
     public int getScore() {
