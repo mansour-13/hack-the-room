@@ -11,6 +11,7 @@ import test.server.demo.GreetingResponseDTO;
 import test.server.demo.user.User;
 
 import java.sql.Time;
+import java.util.Arrays;
 import java.util.Optional;
 
 import static org.springframework.data.repository.util.ClassUtils.ifPresent;
@@ -21,11 +22,23 @@ public class LearnObjectController {
 
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
-        LearnObject temp1 = new LearnObject(1,"Waffenkammer","","","","",180,"/images/learnObject1_Waffenkammer.jpg");
+        LearnObject temp1 = new LearnObject(1,"Waffenkammer",""
+                ,Arrays.asList( "As you enter the spaceship's control room, the oxygen levels alarm starts" +
+                " to sound.", "A holographic display shows the oxygen levels of five different compartments" +
+                " in the spaceship.", " You need to restore and balance these levels before the oxygen runs" +
+                " out."),"","",180,"/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
-        LearnObject temp2 = new LearnObject(2,"Objekt2","","","","",180,"/images/picture2.jpeg");
+        LearnObject temp2 = new LearnObject(2,"Objekt2",""
+                ,Arrays.asList( "As you enter the spaceship's control room, the oxygen levels alarm starts" +
+                " to sound.", "A holographic display shows the oxygen levels of five different compartments" +
+                " in the spaceship.", " You need to restore and balance these levels before the oxygen runs" +
+                " out."),"","",180,"/images/picture2.jpeg");
         learnObjectRepository.save(temp2);
-        LearnObject temp3 = new LearnObject(3,"Objekt3","","","","",180,"/images/picture3.jpeg");
+        LearnObject temp3 = new LearnObject(3,"Objekt3",""
+                ,Arrays.asList( "As you enter the spaceship's control room, the oxygen levels alarm starts" +
+                " to sound.", "A holographic display shows the oxygen levels of five different compartments" +
+                " in the spaceship.", " You need to restore and balance these levels before the oxygen runs" +
+                " out."),"","",180,"/images/picture3.jpeg");
         learnObjectRepository.save(temp3);/*
         LearnObject temp4 = new LearnObject(1,"test1","","","","",180,"");
         learnObjectRepository.save(temp4);
