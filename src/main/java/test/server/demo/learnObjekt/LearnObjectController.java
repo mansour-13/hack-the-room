@@ -134,7 +134,7 @@ public class LearnObjectController {
                 "// Safety limit in joules\n\n// TODO: Write a loop (or multiple loops) to redistribute energy such that no module exceeds " +
                 "the safety limit. Remember: only excess energy can be redistributed.\n\n// Start coding here"
                 ,180
-                ,"assets/tutorial/picture6.jpeg");
+                ,"/images/picture6.jpeg");
 
         learnObjectRepository.save(temp6);
     }
