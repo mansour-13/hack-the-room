@@ -1,5 +1,6 @@
 import {Component, OnInit, ElementRef, AfterViewInit, Input} from '@angular/core';
 import { AiService } from "../ai-service.service";
+import {UserService} from "../user.service";
 
 // Make sure to declare Ace if TypeScript complains about the missing type.
 declare var ace: any;
@@ -7,8 +8,9 @@ declare var ace: any;
 @Component({
   selector: 'app-ace-editor',
   template: '<div id="editor" style="height: 200px"></div>' +
-    '<button (click)="runCode()">Run</button>' +
+    '<button (click)="compareSolutionToUser()">Run</button>' +
     '<button (click)="getHint()">Hint</button>' +
+    '<button (click)="getSolution()">Solution</button>' +
 
     '<div id="output">{{output}}</div>',
 
@@ -17,6 +19,8 @@ declare var ace: any;
 export class AceEditorComponent implements AfterViewInit {
 
   @Input() codeChallenge: string | undefined;
+  @Input() codeSolution: string | undefined;
+
 
   private editor: any;
   output: string = ""; // To store the output of the code
@@ -24,7 +28,7 @@ export class AceEditorComponent implements AfterViewInit {
   // Use this constructor if you are not using the AI service
   // constructor() { }
 
-  constructor(private aiService: AiService) { }
+  constructor(private aiService: AiService, private userService: UserService) { }
 
   ngAfterViewInit() {
     this.editor = ace.edit('editor');
@@ -45,9 +49,22 @@ export class AceEditorComponent implements AfterViewInit {
       this.output = response.result;
     });
   }
+    compareSolutionToUser() {
+    const code = this.editor.getValue();
+    this.aiService.getBinaryAnswerToCode(code, this.codeChallenge, this.codeSolution).subscribe(response => {
+      this.output = response.result;
+    });
+  }
+
   getHint() {
     const code = this.editor.getValue();
     this.aiService.produceAHint(code).subscribe(response => {
+      this.output = response.result;
+    });
+  }
+
+  getSolution() {
+    this.aiService.getSolutionToChallenge(this.codeChallenge).subscribe(response => {
       this.output = response.result;
     });
   }

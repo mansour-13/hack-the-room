@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -12,6 +12,9 @@ export class TimerComponent implements OnInit, OnDestroy {
   minutes: number = 0;
   seconds: number = 0;
   private intervalID: any;
+
+  // Emit an event to the parent component
+  @Output() timeOut: EventEmitter<void> = new EventEmitter();
 
   ngOnInit(): void {
     this.minutes = Math.floor(this.duration / 60);
@@ -35,6 +38,8 @@ export class TimerComponent implements OnInit, OnDestroy {
         }
       } else {
         this.stopTimer();
+        // Emit an event to the parent component
+        this.timeOut.emit();
       }
     }, 1000);
   }

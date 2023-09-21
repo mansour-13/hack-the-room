@@ -27,6 +27,7 @@
     <app-timer
 
       [duration]="levelData.timeLimit"
+      (timeOut)="handleTimeout()"
 
       ></app-timer>
     </div>
@@ -39,8 +40,17 @@
 
     ></app-animation-text>
   </div>
+
   <div class="container" *ngIf="levelData">
-    <app-ace-editor [codeChallenge]="levelData.task"></app-ace-editor>
+
+    <app-ace-editor
+
+      [codeChallenge]="levelData.task"
+
+      [codeSolution]="levelData.solution"
+
+    ></app-ace-editor>
+
   </div>
 </div>
 

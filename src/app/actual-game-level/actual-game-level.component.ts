@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Level, LevelService} from "../level.service";
 import {environment} from "../../environments/environment";
 import {AudioService} from "../audio.service";
@@ -26,7 +26,8 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     private levelService: LevelService,
     private audioService: AudioService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
@@ -101,4 +102,19 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     return '';
   }
 
+  handleTimeout() {
+    alert("You didn't solve the level.");
+    if (this.user && this.user.life) {
+      this.user.life -= 1;
+      this.userService.updateUserLife(this.user).subscribe(
+        (response) => {
+          console.log('User life updated:', response);
+        },
+        (error) => {
+          console.error('Error updating user life:', error);
+        }
+      );
+    }
+    this.router.navigate(['/escape-room']);
+  }
 }
