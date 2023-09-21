@@ -1,8 +1,8 @@
-<p>user works!</p>
 <div *ngIf="user">
   <h2>User Information</h2>
   <p>ID: {{ user.id }}</p>
   <p>Username: {{ user.userName }}</p>
   <p>Life: {{ user.life }}</p>
-  <button (click)="addScore()" class="button">Start Mission</button>
+  <p>Level: {{ user.idxActualLearnObject }}</p>
+  <p>Score: {{ user.score }}</p>
 </div>

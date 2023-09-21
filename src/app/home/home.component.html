@@ -1,6 +1,7 @@
 <body>
 <nav class="nav-buttons">
   <button *ngIf="isLoggedIn()" class="nav-button" (click)="sendLogout()">Logout</button>
+  <button *ngIf="isLoggedIn()" class="nav-button" routerLink="/user">User Profile</button>
   <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/login">Login</button>
   <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/register">Register</button>
 </nav>
