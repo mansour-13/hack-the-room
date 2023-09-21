@@ -49,22 +49,10 @@ function escapeRoom() {
 console.log(escapeRoom());  // If correct, this will show the passphrase.
 `);
 
-    // let passphrase = secret.map(char => String.fromCharCode(char)).join('');
-    // console.log(passphrase);
-    // This is the solution to the escape room
 
 
   }
-  // This version uses the eval() function to execute the code
-  // runCode() {
-  //   const code = this.editor.getValue();
-  //   try {
-  //     const result = eval(code); // Capture the return value from eval
-  //     this.output = result ? String(result) : "Code executed successfully without a return value.";
-  //   } catch (error) {
-  //     this.output = "Error executing code: " + error;
-  //   }
-  // }
+
 
   // This version uses chatgpt function to execute the code
   runCode() {

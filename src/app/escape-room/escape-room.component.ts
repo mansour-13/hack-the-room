@@ -62,7 +62,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
     this.buttonText = 'Intro'
   }
 
-
   startMission() {
     this.isStarted = true;
   }
@@ -80,5 +79,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
     }
     return '';
   }
+
 }
 

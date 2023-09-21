@@ -11,6 +11,7 @@ import {AnimationTextComponent} from "./animation-text/animation-text.component"
 import {LearnObjektComponent} from "./learn-objekt/learn-objekt.component";
 import {AceEditorComponent} from "./ace-editor/ace-editor.component";
 import {UserComponent} from "./user/user.component";
+import {ActualGameLevelComponent} from "./actual-game-level/actual-game-level.component";
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path : "register", component: RegisterComponent},
   {path : "learn", component: LearnObjektComponent},
   {path : "ace-editor", component: AceEditorComponent},
-  {path : "user", component: UserComponent}
+  {path : "user", component: UserComponent},
+  { path: 'level/:levelId', component: ActualGameLevelComponent }
 ];
 
 @NgModule({

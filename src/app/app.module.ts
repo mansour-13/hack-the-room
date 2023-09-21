@@ -20,6 +20,7 @@ import { TimerComponent } from './timer/timer.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { LearnObjektComponent } from './learn-objekt/learn-objekt.component';
 import { UserComponent } from './user/user.component';
+import { ActualGameLevelComponent } from './actual-game-level/actual-game-level.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserComponent } from './user/user.component';
     LearnObjektComponent,
     AceEditorComponent,
     TimerComponent,
-    UserComponent
+    UserComponent,
+    ActualGameLevelComponent
   ],
   imports: [
     BrowserModule,
