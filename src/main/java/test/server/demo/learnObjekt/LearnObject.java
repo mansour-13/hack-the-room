@@ -21,7 +21,10 @@ public class LearnObject {
     @Column(name = "story")
     private List<String> story;
 
+    @Column(length = 2000)
     private String solution;
+
+    @Column(length = 2000)
     private String task;
     private int timeLimit;
 
