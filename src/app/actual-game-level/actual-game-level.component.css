@@ -18,3 +18,9 @@
   /*justify-content: center;*/
   /*align-items: center;*/
 }
+
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

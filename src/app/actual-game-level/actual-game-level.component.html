@@ -1,7 +1,18 @@
 <div [style.background-image]="'url(' + imageUrl + ')'"  class = "background-image">
-  <div class="button-container1">
-    <button (click)="playAudio()" class="play-button">{{buttonText}}</button>
-  </div>
+
+  <nav class="nav-buttons">
+    <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
+    <button routerLink="/" class="nav-button">Back to Menu</button>
+  </nav>
+
+  <div class="container" *ngIf="levelData">
+    <app-timer
+
+      [duration]="levelData.timeLimit"
+
+      ></app-timer>
+    </div>
+
 
   <div class="container" *ngIf="levelData">
   <app-animation-text
