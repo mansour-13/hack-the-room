@@ -25,9 +25,14 @@ export class UserComponent implements OnInit {
       }
     );
   }
+  computeScore(timeLimit: number, neededTime: number): number{
+    if(neededTime > 10){
+      return Math.round(((timeLimit-neededTime)*1000/6)/timeLimit-10);
+    }
+    return 100;
+}
 
-
-    addScore() {
-      this.userService.setScoreForLearnObjekt(500,1);
+    addScore(score: number, idxLearnObject: number) {
+      this.userService.setScoreForLearnObjekt(score,idxLearnObject);
 }
 }

@@ -13,6 +13,7 @@ export interface User {
   idxActualLearnObject: number;
   life: number;
   score: number;
+  levelScore: number[]
 }
 export interface Highscore {
   userName: String,
@@ -46,6 +47,5 @@ export class UserService {
     };
 
     this.client.post(environment.baseUrl + "/score/"+this.username+"/"+idxLearnObject +"/"+score,requestBody);
-    /*this.client.post(environment.baseUrl + "/score/"+this.username+"/"+idxLearnObject +"/"+score);*/
   }
 }
