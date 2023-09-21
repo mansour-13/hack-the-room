@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
-import { tap } from 'rxjs/operators'; // Import tap operator
+import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
 import {AuthService} from "./auth.service";
 
@@ -17,7 +16,8 @@ export interface User {
 }
 export interface Highscore {
   userName: String,
-  score : number
+  score : number,
+  levelScore: number[]
 }
 
 @Injectable({
@@ -26,19 +26,11 @@ export interface Highscore {
 export class UserService {
   private username?: string;
 
-  // Step 1: Declare a private BehaviorSubject with initial value of null
-  private userSubject = new BehaviorSubject<User | null>(null);
-
   constructor(private client: HttpClient, private authService: AuthService) {
     this.username = authService.getUsername();
   }
 
-  // Step 3: Expose userSubject as public observable for other parts to subscribe
-  get user$(): Observable<User | null> {
-    return this.userSubject.asObservable();
-  }
-
-  getUserByUsername(username: string | undefined): Observable<User> {
+  getUserByUsername(username: string): Observable<User> {
     return this.client.get<User>(environment.baseUrl + "/user/" + username);
   }
 
@@ -46,13 +38,14 @@ export class UserService {
     return this.client.get<Highscore[]>(environment.baseUrl + "/score");
   }
 
-  updateUserLife(user: User): Observable<User> {
-    return this.client.put<User>(environment.baseUrl + "/user/updateLife", user).pipe(
-      tap(updatedUser => {
-        // Step 2: Emit new user data via the BehaviorSubject
-        this.userSubject.next(updatedUser);
-      })
-    );
-  }
+  setScoreForLearnObjekt(score: number, idxLearnObject: number) {
+    const requestBody = {
+      username: this.username,
+      id_learnObject: idxLearnObject,
+      score: score,
+    };
 
+    this.client.post(environment.baseUrl + "/score/"+this.username+"/"+idxLearnObject +"/"+score,requestBody);
+    /*this.client.post(environment.baseUrl + "/score/"+this.username+"/"+idxLearnObject +"/"+score);*/
+  }
 }

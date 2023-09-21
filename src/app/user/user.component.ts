@@ -23,4 +23,9 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
+
+    addScore() {
+      this.userService.setScoreForLearnObjekt(500,1);
+}
 }
