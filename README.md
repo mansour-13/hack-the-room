@@ -14,3 +14,8 @@ brew install gnu-sed
 grep -ilr "spring-boot-template" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/spring-boot-template/api-java-islands/g
 ```
 6. Push changes, CI/CD should be triggered now and go through
+
+
+## Todos 🛠️
+- Block `h2-console` for deployed version, not save to expose this to the internet
+- Document AI service with endpoints

@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                        .requestMatchers("/", "/greeting", "/logout").permitAll()
+                        .requestMatchers("/", "/greeting", "/logout", "/current-user").permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                         .requestMatchers("/fortuneCookie").permitAll()
                         .requestMatchers("/greeting-user").hasAnyRole("USER", "ADMIN")
