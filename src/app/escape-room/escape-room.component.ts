@@ -4,7 +4,6 @@ import {AudioService} from "../audio.service";
 import animationTextData from 'src/assets/animationText.json';
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-escape-room',
@@ -15,10 +14,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
 
   isStarted: boolean = false;
 
-  user: User | undefined;
-  userSubscription?: Subscription;  // Declare a subscription
-  buttonText = "Intro";
-
   constructor(private audioService: AudioService,
               private userService: UserService,
               private authService: AuthService) {
@@ -28,7 +23,9 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
-
+  buttonText = "Intro";
+  user: User | undefined;
+  showIntro: boolean = false;
 
   ngOnInit() {
     const username = this.authService.getUsername();
@@ -40,14 +37,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
         console.error('Error fetching user data:', error);
       }
     );
-
-    // Subscribe to user updates
-    this.userSubscription = this.userService.user$.subscribe(user => {
-      if (user) {
-        this.user = user;
-      }
-    });
-
     this.audioService.play();
     this.audioService.setVolume(0.3);
   }
@@ -55,11 +44,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Pause audio when the component is destroyed
     this.audioService.pause();
-
-    // Unsubscribe from user$ to prevent memory leaks
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
   }
 
   playAudio() {
@@ -79,6 +63,7 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
     this.buttonText = 'Intro'
   }
 
+
   startMission() {
     this.isStarted = true;
   }
@@ -96,6 +81,5 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
     }
     return '';
   }
-
 }
 

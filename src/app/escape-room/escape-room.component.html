@@ -24,9 +24,14 @@
     <app-animation-text [intro]="intro"></app-animation-text>
   </div>
   <div *ngIf="user" class="mission">
+    <div (mouseover)="showIntro = true" (mouseout)="showIntro = false">
     <a routerLink="/level/1" class="image-link" >
-      <img src="../../assets/pictures/mission1.png">
+      <img src="../../assets/pictures/mission1.png" width="200" height="200">
     </a>
+      <div *ngIf="showIntro" class="tooltip">
+        Das erste level.. BLA BLA BLA
+      </div>
+    </div>
     <a routerLink="/level/2" [ngClass]="user.idxActualLearnObject > 1 ? 'image-link' : 'disabled'" >
       <img src="../../assets/pictures/mission2.png">
     </a>
