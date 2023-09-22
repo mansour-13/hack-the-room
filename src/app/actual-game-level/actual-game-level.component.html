@@ -1,4 +1,4 @@
-<body>
+<body [style.background-image]="'url(' + imageUrl + ')'" >
   <nav class="navbar">
     <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
     <button routerLink="/" class="nav-button">Back to Menu</button>
