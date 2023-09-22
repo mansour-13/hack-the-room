@@ -29,7 +29,7 @@ public class AiService {
                 .queryParam("maxTokens", "150")
 
                 // Remove cached result for the current prompt
-                // .queryParam("invalidateCache", "true")
+                 .queryParam("invalidateCache", "true")
 
                 // The prompt you want to send to ChatGPT
                 .queryParam("prompt", content);

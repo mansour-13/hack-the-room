@@ -56,6 +56,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers("/", "/greeting", "/logout", "/current-user").permitAll()
                         .requestMatchers(HttpMethod.GET, "/level/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/user/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/images/*").permitAll()

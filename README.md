@@ -14,3 +14,8 @@ brew install gnu-sed
 grep -ilr "api-hack-the-room" . | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/api-hack-the-room/api-hack-the-room/g
 ```
 6. Push changes, CI/CD should be triggered now and go through
+
+
+## Todos 🛠️
+- Block `h2-console` for deployed version, not save to expose this to the internet
+- Document AI service with endpoints
