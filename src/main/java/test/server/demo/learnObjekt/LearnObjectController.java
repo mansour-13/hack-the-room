@@ -30,11 +30,11 @@ public class LearnObjectController {
                 " to sound.", "A holographic display shows the oxygen levels of five different compartments" +
                 " in the spaceship.", " You need to restore and balance these levels before the oxygen runs" +
                 " out.")
-                ,"let reactorTemperatures = [100, 105, 110, 115, 108, 102, 98, 103, 109, 104];\nlet totalTemp = 0;\nfor(let i=0; i<reactorTemperatures.length; i++) {\n    totalTemp += reactorTemperatures[i];\n}\nlet avgTemp = totalTemp / reactorTemperatures.length;\nfor(let i=0; i<reactorTemperatures.length; i++) {\n    if(reactorTemperatures[i] > avgTemp + 5) {\n        reactorTemperatures[i] = avgTemp;\n    }\n}"
+                ,"let oxygenLevels = [85, 90, 75, 80, 78];\nlet total = 0;\nfor(let i=0; i<oxygenLevels.length; i++) {\n    total += oxygenLevels[i];\n}\nlet average = total / oxygenLevels.length;\nfor(let i=0; i<oxygenLevels.length; i++) {\n    if(oxygenLevels[i] < average) {\n        oxygenLevels[i] = average;\n    }\n}"
                 ,"let oxygenLevels = [85, 90, 75, 80, 78]; // These are the initial oxygen levels in %\n\n// TODO: " +
                 "Write a loop to calculate the average oxygen level\n\n// TODO: Write another loop to refill" +
                 " any compartment below the average level to the average level\n\n// Start coding here"
-                ,180
+                ,10
                 ,"/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
         LearnObject temp2 = new LearnObject(

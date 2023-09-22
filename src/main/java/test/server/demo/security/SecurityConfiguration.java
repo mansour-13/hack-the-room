@@ -66,6 +66,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/fortuneCookie").permitAll()
                         .requestMatchers(HttpMethod.POST, "/evaluateCode").permitAll()
                         .requestMatchers(HttpMethod.POST, "/produceAHint").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/getBinaryAnswerToCode").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/getSolutionToChallenge").permitAll()
                         .requestMatchers("/greeting-user").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/images/*").hasAnyRole("USER", "ADMIN")
 

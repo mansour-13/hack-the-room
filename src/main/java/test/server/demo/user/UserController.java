@@ -47,4 +47,16 @@ public class UserController {
         this.userRepository.save(user);
     }
 
+    @PutMapping("/user/updateLife")
+    public ResponseEntity<User> updateUserLife(@RequestBody User user) {
+        Optional<User> existingUser = this.userRepository.findByUserName(user.getUserName());
+        if (existingUser.isPresent()) {
+            User savedUser = existingUser.get();
+            savedUser.setLife(user.getLife());
+            userRepository.save(savedUser);
+            return new ResponseEntity<>(savedUser, HttpStatus.OK);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User with this username found.");
+    }
+
 }
