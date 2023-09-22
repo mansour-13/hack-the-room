@@ -4,6 +4,7 @@ import {AudioService} from "../audio.service";
 import animationTextData from 'src/assets/animationText.json';
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-escape-room',
@@ -14,6 +15,10 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
 
   isStarted: boolean = false;
 
+  user: User | undefined;
+  userSubscription?: Subscription;  // Declare a subscription
+  buttonText = "Intro";
+
   constructor(private audioService: AudioService,
               private userService: UserService,
               private authService: AuthService) {
@@ -23,20 +28,14 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
-  buttonText = "Intro";
-  user: User | undefined;
   showIntro: boolean = false;
 
   ngOnInit() {
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(
-      (response) => {
-        this.user = response;
-      },
-      (error) => {
-        console.error('Error fetching user data:', error);
-      }
-    );
+      (user) => {
+        this.user = user;
+      });
     this.audioService.play();
     this.audioService.setVolume(0.3);
   }
@@ -44,6 +43,11 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Pause audio when the component is destroyed
     this.audioService.pause();
+
+    // Unsubscribe from user$ to prevent memory leaks
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   playAudio() {
@@ -61,25 +65,6 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
 
   audioEnded() {
     this.buttonText = 'Intro'
-  }
-
-  startMission() {
-    this.isStarted = true;
-  }
-
-  displayHeartEmoji(life: number | undefined): string {
-
-    if (life !== undefined) {
-      return '❤️'.repeat(life) + '☠️'.repeat(3 - life);
-    }
-    return '';
-  }
-
-  displayStarEmoji(idxActualLearnObject: number | undefined): string {
-    if (idxActualLearnObject !== undefined) {
-      return '⭐️'.repeat(idxActualLearnObject);
-    }
-    return '';
   }
 
 }

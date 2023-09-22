@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Level, LevelService} from "../level.service";
 import {environment} from "../../environments/environment";
 import {AudioService} from "../audio.service";
@@ -26,7 +26,8 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     private levelService: LevelService,
     private audioService: AudioService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
@@ -36,13 +37,10 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(
-      (response) => {
-        this.user = response;
-      },
-      (error) => {
-        console.error('Error fetching user data:', error);
-      }
-    );
+      (user) => {
+        this.user = user;
+      });
+
     const levelIdParam = this.route.snapshot.paramMap.get('levelId');
     this.levelId = levelIdParam ? +levelIdParam : 0;
 
@@ -87,18 +85,19 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     this.buttonText = 'Intro'
   }
 
-  displayHeartEmoji(life: number | undefined): string {
-    if (life !== undefined) {
-      return '❤️'.repeat(life) + '☠️'.repeat(3 - life);
+  handleTimeout() {
+    alert("You didn't solve the level.");
+    if (this.user && this.user.life) {
+      this.user.life -= 1;
+      this.userService.updateUserLife(this.user).subscribe(
+        (response) => {
+          console.log('User life updated:', response);
+        },
+        (error) => {
+          console.error('Error updating user life:', error);
+        }
+      );
     }
-    return '';
+    this.router.navigate(['/escape-room']);
   }
-
-  displayStarEmoji(idxActualLearnObject: number | undefined): string {
-    if (idxActualLearnObject !== undefined) {
-      return '⭐️'.repeat(idxActualLearnObject);
-    }
-    return '';
-  }
-
 }
