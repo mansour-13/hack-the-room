@@ -1,11 +1,10 @@
-<div [style.background-image]="'url(' + imageUrl + ')'"  class = "background-image">
-
-  <nav class="nav-buttons">
+<body>
+  <nav class="navbar">
     <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
     <button routerLink="/" class="nav-button">Back to Menu</button>
   </nav>
 
-  <table class="user-info-box">
+  <table class="user">
     <tr>
       <th colspan="2" class="title">{{user?.userName}}</th>
     </tr>
@@ -23,36 +22,26 @@
     </tr>
   </table>
 
-  <div class="container" *ngIf="levelData">
+  <div class="timer" *ngIf="levelData">
     <app-timer
 
       [duration]="levelData.timeLimit"
-      (timeOut)="handleTimeout()"
 
       ></app-timer>
     </div>
 
 
-  <div class="container" *ngIf="levelData">
+  <div class="story" *ngIf="levelData">
   <app-animation-text
 
     [text]="levelData.story"
 
     ></app-animation-text>
   </div>
-
-  <div class="container" *ngIf="levelData">
-
-    <app-ace-editor
-
-      [codeChallenge]="levelData.task"
-
-      [codeSolution]="levelData.solution"
-
-    ></app-ace-editor>
-
+  <div class="terminal" *ngIf="levelData">
+    <app-ace-editor [codeChallenge]="levelData.task"></app-ace-editor>
   </div>
-</div>
+</body>
 
 
 

@@ -3,6 +3,9 @@
   <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
   <button routerLink="/" class="nav-button">Back to Menu</button>
 </nav>
+<!--<div class="user">-->
+<!--  <app-user></app-user>-->
+<!--</div>-->
 <table class="user">
   <tr>
     <th colspan="2" class="title">{{user?.userName}}</th>
@@ -20,40 +23,34 @@
     <td class="emoji">{{ (user?.score) }}</td>
   </tr>
 </table>
-  <div class="story">
-    <app-animation-text [intro]="intro"></app-animation-text>
-  </div>
-  <div *ngIf="user" class="mission">
-    <div (mouseover)="showIntro = true" (mouseout)="showIntro = false">
-    <a routerLink="/level/1" class="image-link" >
-      <img src="../../assets/pictures/mission1.png" width="200" height="200">
-    </a>
-      <div *ngIf="showIntro" class="tooltip">
-        Das erste level.. BLA BLA BLA
-      </div>
-    </div>
-    <a routerLink="/level/2" [ngClass]="user.idxActualLearnObject > 1 ? 'image-link' : 'disabled'" >
-      <img src="../../assets/pictures/mission2.png">
-    </a>
-    <a routerLink="/level/3" [ngClass]="user.idxActualLearnObject > 2 ? 'image-link' : 'disabled'">
-      <img src="../../assets/pictures/mission3.png">
-    </a>
-
-    <a routerLink="/level/4" [ngClass]="user.idxActualLearnObject > 3 ? 'image-link' : 'disabled'">
-      <img src="../../assets/pictures/mission4.png">
-    </a>
-    <a routerLink="/level/5" [ngClass]="user.idxActualLearnObject > 4 ? 'image-link' : 'disabled'">
-      <img src="../../assets/pictures/mission5.png">
-    </a>
-    <a routerLink="/level/6" [ngClass]="user.idxActualLearnObject > 5 ? 'image-link' : 'disabled'">
-      <img src="../../assets/pictures/mission6.png">
-    </a>
-  </div>
+<div class="story">
+  <app-animation-text [text]="intro"></app-animation-text>
+</div>
+<div *ngIf="user" class="mission">
+  <a routerLink="/level/1" class="image-link">
+    <img src="../../assets/pictures/mission1.png">
+  </a>
+  <a routerLink="/level/2" [ngClass]="user.idxActualLearnObject > 1 ? 'image-link' : 'disabled'">
+    <img src="../../assets/pictures/mission2.png">
+  </a>
+  <a routerLink="/level/3" [ngClass]="user.idxActualLearnObject > 2 ? 'image-link' : 'disabled'">
+    <img src="../../assets/pictures/mission3.png">
+  </a>
+  <a routerLink="/level/4" [ngClass]="user.idxActualLearnObject > 3 ? 'image-link' : 'disabled'">
+    <img src="../../assets/pictures/mission4.png">
+  </a>
+  <a routerLink="/level/5" [ngClass]="user.idxActualLearnObject > 4 ? 'image-link' : 'disabled'">
+    <img src="../../assets/pictures/mission5.png">
+  </a>
+  <a routerLink="/level/6" [ngClass]="user.idxActualLearnObject > 5 ? 'image-link' : 'disabled'">
+    <img src="../../assets/pictures/mission6.png">
+  </a>
+</div>
 <!--  <div>-->
 <!--    <button (click)="startMission()" class="button">Start Mission</button>-->
 <!--  </div>-->
-  <audio #audioPlayer (ended)="audioEnded()">
-    <source src="assets/sounds/intro.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<audio #audioPlayer (ended)="audioEnded()">
+  <source src="assets/sounds/intro.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 </body>

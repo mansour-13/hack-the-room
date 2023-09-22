@@ -1,28 +1,31 @@
-.background-image {
+
+body {
+  background-image: url("../../assets/pictures/cockpi_micro.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  width: 100vw;
-  min-height: 100vh;
-  background-position: center center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.container {
-  background-color: rgba(244, 244, 244, 0.8);
-  border-radius: 10px;
-  width: 50vw;
-  height: 25vw;
-  /*padding: 1rem;*/
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-areas:
+      "user   .       .     navbar"
+      "story story timer timer"
+      "story story terminal terminal"
+      "story story terminal terminal";
 }
 
-.nav-buttons {
-  display: flex;
-  justify-content: flex-end;
+.navbar {
+  grid-area: navbar;
   width: 100%;
+}
+
+.nav-button {
+  position: relative;
+  padding: 10px;
+  font-size: 20px;
+  margin: 30px 10px 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .button {
@@ -35,36 +38,82 @@
   cursor: pointer;
 }
 
-.nav-button {
-  position: relative;
-  padding: 10px;
-  font-size: 20px;
-  margin: 30px 10px 10px;
-  text-align: center;
+.story {
+  grid-area: story;
+  background-color: rgba(244, 244, 244, 0.7);
+  border-radius: 10px;
+  width: 40vw;
+  height: 600px;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal {
+  grid-area: terminal;
+  border-radius: 10px;
+  width: 600px;
+  height: auto;
+  padding: 1rem;
+  margin: 20px 50px;
+  display: inline;
+}
+
+.timer{
+  grid-area: timer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-link {
+  display: inline-block;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.user-info-box {
+.image-link img {
+  width: 100px;
+  height: auto;
+
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled img {
+  width: 100px;
+  height: auto;
+
+}
+
+.user {
+  grid-area: user;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   padding: 10px;
   text-align: left;
   color: white;
   font-family: Arial, sans-serif;
-  margin: 50px;
-  font-size: 20px;
-  font-weight: bold;
+  margin: 20px;
+  font-size: 14px;
 }
 
-.title{
-  text-align: center;
-  font-size: 32px;
+.title {
+  text-align: left;
+  font-size: 24px;
   color: aqua;
-  padding: 10px;
+  padding: 5px;
 }
 
 .emoji {
-  font-size: 32px;
+  font-size: 18px;
   padding: 5px;
   text-align: center;
 }
+
