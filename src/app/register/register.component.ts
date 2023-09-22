@@ -29,7 +29,7 @@ export class RegisterComponent {
           this.info = "Registered Successfully";
           setTimeout(() => {
             this.router.navigate(["/login"]);
-          }, 3000);
+          }, 1000);
         },
         error: err => {
           this.info = err.error;
