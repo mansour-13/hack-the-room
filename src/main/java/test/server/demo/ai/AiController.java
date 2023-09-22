@@ -18,7 +18,6 @@ public class AiController {
 
     @GetMapping("/fortuneCookie")
     public String getResult(@RequestParam(defaultValue = "Xena") String name){
-        // Jackson Library String -> Entity
         return this.aiService.prompt(String.format("Create a furtune cookie quote which %s should read. Make it funny and short (max 20 words).", name));
     }
 }
