@@ -47,7 +47,12 @@ export class UserService {
   }
 
   updateUserLife(user: User): Observable<User> {
-    return this.client.put<User>(environment.baseUrl + "/user/updateLife", user);
+    return this.client.put<User>(environment.baseUrl + "/user/updateLife", user).pipe(
+      tap(updatedUser => {
+        // Step 2: Emit new user data via the BehaviorSubject
+        this.userSubject.next(updatedUser);
+      })
+    );
   }
 
 }
