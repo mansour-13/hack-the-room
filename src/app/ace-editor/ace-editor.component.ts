@@ -11,6 +11,7 @@ declare var ace: any;
     '<button (click)="compareSolutionToUser()">Run</button>' +
     '<button (click)="getHint()">Hint</button>' +
     '<button (click)="getSolution()">Solution</button>' +
+    '<button (click)="resetChallenge()">Reset</button>' +
 
     '<div id="output">{{output}}</div>',
 
@@ -41,6 +42,9 @@ export class AceEditorComponent implements AfterViewInit {
     this.editor.setValue(this.codeChallenge);
   }
 
+  resetChallenge() {
+    this.editor.setValue(this.codeChallenge);
+  }
 
   // This version uses chatgpt function to execute the code
   runCode() {
@@ -50,7 +54,7 @@ export class AceEditorComponent implements AfterViewInit {
     });
   }
     compareSolutionToUser() {
-    const code = this.editor.getValue();
+    const code = this.replaceSpecialCharsWithASCII(this.editor.getValue());
     this.aiService.getBinaryAnswerToCode(code, this.codeChallenge, this.codeSolution).subscribe(response => {
       this.output = response.result;
     });
@@ -68,5 +72,25 @@ export class AceEditorComponent implements AfterViewInit {
       this.output = response.result;
     });
   }
+
+  replaceSpecialCharsWithASCII(str: string): string {
+    return str.split('').map((char) => {
+      // Check if char is not alphanumeric
+      if (!char.match(/[a-z0-9]/i)) {
+        return char.charCodeAt(0).toString();
+      }
+      return char;
+    }).join('');
+  }
+
+  // Here with a replacement for all special characters
+  // runCode() {
+  //   let code = this.editor.getValue();
+  //   code = this.replaceSpecialCharsWithASCII(code);
+  //   this.aiService.evaluateCode(code).subscribe(response => {
+  //     this.output = response.result;
+  //   });
+  // }
+
 }
 
