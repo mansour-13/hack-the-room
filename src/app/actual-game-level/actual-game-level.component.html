@@ -1,43 +1,70 @@
-<body [style.background-image]="'url(' + imageUrl + ')'">
-<nav class="navbar">
-  <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
-  <button (click)="handleTimeout('You lose a life for going back ☠️!')" class="nav-button">Back to Menu</button>
-</nav>
+<body [style.background-image]="'url(' + imageUrl + ')'" >
+  <nav class="navbar">
+    <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
+    <button routerLink="/" class="nav-button">Back to Menu</button>
+  </nav>
 
-<div class="user">
-  <app-user></app-user>
-</div>
+  <table class="user">
+    <tr>
+      <th colspan="2" class="title">{{user?.userName}}</th>
+    </tr>
+    <tr>
+      <td>Life</td>
+      <td class="emoji">{{ displayHeartEmoji(user?.life) }}</td>
+    </tr>
+    <tr>
+      <td>Level</td>
+      <td class="emoji">{{ displayStarEmoji(user?.idxActualLearnObject) }}</td>
+    </tr>
+    <tr>
+      <td>Score</td>
+      <td class="emoji">{{ (user?.score) }}</td>
+    </tr>
+  </table>
 
-<div class="timer" *ngIf="levelData">
-  <app-timer
+  <div class="timer" *ngIf="levelData">
+    <app-timer
 
-    [duration]="levelData.timeLimit"
-    (timeOut)="handleTimeout()"
+      [duration]="levelData.timeLimit"
+      (timeOut)="handleTimeout()"
 
-  ></app-timer>
-</div>
+      ></app-timer>
+    </div>
 
 
-<div class="story" *ngIf="levelData">
+  <div class="story" *ngIf="levelData">
   <app-animation-text
 
     [text]="levelData.story"
 
-  ></app-animation-text>
-</div>
+    ></app-animation-text>
+  </div>
 
-<div class="terminal" *ngIf="levelData">
+  <div class="terminal" *ngIf="levelData">
 
-  <app-ace-editor
+    <app-ace-editor
 
-    [codeChallenge]="levelData.task"
+      [codeChallenge]="levelData.task"
 
-    [codeSolution]="levelData.solution"
+      [codeSolution]="levelData.solution"
 
-  ></app-ace-editor>
+      (codeChallengeSolved)="handleCodeChallengeSuccess()"
 
-</div>
+    ></app-ace-editor>
+
+  </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--Old information divs to check for functionality-->

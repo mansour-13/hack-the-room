@@ -68,4 +68,15 @@ export class UserService {
 
     this.client.post(environment.baseUrl + "/score/"+this.username+"/"+idxLearnObject +"/"+score,requestBody);
   }
+
+  updateUserIdxActualLearnObject(user: User):  Observable<User> {
+    return this.client.put<User>(environment.baseUrl + "/user/updateIdxActualLearnObject", user).pipe(
+      tap(updatedUser => {
+        // Step 2: Emit new user data via the BehaviorSubject
+        this.userSubject.next(updatedUser);
+      })
+    );
+  }
+
 }
+

@@ -28,20 +28,22 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private authService: AuthService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
-  buttonText = "Intro";
+  buttonText= "Intro";
 
   ngOnInit(): void {
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(
-      (user) => {
-        this.user = user;
-      });
-
+      (response) => {
+        this.user = response;
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
     const levelIdParam = this.route.snapshot.paramMap.get('levelId');
     this.levelId = levelIdParam ? +levelIdParam : 0;
 
@@ -61,10 +63,11 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   loadLevelData(levelId: number): void {
     this.levelService.indexLevel = levelId.toString();  // Set the levelId in the service
     this.levelService.getLevel().subscribe(
-      data => {
-        this.levelData = data;
+      data =>
+      {
+      this.levelData = data;
         this.imageUrl = environment.baseUrl + this.levelData.image;
-      });
+    });
   }
 
   // Audio part
@@ -74,31 +77,64 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       // If audio is paused, play it
       audio.play();
       this.buttonText = 'Pause';
-    } else if (audio.played) {
+    } else if(audio.played){
       // If audio is playing, pause it
       audio.pause();
       this.buttonText = 'Intro';
     }
   }
 
+
   audioEnded() {
     this.buttonText = 'Intro'
   }
 
-  handleTimeout(text: string = "You didn't solve the level.") {
-    alert(text);
+
+  displayHeartEmoji(life: number | undefined): string {
+    if (life !== undefined) {
+      return '❤️'.repeat(life) + '☠️'.repeat(3 - life);
+    }
+    return '';
+  }
+
+
+  displayStarEmoji(idxActualLearnObject: number | undefined): string {
+    if (idxActualLearnObject !== undefined) {
+      return '⭐️'.repeat(idxActualLearnObject);
+    }
+    return '';
+  }
+
+
+  handleTimeout() {
+    alert("You didn't solve the level.");
     if (this.user && this.user.life) {
       this.user.life -= 1;
       this.userService.updateUserLife(this.user).subscribe(
         (response) => {
           console.log('User life updated:', response);
-          this.router.navigate(['/escape-room']);
         },
         (error) => {
           console.error('Error updating user life:', error);
-          this.router.navigate(['/escape-room']);
         }
       );
     }
+    this.router.navigate(['/escape-room']);
+  }
+
+  handleCodeChallengeSuccess() {
+    alert("You solved the level!");
+    if (this.user && this.user.idxActualLearnObject <= 2) {
+      this.user.idxActualLearnObject += 1;
+      this.userService.updateUserIdxActualLearnObject(this.user).subscribe(
+        (response) => {
+          console.log('User idxActualLearnObject updated:', response);
+        },
+        (error) => {
+          console.error('Error updating user idxActualLearnObject:', error);
+        }
+      );
+    }
+    this.router.navigate(['/escape-room']);
   }
 }
