@@ -59,4 +59,16 @@ public class UserController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User with this username found.");
     }
 
+    @PutMapping("/user/updateIdxActualLearnObject")
+    public ResponseEntity<User> updateUserIdxActualLearnObject(@RequestBody User user) {
+        Optional<User> existingUser = this.userRepository.findByUserName(user.getUserName());
+        if (existingUser.isPresent()) {
+            User savedUser = existingUser.get();
+            savedUser.setIdxActualLearnObject(user.getIdxActualLearnObject());
+            userRepository.save(savedUser);
+            return new ResponseEntity<>(savedUser, HttpStatus.OK);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User with this username found.");
+    }
+
 }

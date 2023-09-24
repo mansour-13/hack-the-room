@@ -77,14 +77,16 @@ public class AiController {
                         request.getCodeChallenge() +
                         "\n\nHere's a proposed solution:\n\n" +
                         request.getCode() +
-                        "\n\n1. Is the proposed solution correct? Answer with 'true' or 'false'.\n" +
-                        "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it.";
+                        "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with 'true' or 'false'.\n" +
+                        "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it." +
+                        "3. Give me an exact copy of the proposed solution, without changes even if it's not correct."
+                        + "Indicate each linebreak with \\n";
 
-        System.out.println(request.getCodeChallenge());
-        System.out.println(request.getCode());
+        System.out.println("Coding challenge: " + request.getCodeChallenge());
+        System.out.println("Provided code: " + request.getCode());
 
         String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println(result);
+        System.out.println("AI result: " + result);
         String[] parts = result.split("\n");
         if (parts.length >= 2) {
             String booleanResult = parts[0].split("\\.")[1].trim();
@@ -106,7 +108,7 @@ public class AiController {
                 " the solution to the challenge without any comments. Indicate a new line with \\n";
 
         String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println(result);
+        System.out.println("ChatGPT solution: " + result);
         return ResponseEntity.ok(Collections.singletonMap("result", result));
     }
 

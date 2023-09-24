@@ -26,7 +26,7 @@ public class AiService {
                 .queryParam("secret", "useaiforthebetter")
 
                 // How long should be the overall result
-                .queryParam("maxTokens", "150")
+                .queryParam("maxTokens", "450")
 
                 // Remove cached result for the current prompt
                 // .queryParam("invalidateCache", "true")
