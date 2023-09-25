@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, OnInit, OnDestroy, Input} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AudioService} from "../audio.service";
 //Use import instead of hard coding the intro text
 import animationTextData from 'src/assets/animationText.json';
@@ -6,6 +6,7 @@ import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
 import {Subscription} from "rxjs";
 import {Level, LevelService} from "../level.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-escape-room',
@@ -14,7 +15,7 @@ import {Level, LevelService} from "../level.service";
 })
 export class EscapeRoomComponent implements OnInit, OnDestroy {
 
-  user: User | undefined;
+  user?: User;
   userSubscription?: Subscription;  // Declare a subscription
   buttonText = "Intro";
   showTooltip: boolean = false;
@@ -24,7 +25,8 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
   constructor(private audioService: AudioService,
               private userService: UserService,
               private authService: AuthService,
-              private levelService: LevelService) {
+              private levelService: LevelService,
+              private router: Router) {
   }
 
   intro: string[] = animationTextData.articles[0].content;
@@ -33,13 +35,20 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
 
 
-
   ngOnInit() {
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(
       (user) => {
         this.user = user;
+        console.log('Component initialized.');
+        console.log(this.user?.life);
+        if (this.user && this.user?.life === 0) {
+          console.log('this.user?.lif');
+          alert("Deine Javascript-Kenntnisse reichten leider nicht aus um im Weltall zu überleben!")
+          this.router.navigate(['/about']);
+        }
       });
+
     this.audioService.play();
     this.audioService.setVolume(0.3);
 
@@ -55,6 +64,7 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
       );
     }
   }
+
 
   ngOnDestroy() {
     // Pause audio when the component is destroyed

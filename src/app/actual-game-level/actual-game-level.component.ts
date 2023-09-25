@@ -85,19 +85,20 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     this.buttonText = 'Intro'
   }
 
-  handleTimeout() {
-    alert("You didn't solve the level.");
+  handleTimeout(text: string = "You didn't solve the level.") {
+    alert(text);
     if (this.user && this.user.life) {
       this.user.life -= 1;
       this.userService.updateUserLife(this.user).subscribe(
         (response) => {
           console.log('User life updated:', response);
+          this.router.navigate(['/escape-room']);
         },
         (error) => {
           console.error('Error updating user life:', error);
+          this.router.navigate(['/escape-room']);
         }
       );
     }
-    this.router.navigate(['/escape-room']);
   }
 }

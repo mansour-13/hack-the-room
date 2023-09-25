@@ -1,7 +1,7 @@
 <body [style.background-image]="'url(' + imageUrl + ')'">
 <nav class="navbar">
   <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
-  <button routerLink="/" class="nav-button">Back to Menu</button>
+  <button (click)="handleTimeout('You lose a life for going back ☠️!')" class="nav-button">Back to Menu</button>
 </nav>
 
 <div class="user">
