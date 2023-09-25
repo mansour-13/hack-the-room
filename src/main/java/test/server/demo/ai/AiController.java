@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -74,12 +75,12 @@ public class AiController {
     public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
         String promptToEvaluate =
                 "Here's a coding challenge:\n\n" +
-                        request.getCodeChallenge() +
+                        request.getCodeChallenge().replaceAll(Pattern.quote("+"), "%2B") +
                         "\n\nHere's a proposed solution:\n\n" +
-                        request.getCode() +
+                        request.getCode().replaceAll(Pattern.quote("+"), "%2B") +
                         "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with 'true' or 'false'.\n" +
                         "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it." +
-                        "3. Give me an exact copy of the proposed solution, without changes even if it's not correct."
+                        "3. Give me an exact copy of the user input, without changes even if it's not correct."
                         + "Indicate each linebreak with \\n";
 
         System.out.println("Coding challenge: " + request.getCodeChallenge());

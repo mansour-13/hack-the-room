@@ -29,3 +29,12 @@ GET {{host}}/greeting
 GET {{host}}/user/user1
 ###
 GET {{host}}/score
+###
+POST {{host}}/getBinaryAnswerToCode
+Content-Type: application/json
+
+{
+  "code": "4 + 1",
+  "codeChallenge": " solve the sum of 4 and 1",
+  "codeSolution": ""
+}
