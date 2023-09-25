@@ -69,16 +69,16 @@ public class AiController {
 //        return ResponseEntity.badRequest().body("Unexpected response format");
 //    }
 
-
+// .replaceAll(Pattern.quote("+"), "%2B")
     // Working to include this PostMapping
     @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
         String promptToEvaluate =
-                "Here's a coding challenge:\n\n" +
-                        request.getCodeChallenge().replaceAll(Pattern.quote("+"), "%2B") +
+                "Your task is to work like a Java compiler. Here's a coding challenge:\n\n" +
+                        request.getCodeChallenge() +
                         "\n\nHere's a proposed solution:\n\n" +
-                        request.getCode().replaceAll(Pattern.quote("+"), "%2B") +
-                        "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with 'true' or 'false'.\n" +
+                        request.getCode() +
+                        "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with only true if the answer is correct or only false if the answer is incorrect.\n" +
                         "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it." +
                         "3. Give me an exact copy of the user input, without changes even if it's not correct."
                         + "Indicate each linebreak with \\n";

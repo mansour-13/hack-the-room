@@ -42,6 +42,7 @@ public class UserController {
 
     @PostMapping("/score/{username}/{id_learnObject}/{score}")
     public ResponseEntity<User> setScore(@RequestBody UserDTO request) {
+        System.out.println(request);
         User user = this.userRepository.findByUserName(request.getUsername()).orElseThrow();
         user.setLevelScore(request.getId_learnObject(), request.getScore());
         this.userRepository.save(user);
@@ -59,6 +60,7 @@ public class UserController {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User with this username found.");
     }
+
     @PutMapping("/user/updateImage")
     public ResponseEntity<User> updateImage(@RequestBody User user) {
         Optional<User> existingUser = this.userRepository.findByUserName(user.getUserName());

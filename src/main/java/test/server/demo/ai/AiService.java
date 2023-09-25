@@ -28,7 +28,7 @@ public class AiService {
         // Do not share this on the internet please 🤞
         final String secret = "useaiforthebetter";
         // How long should be the overall result
-        final Integer maxTokens = 50;
+        final Integer maxTokens = 450;
         // Remove cached result for the current prompt
         final Boolean invalidateCache = true;
         // The prompt you want to send to ChatGPT
