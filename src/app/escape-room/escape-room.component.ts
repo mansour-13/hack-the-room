@@ -1,10 +1,11 @@
-import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, OnDestroy, Input} from '@angular/core';
 import {AudioService} from "../audio.service";
 //Use import instead of hard coding the intro text
 import animationTextData from 'src/assets/animationText.json';
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
 import {Subscription} from "rxjs";
+import {Level, LevelService} from "../level.service";
 
 @Component({
   selector: 'app-escape-room',
@@ -13,22 +14,25 @@ import {Subscription} from "rxjs";
 })
 export class EscapeRoomComponent implements OnInit, OnDestroy {
 
-  isStarted: boolean = false;
-
   user: User | undefined;
   userSubscription?: Subscription;  // Declare a subscription
   buttonText = "Intro";
+  showTooltip: boolean = false;
+  levels: Level[] = [];
+
 
   constructor(private audioService: AudioService,
               private userService: UserService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private levelService: LevelService) {
   }
 
   intro: string[] = animationTextData.articles[0].content;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
-  showIntro: boolean = false;
+
+
 
   ngOnInit() {
     const username = this.authService.getUsername();
@@ -38,6 +42,18 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
       });
     this.audioService.play();
     this.audioService.setVolume(0.3);
+
+    for (let i = 1; i <= 6; i++) {
+      this.levelService.indexLevel = i.toString();
+      this.levelService.getLevel().subscribe(
+        (level) => {
+          this.levels.push(level);
+        },
+        (error) => {
+          console.error('Error fetching level data', error);
+        }
+      );
+    }
   }
 
   ngOnDestroy() {

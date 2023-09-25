@@ -28,11 +28,12 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
-  buttonText= "Intro";
+  buttonText = "Intro";
 
   ngOnInit(): void {
     const username = this.authService.getUsername();
@@ -60,11 +61,10 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   loadLevelData(levelId: number): void {
     this.levelService.indexLevel = levelId.toString();  // Set the levelId in the service
     this.levelService.getLevel().subscribe(
-      data =>
-      {
-      this.levelData = data;
+      data => {
+        this.levelData = data;
         this.imageUrl = environment.baseUrl + this.levelData.image;
-    });
+      });
   }
 
   // Audio part
@@ -74,7 +74,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       // If audio is paused, play it
       audio.play();
       this.buttonText = 'Pause';
-    } else if(audio.played){
+    } else if (audio.played) {
       // If audio is playing, pause it
       audio.pause();
       this.buttonText = 'Intro';
