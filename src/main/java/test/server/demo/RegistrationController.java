@@ -44,9 +44,8 @@ public class RegistrationController {
     public String foo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = authentication.getName();
-            return currentUserName;
+            return authentication.getName();
         }
-        return null;
+        return "null";
     }
 }

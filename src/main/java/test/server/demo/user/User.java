@@ -23,6 +23,28 @@ public class User {
     private int life = 3;
     private int score = 0;
     private int levelscore[] = new int[6];
+    private String profileImage = "/images/spaceCadetW.jpeg";
+
+    public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life, int score, int[] levelscore, String profileImage) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.idxActualLearnObject = idxActualLearnObject;
+        this.life = life;
+        this.score = score;
+        this.levelscore = levelscore;
+        this.profileImage = profileImage;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
     public User() {
         // Per default every user receivers normal rights

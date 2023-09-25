@@ -1,9 +1,7 @@
 package test.server.demo.learnObjekt;
 
 import jakarta.persistence.*;
-import test.server.demo.Images.Image;
 
-import java.sql.Time;
 import java.util.List;
 
 @Entity
@@ -23,12 +21,25 @@ public class LearnObject {
 
     @Column(length = 2000)
     private String solution;
+    private String ending;
 
     @Column(length = 2000)
     private String task;
     private int timeLimit;
 
     private String image;
+
+    public LearnObject(int id, String name, String theorie, List<String> story, String solution, String ending, String task, int timeLimit, String image) {
+        this.id = id;
+        this.name = name;
+        this.theorie = theorie;
+        this.story = story;
+        this.solution = solution;
+        this.ending = ending;
+        this.task = task;
+        this.timeLimit = timeLimit;
+        this.image = image;
+    }
 
     public LearnObject() {
     }
@@ -49,6 +60,13 @@ public class LearnObject {
         return id;
     }
 
+    public String getEnding() {
+        return ending;
+    }
+
+    public void setEnding(String ending) {
+        this.ending = ending;
+    }
 
     public String getName() {
         return name;
