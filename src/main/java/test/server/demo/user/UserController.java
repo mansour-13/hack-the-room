@@ -41,10 +41,11 @@ public class UserController {
     }
 
     @PostMapping("/score/{username}/{id_learnObject}/{score}")
-    public void setScore(@RequestBody UserDTO request) {
+    public ResponseEntity<User> setScore(@RequestBody UserDTO request) {
         User user = this.userRepository.findByUserName(request.getUsername()).orElseThrow();
         user.setLevelScore(request.getId_learnObject(), request.getScore());
         this.userRepository.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PutMapping("/user/updateLife")
