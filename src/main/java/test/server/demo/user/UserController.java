@@ -41,10 +41,11 @@ public class UserController {
     }
 
     @PostMapping("/score/{username}/{id_learnObject}/{score}")
-    public void setScore(@RequestBody UserDTO request) {
+    public ResponseEntity<User> setScore(@RequestBody UserDTO request) {
         User user = this.userRepository.findByUserName(request.getUsername()).orElseThrow();
         user.setLevelScore(request.getId_learnObject(), request.getScore());
         this.userRepository.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PutMapping("/user/updateLife")
@@ -64,6 +65,18 @@ public class UserController {
         if (existingUser.isPresent()) {
             User savedUser = existingUser.get();
             savedUser.setProfileImage(user.getProfileImage());
+            userRepository.save(savedUser);
+            return new ResponseEntity<>(savedUser, HttpStatus.OK);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No User with this username found.");
+    }
+
+    @PutMapping("/user/updateIdxActualLearnObject")
+    public ResponseEntity<User> updateUserIdxActualLearnObject(@RequestBody User user) {
+        Optional<User> existingUser = this.userRepository.findByUserName(user.getUserName());
+        if (existingUser.isPresent()) {
+            User savedUser = existingUser.get();
+            savedUser.setIdxActualLearnObject(user.getIdxActualLearnObject());
             userRepository.save(savedUser);
             return new ResponseEntity<>(savedUser, HttpStatus.OK);
         }

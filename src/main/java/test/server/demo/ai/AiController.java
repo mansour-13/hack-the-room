@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,22 +36,58 @@ public class AiController {
         return ResponseEntity.ok(Collections.singletonMap("result", result));
     }
 
+//    @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
+//        String promptToEvaluate =
+//                "Here's a coding challenge:\n\n" +
+//                        request.getCodeChallenge() +
+//                        "\n\nHere's a proposed solution:\n\n" +
+//                        request.getCode() +
+//                        "\n\n----DELIMITER BETWEEN POINTS!----\n" +
+//                        "1. Reformat the code without changing the logic.\n" +
+//                        "----DELIMITER BETWEEN POINTS!----\n" +
+//                        "2. Is the reformatted code an appropriate answer to the solution? Only answer with 'true' or 'false'.";
+//
+//        System.out.println(request.getCodeChallenge());
+//        System.out.println(request.getCode());
+//
+//        String result = this.aiService.prompt(promptToEvaluate);
+//        System.out.println(result);
+//        String[] sections = result.split("----DELIMITER BETWEEN POINTS!----");
+//
+//        // Assuming the AI respects the structure and returns two sections
+//        if (sections.length >= 2) {
+//            String reformattedCode = sections[0].trim();
+//            String validity = sections[1].trim().split("\\.")[1].trim();
+//
+//            Map<String, Object> resultMap = new HashMap<>();
+//            resultMap.put("reformattedCode", reformattedCode);
+//            resultMap.put("result", Boolean.parseBoolean(validity));
+//
+//            return ResponseEntity.ok(resultMap);
+//        }
+//        return ResponseEntity.badRequest().body("Unexpected response format");
+//    }
+
+
     // Working to include this PostMapping
     @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
         String promptToEvaluate =
                 "Here's a coding challenge:\n\n" +
-                        request.getCodeChallenge() +
+                        request.getCodeChallenge().replaceAll(Pattern.quote("+"), "%2B") +
                         "\n\nHere's a proposed solution:\n\n" +
-                        request.getCode() +
-                        "\n\n1. Is the proposed solution correct? Answer with 'true' or 'false'.\n" +
-                        "2. Please provide an explanation for your answer.";
+                        request.getCode().replaceAll(Pattern.quote("+"), "%2B") +
+                        "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with 'true' or 'false'.\n" +
+                        "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it." +
+                        "3. Give me an exact copy of the user input, without changes even if it's not correct."
+                        + "Indicate each linebreak with \\n";
 
-        System.out.println(request.getCodeChallenge());
-        System.out.println(request.getCode());
+        System.out.println("Coding challenge: " + request.getCodeChallenge());
+        System.out.println("Provided code: " + request.getCode());
 
         String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println(result);
+        System.out.println("AI result: " + result);
         String[] parts = result.split("\n");
         if (parts.length >= 2) {
             String booleanResult = parts[0].split("\\.")[1].trim();
@@ -72,7 +109,7 @@ public class AiController {
                 " the solution to the challenge without any comments. Indicate a new line with \\n";
 
         String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println(result);
+        System.out.println("ChatGPT solution: " + result);
         return ResponseEntity.ok(Collections.singletonMap("result", result));
     }
 

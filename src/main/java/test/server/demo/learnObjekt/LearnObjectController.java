@@ -23,119 +23,269 @@ public class LearnObjectController {
     public LearnObjectController(LearnObjectRepository learnObjectRepository) {
         this.learnObjectRepository = learnObjectRepository;
         LearnObject temp1 = new LearnObject(
-                1
-                ,"Waffenkammer"
-                ,""
-                ,Arrays.asList( "As you enter the spaceship's control room, the oxygen levels alarm starts" +
-                " to sound.", "A holographic display shows the oxygen levels of five different compartments" +
-                " in the spaceship.", " You need to restore and balance these levels before the oxygen runs" +
-                " out.")
-                ,"let oxygenLevels = [85, 90, 75, 80, 78];\nlet total = 0;\nfor(let i=0; i<oxygenLevels.length; i++) {\n    total += oxygenLevels[i];\n}\nlet average = total / oxygenLevels.length;\nfor(let i=0; i<oxygenLevels.length; i++) {\n    if(oxygenLevels[i] < average) {\n        oxygenLevels[i] = average;\n    }\n}"
-                ,"let oxygenLevels = [85, 90, 75, 80, 78]; // These are the initial oxygen levels in %\n\n// TODO: " +
-                "Write a loop to calculate the average oxygen level\n\n// TODO: Write another loop to refill" +
-                " any compartment below the average level to the average level\n\n// Start coding here"
-                ,10
-                ,"/images/learnObject1_Waffenkammer.jpg");
+                1,
+                "Waffenkammer",
+                "",
+                Arrays.asList(
+                        "Your task is to implement a Java method that calculates the factorial of a number.",
+                        "As a hint, the factorial of 0 is 1.",
+                        "For any other positive integer n, the factorial of n is n multiplied by the factorial of (n-1)."
+                ),
+                "public class FactorialCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        System.out.println(factorial(5)); // Expected output: 120\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int factorial(int n) {\n" +
+                        "        if (n == 0) return 1;\n" +
+                        "        return n * factorial(n-1);\n" +
+                        "    }\n" +
+                        "}",
+                "public class FactorialCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        // TODO: Test your factorial method.\n" +
+                        "        // Call the factorial method with a few test numbers and print the results.\n" +
+                        "        // Example:\n" +
+                        "        // System.out.println(factorial(5)); // Expected output: 120\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int factorial(int n) {\n" +
+                        "        // TODO: Implement this method using recursion.\n" +
+                        "        // Remember: \n" +
+                        "        // - factorial(0) = 1\n" +
+                        "        // - factorial(n) = n * factorial(n-1) for n > 0\n\n" +
+                        "        // start coding here\n" +
+                        "        return 0; // Change this to return the correct value\n" +
+                        "    }\n" +
+                        "}",
+                180,
+                "/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
         LearnObject temp2 = new LearnObject(
-                2
-                ,"Objekt2"
-                ,""
-                ,Arrays.asList("As you move to the spaceship's reactor core, you notice it is overheating."
-                , " There are ten reactors in total, and each reactor's temperature is displayed on the screen."
-                , " You need to stabilize the reactors by ensuring that none of them exceed the maximum safe temperature.")
-
-                ,"let reactorTemperatures = [100, 105, 110, 115, 108, 102, 98, 103, 109, 104];\nlet totalTemp = 0;\nfor(let i=0; i<reactorTemperatures.length; i++) {\n    totalTemp += reactorTemperatures[i];\n}\nlet avgTemp = totalTemp / reactorTemperatures.length;\nfor(let i=0; i<reactorTemperatures.length; i++) {\n    if(reactorTemperatures[i] > avgTemp + 5) {\n        reactorTemperatures[i] = avgTemp;\n    }\n}"
-
-                ,"let reactorTemperatures = [100, 105, 110, 115, 108, 102, 98, 103, 109, 104]; // Temperatures in degrees\n\n// TODO: Write a loop to calculate the average reactor temperature\n\n// TODO: Write another loop to cool down any reactor that exceeds the average temperature by more than 5 degrees\n\n// Start coding here"
-                ,180
-                ,"/images/picture2.jpeg");
+                2,
+                "Grade Averager",
+                "",
+                Arrays.asList(
+                        "You are a teacher and have just finished grading your students.",
+                        "You want to get an average of all the grades to see how the class performed overall.",
+                        "Write a Java program to calculate the average."
+                ),
+                "public class GradeAverager {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        List<Integer> grades = Arrays.asList(85, 90, 78, 92, 88, 76, 95, 87);\n" +
+                        "        double average = calculateAverage(grades);\n" +
+                        "        System.out.println(\"The average grade is: \" + average);\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static double calculateAverage(List<Integer> grades) {\n" +
+                        "        int sum = 0;\n" +
+                        "        for(int grade : grades) {\n" +
+                        "            sum += grade;\n" +
+                        "        }\n" +
+                        "        return (double) sum / grades.size();\n" +
+                        "    }\n" +
+                        "}",
+                "public class GradeAverager {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        List<Integer> grades = Arrays.asList(85, 90, 78, 92, 88, 76, 95, 87);\n" +
+                        "        // TODO: Calculate the average of grades and print it.\n" +
+                        "        // Use the calculateAverage method to do this.\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static double calculateAverage(List<Integer> grades) {\n" +
+                        "        int sum = 0;\n" +
+                        "        // TODO: Write a loop to sum up the grades.\n\n" +
+                        "        // start coding here\n" +
+                        "        return (double) sum / grades.size();  // This calculates the average\n" +
+                        "    }\n" +
+                        "}",
+                        180,
+                        "/images/picture2.jpeg");
         learnObjectRepository.save(temp2);
         LearnObject temp3 = new LearnObject(
-                3
-                ,"Objekt3"
-                ,""
-                ,Arrays.asList("You approach the spaceship's fuel chamber."
-                , " The ship has multiple engines and different fuel requirements."
-                , " To escape the current predicament, you must ensure each engine has the exact amount of fuel it needs without any excess.")
-
-                ,"let engineFuel = [50, 45, 48, 47, 49, 51, 52, 48, 50, 46];\nlet totalFuel = 500;\nlet fuelPerEngine = totalFuel / engineFuel.length;\nfor(let i=0; i<engineFuel.length; i++) {\n    let excessFuel = engineFuel[i] - fuelPerEngine;\n    if(excessFuel > 0) {\n        for(let j=0; j<engineFuel.length; j++) {\n            if(engineFuel[j] < fuelPerEngine) {\n                let requiredFuel = fuelPerEngine - engineFuel[j];\n                let transferFuel = Math.min(excessFuel, requiredFuel);\n                engineFuel[i] -= transferFuel;\n                engineFuel[j] += transferFuel;\n                excessFuel -= transferFuel;\n            }\n            if(excessFuel <= 0) break;\n        }\n    }\n}"
-                ,"let engineFuel = [50, 45, 48, 47, 49, 51, 52, 48, 50, 46]; // Fuel levels in liters\nlet totalFuel = 500;" +
-                " // Total available fuel in liters\n\n// TODO: Write a loop to distribute the total fuel equally among all" +
-                " the engines\n\n// TODO: Write another loop to check and redistribute excess fuel from engines with more " +
-                "fuel to those with less\n\n// Start coding here"
-                ,180
-                ,"/images/picture3.jpeg");
+                3,
+                "SpaceStation Sequencer",
+                "",
+                Arrays.asList(
+                        "As you move deeper into the spacestation, you discover a locked door. A holographic interface appears in front of you, prompting you to solve a sequence to gain entry.",
+                        "The sequence seems to follow the Fibonacci pattern: 0, 1, 1, 2, 3, 5, 8, ...",
+                        "You need to provide the next number in the sequence to proceed. You decide to write a recursive function to find any nth number in the Fibonacci sequence."
+                ),
+                "public class FibonacciCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        System.out.println(fibonacci(7)); // Expected output: 13\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int fibonacci(int n) {\n" +
+                        "        if (n <= 1) return n;\n" +
+                        "        return fibonacci(n-1) + fibonacci(n-2);\n" +
+                        "    }\n" +
+                        "}",
+                "public class FibonacciCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        // TODO: Test your fibonacci method.\n" +
+                        "        // Call the fibonacci method with a few test numbers and print the results.\n" +
+                        "        // Example:\n" +
+                        "        // System.out.println(fibonacci(7)); // Expected output: 13\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int fibonacci(int n) {\n" +
+                        "        // TODO: Implement this method using recursion.\n" +
+                        "        // Remember: \n" +
+                        "        // - fibonacci(0) = 0\n" +
+                        "        // - fibonacci(1) = 1\n" +
+                        "        // - fibonacci(n) = fibonacci(n-1) + fibonacci(n-2) for n > 1\n\n" +
+                        "        // start coding here\n" +
+                        "        return 0; // Change this to return the correct value\n" +
+                        "    }\n" +
+                        "}",
+                210,
+                "/images/picture3.jpeg");
         learnObjectRepository.save(temp3);
         LearnObject temp4 = new LearnObject(
-                4
-                ,"Objekt4"
-                ,""
-                ,Arrays.asList("The final barrier to leaving the danger zone is to activate the spaceship's thrusters in the correct sequence."
-                , " The sequence is based on the power level of each thruster."
-                , " You must activate them in descending order of power.")
-
-                ,""
-                ,"let thrusterPowers = [2500, 2600, 2450, 2550, 2480, 2520, 2470, 2530, 2490, 2510];" +
-                "\nfor(let i=0; i<thrusterPowers.length; i++) {\n    for(let j=i+1; j<thrusterPowers.length; j++) " +
-                "{\n        if(thrusterPowers[i] < thrusterPowers[j]) {\n            let temp = thrusterPowers[i]" +
-                ";\n            thrusterPowers[i] = thrusterPowers[j];\n            thrusterPowers[j] = temp" +
-                ";\n        }\n    }\n}\nconsole.log(thrusterPowers);"
-                ,180
-                ,"/images/picture4.jpeg");
+                4,
+                "SpaceStation Array Multiplier",
+                "",
+                Arrays.asList(
+                        "You've reached the engineering deck of the spacestation. Another holographic interface stands in your way, displaying a grid of numbers, reminiscent of an array.",
+                        "To bypass this system, it prompts you: 'Multiply every element in this array by a given factor'.",
+                        "To quickly get through, you decide to write a method that multiplies each element of an integer array by a given factor."
+                ),
+                "public class ArrayMultiplier {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        int[] arr = {2, 4, 6, 8};\n" +
+                        "        int factor = 3;\n" +
+                        "        int[] result = multiplyArray(arr, factor);\n" +
+                        "        for(int num : result) {\n" +
+                        "            System.out.print(num + \" \"); // Expected output: 6 12 18 24 \n" +
+                        "        }\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int[] multiplyArray(int[] arr, int factor) {\n" +
+                        "        for(int i = 0; i < arr.length; i++) {\n" +
+                        "            arr[i] *= factor;\n" +
+                        "        }\n" +
+                        "        return arr;\n" +
+                        "    }\n" +
+                        "}",
+                "public class ArrayMultiplier {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        // TODO: Test your multiplyArray method.\n" +
+                        "        // Multiply each element of an integer array by a given factor and print the results.\n" +
+                        "        // Example:\n" +
+                        "        // int[] arr = {2, 4, 6, 8};\n" +
+                        "        // int factor = 3;\n" +
+                        "        // Expected output: 6 12 18 24\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int[] multiplyArray(int[] arr, int factor) {\n" +
+                        "        // TODO: Implement this method.\n" +
+                        "        // Each element in the array should be multiplied by the factor.\n\n" +
+                        "        // start coding here\n" +
+                        "        return arr; // Change this to return the modified array\n" +
+                        "    }\n" +
+                        "}",
+                250,
+                "/images/picture4.jpeg");
         learnObjectRepository.save(temp4);
         LearnObject temp5 = new LearnObject(
-                5
-                ,"Objekt5"
-
-                ,""
-
-                ,Arrays.asList("Decode an ASCII encoded message"
-                , " to find the passphrase.")
-
-                ,"function escapeRoom() {\n    let secret = [104, 101, 108, 108, 111, 95, 119, 111, 114, 108, 100];" +
-                "\n    return secret.map(char => String.fromCharCode(char)).join('');\n}\nconsole.log(escapeRoom());"
-
-                ,"// Hint: Start here. The numbers above represent ASCII values. Convert them to characters to reveal " +
-                "the passphrase.\n// The encrypted passphrase is hidden within this function.\n// Can you decode it and " +
-                "find your way out?\nfunction escapeRoom() {\n    " +
-                "let secret = [104, 101, 108, 108, 111, 95, 119, 111, 114, 108, 100];\n\n    " +
-                "// TODO: Write a function that decodes the secret and returns the passphrase as a string.\n\n    " +
-                "return \"???\";  // This should return the decoded passphrase.\n}\n\n" +
-                "// Once you've solved the function, run the line below to check if you've found the correct passphrase." +
-                "\nconsole.log(escapeRoom());  // If correct, this will show the passphrase."
-
-                ,180
-
-                ,"/images/picture5.jpeg");
+                5,
+                "SpaceStation Fuel Calculator",
+                "",
+                Arrays.asList(
+                        "After bypassing the engineering deck, you arrive at the fuel chamber of the spacestation. A digital meter indicates the total amount of fuel and the number of engines that need to be fed.",
+                        "A voice echoes: 'To power up the engines evenly, determine how much fuel each engine should receive'.",
+                        "You quickly decide to write a method to divide the total fuel evenly among the engines."
+                ),
+                "public class FuelCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        int totalFuel = 1000;\n" +
+                        "        int numberOfEngines = 4;\n" +
+                        "        int fuelPerEngine = divideFuel(totalFuel, numberOfEngines);\n" +
+                        "        System.out.println(fuelPerEngine); // Expected output: 250\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int divideFuel(int totalFuel, int numberOfEngines) {\n" +
+                        "        return totalFuel / numberOfEngines;\n" +
+                        "    }\n" +
+                        "}",
+                "public class FuelCalculator {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        // TODO: Test your divideFuel method.\n" +
+                        "        // Divide the total fuel evenly among the engines and print the results.\n" +
+                        "        // Example:\n" +
+                        "        // int totalFuel = 1000;\n" +
+                        "        // int numberOfEngines = 4;\n" +
+                        "        // Expected output: 250\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static int divideFuel(int totalFuel, int numberOfEngines) {\n" +
+                        "        // TODO: Implement this method.\n" +
+                        "        // The method should divide the totalFuel evenly among the numberOfEngines.\n\n" +
+                        "        // start coding here\n" +
+                        "        return 0; // Change this to return the correct value\n" +
+                        "    }\n" +
+                        "}",
+                270,
+                "/images/picture5.jpeg");
         learnObjectRepository.save(temp5);
 
         LearnObject temp6 = new LearnObject(
-                6
-                ,"Object6"
-                ,""
-                ,Arrays.asList("The spaceship's reactor is on the brink of a catastrophic meltdown."
-                ,"You find yourself in front of the main control panel, displaying the energy levels of different modules connected to the reactor core."
-                ,"To safely evacuate, you need to divert excess energy from the overloaded modules to the modules that are under capacity, ensuring that no module exceeds its safety limit."
-                ,"If you succeed, the reactor's self-destruction sequence will be temporarily halted, buying you just enough time to escape. Failure is not an option!")
-
-                ,"let modulesEnergy = [150, 80, 220, 60, 175, 110, 90, 185, 130, 200];" +
-                "\nlet safetyLimit = 150;\nfor(let i=0; i<modulesEnergy.length; i++) " +
-                "{\n    let excessEnergy = modulesEnergy[i] - safetyLimit;\n    " +
-                "if(excessEnergy > 0) {\n        for(let j=0; j<modulesEnergy.length; j++) {\n            " +
-                "if(modulesEnergy[j] < safetyLimit) {\n                " +
-                "let requiredEnergy = safetyLimit - modulesEnergy[j];\n                " +
-                "let transferEnergy = Math.min(excessEnergy, requiredEnergy);\n                " +
-                "modulesEnergy[i] -= transferEnergy;\n                modulesEnergy[j] += transferEnergy;\n                " +
-                "excessEnergy -= transferEnergy;\n            }\n            if(excessEnergy <= 0) break;\n        }\n    }\n}\n" +
-                "console.log(modulesEnergy);"
-
-                ,"let modulesEnergy = [150, 80, 220, 60, 175, 110, 90, 185, 130, 200]; // Energy levels in joules\nlet safetyLimit = 150; " +
-                "// Safety limit in joules\n\n// TODO: Write a loop (or multiple loops) to redistribute energy such that no module exceeds " +
-                "the safety limit. Remember: only excess energy can be redistributed.\n\n// Start coding here"
-                ,180
-                ,"/images/picture6.jpeg");
-
+                6,
+                "SpaceStation Storage Checker",
+                "",
+                Arrays.asList(
+                        "On your journey through the spacestation, you stumble upon a row of storage units. Each storage unit has a numeric code and only units with an odd code are accessible.",
+                        "To verify if a storage unit is accessible, the station's computer system prompts you to check if the code of a storage unit is odd.",
+                        "You decide to write a method to determine if a given storage unit's code is odd using the modulus operator."
+                ),
+                "public class StorageChecker {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        int unitCode = 105;\n" +
+                        "        boolean isOdd = isCodeOdd(unitCode);\n" +
+                        "        System.out.println(isOdd); // Expected output: true\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static boolean isCodeOdd(int unitCode) {\n" +
+                        "        return unitCode % 2 != 0;\n" +
+                        "    }\n" +
+                        "}",
+                "public class StorageChecker {\n" +
+                        "\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "        // TODO: Test your isCodeOdd method.\n" +
+                        "        // Verify if the provided storage unit code is odd and print the results.\n" +
+                        "        // Example:\n" +
+                        "        // int unitCode = 105;\n" +
+                        "        // Expected output: true\n\n" +
+                        "        // start coding here\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    public static boolean isCodeOdd(int unitCode) {\n" +
+                        "        // TODO: Implement this method.\n" +
+                        "        // The method should return true if the code is odd and false otherwise.\n\n" +
+                        "        // start coding here\n" +
+                        "        return false; // Change this to return the correct value\n" +
+                        "    }\n" +
+                        "}",
+                320,
+                "/images/picture6.jpeg");
         learnObjectRepository.save(temp6);
     }
 
