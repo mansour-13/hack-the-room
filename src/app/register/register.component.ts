@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,10 @@ export class RegisterComponent {
   };
   info?: any;
   confirmPassword = '';
+
+  profileImageW = environment.baseUrl +"/images/spaceCadetW.jpeg";
+  profileImageM = environment.baseUrl +"/images/spaceCadetM.jpeg";
+  profileImageBS = environment.baseUrl +"/images/spaceCadetNB.jpeg";
 
   constructor(private authService: AuthService, private router: Router) {
   }
