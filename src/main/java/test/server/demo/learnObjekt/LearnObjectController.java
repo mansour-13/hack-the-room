@@ -32,15 +32,16 @@ public class LearnObjectController {
                         "For any other positive integer n, the factorial of n is n multiplied by the factorial of (n-1)."
                 ),
                 "public class FactorialCalculator {\n" +
-                        "\n" +
                         "    public static void main(String[] args) {\n" +
-                        "        System.out.println(factorial(5)); // Expected output: 120\n" +
-                        "    }\n" +
-                        "\n" +
-                        "    public static int factorial(int n) {\n" +
-                        "        if (n == 0) return 1;\n" +
-                        "        return n * factorial(n-1);\n" +
-                        "    }\n" +
+                        "        System.out.println(factorial(5));\n" +
+                        "        }\n" +
+                        "        public static int factorial(int n) {\n" +
+                        "            if (n == 0) {\n" +
+                        "                return 1;\n" +
+                        "                } else {\n" +
+                        "                    return n * factorial(n - 1);\n" +
+                        "                    }\n" +
+                        "                }\n" +
                         "}",
                 "public class FactorialCalculator {\n" +
                         "\n" +
@@ -74,21 +75,24 @@ public class LearnObjectController {
                         "Write a Java program to calculate the average."
                 ),
                 "public class GradeAverager {\n" +
-                        "\n" +
+                        "    \n" +
                         "    public static void main(String[] args) {\n" +
                         "        List<Integer> grades = Arrays.asList(85, 90, 78, 92, 88, 76, 95, 87);\n" +
                         "        double average = calculateAverage(grades);\n" +
-                        "        System.out.println(\"The average grade is: \" + average);\n" +
-                        "    }\n" +
-                        "\n" +
+                        "        System.out.println(average);\n" +
+                        "        } \n" +
+                        "        \n" +
                         "    public static double calculateAverage(List<Integer> grades) {\n" +
                         "        int sum = 0;\n" +
-                        "        for(int grade : grades) {\n" +
-                        "            sum += grade;\n" +
-                        "        }\n" +
-                        "        return (double) sum / grades.size();\n" +
-                        "    }\n" +
+                        "        for (int grade : grades) {\n" +
+                        "            sum += grade; \n" +
+                        "        } \n" +
+                        "        return (double) sum / grades.size(); \n" +
+                        "        \n" +
+                        "    } \n" +
+                        "    \n" +
                         "}",
+                "import java.util.Arrays;\n" +
                 "public class GradeAverager {\n" +
                         "\n" +
                         "    public static void main(String[] args) {\n" +
