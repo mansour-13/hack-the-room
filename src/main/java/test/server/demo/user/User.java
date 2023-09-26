@@ -80,6 +80,7 @@ public class User {
     }
 
     private void computeScore() {
+        this.score = 0;
         for (int i = 0; i < this.idxActualLearnObject; i++) {
             this.score += levelscore[i];
         }
