@@ -14,14 +14,13 @@ import {TimerComponent} from "../timer/timer.component";
 })
 export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
-  levelId: number | undefined = 0;
+  levelId?: number;
 
   levelData?: Level;
 
   imageUrl: string = "";
 
-  user: User | undefined;
-
+  user?: User;
 
   constructor(
     private route: ActivatedRoute,
@@ -71,7 +70,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       data =>
       {
       this.levelData = data;
-        this.imageUrl = environment.baseUrl + this.levelData.image;
+      this.imageUrl = environment.baseUrl + this.levelData.image;
     });
   }
 
@@ -82,49 +81,34 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       // If audio is paused, play it
       audio.play();
       this.buttonText = 'Pause';
-    } else if(audio.played){
+    } else if (audio.played) {
       // If audio is playing, pause it
       audio.pause();
       this.buttonText = 'Intro';
     }
   }
 
-
-
-
   audioEnded() {
     this.buttonText = 'Intro'
   }
 
-
-  displayHeartEmoji(life: number | undefined): string {
-    if (life !== undefined) {
-      return '❤️'.repeat(life) + '☠️'.repeat(3 - life);
-    }
-    return '';
-  }
-
-
-  displayStarEmoji(idxActualLearnObject: number | undefined): string {
-    if (idxActualLearnObject !== undefined) {
-      return '⭐️'.repeat(idxActualLearnObject);
-    }
-    return '';
-  }
-
-
-  handleTimeout() {
-    alert("You didn't solve the level.");
+  handleTimeout(text: string = "You didn't solve the level.") {
+    alert(text);
     if (this.user && this.user.life) {
       this.user.life -= 1;
-      this.userService.updateUserLife(this.user).subscribe(
-        (response) => {
-          console.log('User life updated:', response);
-        },
-        (error) => {
-          console.error('Error updating user life:', error);
-        }
-      );
+      this.zone.run(()=>
+      {
+        this.userService.updateUserLife(this.user).subscribe(
+          (response) => {
+            console.log('User life updated:', response);
+            this.router.navigate(['/escape-room']);
+          },
+          (error) => {
+            console.error('Error updating user life:', error);
+            this.router.navigate(['/escape-room']);
+          }
+        );
+      });
     }
     this.router.navigate(['/escape-room']);
   }
@@ -150,7 +134,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       // Szenario: User hat alle Level gelöst
       if (this.user.idxActualLearnObject > 6) {
         alert("Glückwunsch, du hast alle Level gelöst!");
-        this.router.navigate(['/about']);
+        this.router.navigate(['/high-score']);
         return;
       }
       this.userService.updateUserIdxActualLearnObject(this.user).subscribe(
