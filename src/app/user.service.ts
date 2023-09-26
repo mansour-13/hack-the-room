@@ -14,7 +14,8 @@ export interface User {
   idxActualLearnObject: number;
   life: number;
   score: number;
-  levelScore: number[]
+  levelScore: number[];
+  profileImage: string;
 }
 export interface Highscore {
   userName: String,
@@ -56,7 +57,6 @@ export class UserService {
       })
     );
   }
-
 
   setScoreForLearnObjekt(score: number, idxLearnObject: number, username: string | undefined) {
     const requestBody = {
