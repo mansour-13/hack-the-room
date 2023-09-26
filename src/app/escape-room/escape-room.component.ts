@@ -1,12 +1,10 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {AudioService} from "../audio.service";
 //Use import instead of hard coding the intro text
 import animationTextData from 'src/assets/animationText.json';
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
 import {Subscription} from "rxjs";
-import {Level, LevelService} from "../level.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-escape-room',
@@ -15,56 +13,58 @@ import {Router} from "@angular/router";
 })
 export class EscapeRoomComponent implements OnInit, OnDestroy {
 
-  user?: User;
+  isStarted: boolean = false;
+
+  user: User | undefined;
   userSubscription?: Subscription;  // Declare a subscription
   buttonText = "Intro";
-  showTooltip: boolean = false;
-  levels: Level[] = [];
-
+  selectedLevel: number = 0;
 
   constructor(private audioService: AudioService,
               private userService: UserService,
-              private authService: AuthService,
-              private levelService: LevelService,
-              private router: Router) {
+              private authService: AuthService) {
   }
 
   intro: string[] = animationTextData.articles[0].content;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-
-
+  @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
+  showIntro: boolean = false;
 
   ngOnInit() {
+    this.fetchUserData();
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(
-      (user) => {
+      (response) => {
+        this.user = response;
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
+
+    // Subscribe to user updates
+    this.userSubscription = this.userService.user$.subscribe(user => {
+      if (user) {
         this.user = user;
-        console.log('Component initialized.');
-        console.log(this.user?.life);
-        if (this.user && this.user?.life === 0) {
-          console.log('this.user?.lif');
-          alert("Deine Javascript-Kenntnisse reichten leider nicht aus um im Weltall zu überleben!")
-          this.router.navigate(['/about']);
-        }
-      });
+      }
+    });
 
     this.audioService.play();
     this.audioService.setVolume(0.3);
-
-    for (let i = 1; i <= 6; i++) {
-      this.levelService.indexLevel = i.toString();
-      this.levelService.getLevel().subscribe(
-        (level) => {
-          this.levels.push(level);
-        },
-        (error) => {
-          console.error('Error fetching level data', error);
-        }
-      );
-    }
   }
 
+  fetchUserData(): void {
+    const username = this.authService.getUsername();
+    this.userService.getUserByUsername(username).subscribe(
+      (response) => {
+        // Update user data in escape-room component
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
+  }
 
   ngOnDestroy() {
     // Pause audio when the component is destroyed
@@ -93,5 +93,27 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
     this.buttonText = 'Intro'
   }
 
+  startMission() {
+    this.isStarted = true;
+  }
+
+  displayHeartEmoji(life: number | undefined): string {
+
+    if (life !== undefined) {
+      return '❤️'.repeat(life) + '☠️'.repeat(3 - life);
+    }
+    return '';
+  }
+
+  displayStarEmoji(idxActualLearnObject: number | undefined): string {
+    if (idxActualLearnObject !== undefined) {
+      return '⭐️'.repeat(idxActualLearnObject);
+    }
+    return '';
+  }
+
+  setSelectedLevel(level: number) {
+    this.selectedLevel = level;
+  }
 }
 

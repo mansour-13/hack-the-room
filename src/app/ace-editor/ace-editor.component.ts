@@ -56,7 +56,7 @@ export class AceEditorComponent implements AfterViewInit {
     });
   }
     compareSolutionToUser() {
-    const code = this.replacePlusWithPlaceholder(this.editor.getValue());
+    const code = this.editor.getValue();
     console.log(this.editor.getValue());
 
     // starting to improve the api requests, by including some checks
@@ -101,7 +101,7 @@ export class AceEditorComponent implements AfterViewInit {
   }
 
   replacePlusWithPlaceholder(str: string): string {
-    return str.replace(/\+/g, '__PLUS__');
+    return str.replace(/\+/g, '%2B');
   }
 
   replacePlaceholderWithPlus(str: string): string {

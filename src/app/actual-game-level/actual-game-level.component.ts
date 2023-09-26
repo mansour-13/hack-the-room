@@ -1,10 +1,11 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Level, LevelService} from "../level.service";
 import {environment} from "../../environments/environment";
 import {AudioService} from "../audio.service";
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
+import {TimerComponent} from "../timer/timer.component";
 
 @Component({
   selector: 'app-actual-game-level',
@@ -13,7 +14,7 @@ import {AuthService} from "../auth.service";
 })
 export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
-  levelId: number | undefined;
+  levelId: number | undefined = 0;
 
   levelData?: Level;
 
@@ -21,17 +22,20 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
   user: User | undefined;
 
+
   constructor(
     private route: ActivatedRoute,
     private levelService: LevelService,
     private audioService: AudioService,
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private zone:NgZone
   ) {}
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
+  @ViewChild(TimerComponent) timerComponent!: TimerComponent;
   buttonText= "Intro";
 
   ngOnInit(): void {
@@ -53,6 +57,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
     this.audioService.play();
     this.audioService.setVolume(0.3);
+    console.log('Level Id:', this.levelId);
   }
 
   ngOnDestroy() {
@@ -83,6 +88,8 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       this.buttonText = 'Intro';
     }
   }
+
+
 
 
   audioEnded() {
@@ -123,8 +130,21 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   }
 
   handleCodeChallengeSuccess() {
+    const remainingTime = this.timerComponent.getRemainingTime();
+    console.log('Remaining time:', remainingTime);
+
+    if (this.user && this.user.life > 0 && this.levelData) {
+      const score = this.computeScore(this.levelData.timeLimit, remainingTime);
+      console.log('Score:', score);
+      this.zone.run(() => {
+        // @ts-ignore
+        this.addScore(score, this.user.idxActualLearnObject - 1)
+      });
+    }
+
     alert("You solved the level!");
-    if (this.user && this.user.idxActualLearnObject <= 2) {
+
+    if (this.user && this.user.idxActualLearnObject <= this.levelId!) {
       this.user.idxActualLearnObject += 1;
       this.userService.updateUserIdxActualLearnObject(this.user).subscribe(
         (response) => {
@@ -137,4 +157,34 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     }
     this.router.navigate(['/escape-room']);
   }
+
+  computeScore(timeLimit: number, neededTime: number): number {
+    if (neededTime > 10) {
+      return Math.round(((timeLimit - neededTime) * 1000 / 6) / timeLimit - 10);
+    }
+    return 100;
+  }
+
+  addScore(score: number, idxLearnObject: number) {
+    this.userService.setScoreForLearnObjekt(score,idxLearnObject, this.user?.userName);
+  }
+
+  getLevelScore(): number {
+
+    console.log('Fetching score for levelId:', this.levelId);
+    if (this.user && this.user.levelScore) {
+      const score = this.user.levelScore[this.levelId! - 1];
+      console.log('Score:', score);
+
+      return score;
+    }
+    console.log("undefined");
+    return 0;
+  }
+
+
+
+
+
 }
+

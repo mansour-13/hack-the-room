@@ -49,4 +49,8 @@ export class TimerComponent implements OnInit, OnDestroy {
       clearInterval(this.intervalID);
     }
   }
+
+  public getRemainingTime(): number {
+    return this.minutes * 60 + this.seconds;
+  }
 }
