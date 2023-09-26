@@ -12,6 +12,7 @@ declare var ace: any;
     '<button (click)="compareSolutionToUser()">Run</button>' +
     '<button (click)="getHint()">Hint</button>' +
     '<button (click)="getSolution()">Solution</button>' +
+    '<button (click)="getSolutionFromBackend()">Super-Solution</button>' +
     '<button (click)="resetChallenge()">Reset</button>' +
 
     '<div id="output">{{output}}</div>',
@@ -51,6 +52,7 @@ export class AceEditorComponent implements AfterViewInit {
   // This version uses chatgpt function to execute the code
   runCode() {
     const code = this.editor.getValue();
+
     this.aiService.evaluateCode(code).subscribe(response => {
       this.output = response.result;
     });
@@ -62,6 +64,10 @@ export class AceEditorComponent implements AfterViewInit {
     // starting to improve the api requests, by including some checks
       if (!code.trim()) { // Check if the code is empty or just whitespace
         this.output = "Please enter some code before running.";
+        return;
+      }else if (this.editor.getValue() === (this.codeSolution)) {
+        console.log("Code is correct");
+        this.codeChallengeSolved.emit();
         return;
       }
 
@@ -86,6 +92,10 @@ export class AceEditorComponent implements AfterViewInit {
     this.aiService.getSolutionToChallenge(this.codeChallenge).subscribe(response => {
       this.output = response.result;
     });
+  }
+
+  getSolutionFromBackend() {
+    this.editor.setValue(this.codeSolution);
   }
 
   replaceSpecialCharsWithASCII(str: string): string {

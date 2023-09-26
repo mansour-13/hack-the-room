@@ -50,6 +50,14 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
       }
     });
 
+    // Subscribe to user updates
+    this.userSubscription = this.userService.user$.subscribe(user => {
+      if (user) {
+
+        this.user = user;
+      }
+    });
+
     this.audioService.play();
     this.audioService.setVolume(0.3);
   }

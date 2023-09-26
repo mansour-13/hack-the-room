@@ -2,10 +2,26 @@
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: rgba(62, 68, 70, 0.7);
 }
 
 #output {
   margin-top: 20px;
+  background-color: rgba(62, 68, 70, 0.7);
   padding: 10px;
   border: 1px solid #ccc;
+  color: white;
 }
+
+/*.ace-tm {*/
+/*  color: rgb(232, 230, 227);*/
+/*}*/
+
+.ace_gutter {
+  background-color: aliceblue;
+}
+
+/** {*/
+/*  scrollbar-color: #454a4d #202324;*/
+/*}*/
+/* */

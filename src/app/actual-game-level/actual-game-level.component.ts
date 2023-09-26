@@ -132,6 +132,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   handleCodeChallengeSuccess() {
     const remainingTime = this.timerComponent.getRemainingTime();
     console.log('Remaining time:', remainingTime);
+    console.log('Set Time:', this.levelData?.timeLimit);
 
     if (this.user && this.user.life > 0 && this.levelData) {
       const score = this.computeScore(this.levelData.timeLimit, remainingTime);
@@ -146,6 +147,12 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
     if (this.user && this.user.idxActualLearnObject <= this.levelId!) {
       this.user.idxActualLearnObject += 1;
+      // Szenario: User hat alle Level gelöst
+      if (this.user.idxActualLearnObject > 6) {
+        alert("Glückwunsch, du hast alle Level gelöst!");
+        this.router.navigate(['/about']);
+        return;
+      }
       this.userService.updateUserIdxActualLearnObject(this.user).subscribe(
         (response) => {
           console.log('User idxActualLearnObject updated:', response);
@@ -157,12 +164,40 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     }
     this.router.navigate(['/escape-room']);
   }
+  // previous computeScore Method
+  // computeScore(timeLimit: number, neededTime: number): number {
+  //
+  //   if (neededTime > 10) {
+  //     return Math.round(((timeLimit - neededTime) * 1000 / 6) / timeLimit - 10);
+  //   }
+  //   return 100;
+  // }
 
-  computeScore(timeLimit: number, neededTime: number): number {
-    if (neededTime > 10) {
-      return Math.round(((timeLimit - neededTime) * 1000 / 6) / timeLimit - 10);
+  computeScore(timeLimit: number, timeRemaining: number): number {
+    console.log('Time limit:', timeLimit);
+    console.log('Time remaining:', timeRemaining);
+
+    let timeTaken = timeLimit - timeRemaining;
+
+    console.log('Time taken:', timeTaken);
+
+    // If time taken is 10 seconds or less, award maximum points
+    if (timeTaken <= 10) {
+      return 100;
     }
-    return 100;
+
+    // Otherwise, calculate the score proportionally to the time taken
+    let score = 100 * (timeRemaining / timeLimit);
+
+    // Ensure the score isn't more than 100 or less than 0
+    score = Math.min(100, score);
+    score = Math.max(0, score);
+
+    console.log('Score:', score);
+
+    // Round the score to the nearest integer
+    return Math.round(score);
+
   }
 
   addScore(score: number, idxLearnObject: number) {

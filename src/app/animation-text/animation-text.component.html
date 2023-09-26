@@ -3,8 +3,12 @@
     {{ displayText }}
 
   </div>
-  <button (click)="displayNextBlock()">Continue</button> |
-  <button (click)="displayPreviousBlock()">Back</button>
+  <div class="button">
+    <button (click)="displayNextBlock()">Continue</button>
+    <button (click)="resetText()">Reset</button>
+    <button (click)="allText()">Everything</button>
+  </div>
 </div>
+
 
 

@@ -40,7 +40,7 @@ body {
 
 .story {
   grid-area: story;
-  background-color: rgba(244, 244, 244, 0.7);
+  background-color: rgba(62, 68, 70, 0.7);
   border-radius: 10px;
   width: 40vw;
   height: 600px;

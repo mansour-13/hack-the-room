@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
 import {HttpClient} from "@angular/common/http";
 import {concatMap, delay, of} from "rxjs";
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { Input } from '@angular/core';
 
@@ -24,6 +26,8 @@ import { Input } from '@angular/core';
 export class AnimationTextComponent implements OnInit {
 
   @Input() text: string[] | undefined; // This is the input from the parent component
+
+  private stop$ = new Subject<void>();
 
   currentBlock = '';
   // currentWordIndex = 0;
@@ -56,7 +60,8 @@ export class AnimationTextComponent implements OnInit {
 
       // Use RxJS to display words one by one with delay
       of(...words).pipe(
-        concatMap(word => of(word).pipe(delay(200)))
+        concatMap(word => of(word).pipe(delay(100))),
+        takeUntil(this.stop$)
       ).subscribe({
         next: word => {
           this.displayText += word + ' ';
@@ -74,5 +79,16 @@ export class AnimationTextComponent implements OnInit {
   displayPreviousBlock() {
     this.textBlockIndex--;
 
+  }
+
+  resetText() {
+    this.stop$.next(); // Stop the observable sequence
+    this.textBlockIndex = 0;
+    this.displayText = '';
+  }
+
+  allText() {
+    this.stop$.next(); // Stop the observable sequence
+    this.displayText = this.textBlocks.join('\n');
   }
 }
