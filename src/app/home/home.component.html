@@ -13,7 +13,7 @@
   <div *ngIf="isLoggedIn()" class="welcome">
     <img [src]="this.user?.profileImage" alt="User Avatar">
   </div>
-  <div *ngIf="!isLoggedIn()" style="font-weight: bold">Ready to Play? Log in or Sign Up to Unlock the Game</div>
+
 </div>
 
 <!--<hr>-->
@@ -35,11 +35,12 @@
 <!--</div>-->
 
 <div>
-  <button [disabled]="!isLoggedIn()" class="button" routerLink="/escape-room">Start Game</button>
+  <button [disabled]="!isLoggedIn()" class="water-button" routerLink="/escape-room">Start Game</button>
+  <div *ngIf="!isLoggedIn()" [style.text-align]='"center"' style="font-weight: bold">Ready to Play? Log in or Sign Up to Unlock the Game</div>
+
+  <button class="water-button" routerLink="/about">About Game</button>
   <br>
-  <button class="button" routerLink="/about">About Game</button>
-  <br>
-  <button class="button" routerLink="/high-score">High Scores</button>
+  <button class="water-button" routerLink="/high-score">High Scores</button>
 </div>
 </body>
 

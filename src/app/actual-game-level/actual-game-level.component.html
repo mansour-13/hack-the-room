@@ -1,70 +1,45 @@
-<body [style.background-image]="'url(' + imageUrl + ')'" >
-  <nav class="navbar">
-    <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
-    <button routerLink="/" class="nav-button">Back to Menu</button>
-  </nav>
+<body [style.background-image]="'url(' + imageUrl + ')'">
+<nav class="navbar">
+  <button (click)="playAudio()" class="nav-button">{{buttonText}}</button>
+  <button (click)="handleTimeout('You lose a life for going back ☠️!')" class="nav-button">Back to Menu</button>
+</nav>
 
-  <table class="user">
-    <tr>
-      <th colspan="2" class="title">{{user?.userName}}</th>
-    </tr>
-    <tr>
-      <td>Life</td>
-      <td class="emoji">{{ displayHeartEmoji(user?.life) }}</td>
-    </tr>
-    <tr>
-      <td>Level</td>
-      <td class="emoji">{{ displayStarEmoji(user?.idxActualLearnObject) }}</td>
-    </tr>
-    <tr>
-      <td>Level-Score:</td>
-      <td class="emoji">{{ getLevelScore() }}</td>
-    </tr>
-  </table>
+<div class="user">
+  <app-user></app-user>
+</div>
 
-  <div class="timer" *ngIf="levelData">
-    <app-timer
+<div class="timer" *ngIf="levelData">
+  <app-timer
 
-      [duration]="levelData.timeLimit"
-      (timeOut)="handleTimeout()"
+    [duration]="levelData.timeLimit"
+    (timeOut)="handleTimeout()"
 
-      ></app-timer>
-    </div>
+  ></app-timer>
+</div>
 
 
-  <div class="story" *ngIf="levelData">
-  <app-animation-text
+<div  class="story" *ngIf="levelData">
+  {{levelData.story}}
+  <br>
+  <br>
+  <h3 >What you need to know for this Task is:</h3>
+  {{levelData.theory}}
+</div>
 
-    [text]="levelData.story"
+<div class="terminal" *ngIf="levelData">
 
-    ></app-animation-text>
-  </div>
+  <app-ace-editor
 
-  <div class="terminal" *ngIf="levelData">
+    [codeChallenge]="levelData.task"
 
-    <app-ace-editor
+    [codeSolution]="levelData.solution"
 
-      [codeChallenge]="levelData.task"
+    (codeChallengeSolved)="handleCodeChallengeSuccess()"
+  ></app-ace-editor>
 
-      [codeSolution]="levelData.solution"
 
-      (codeChallengeSolved)="handleCodeChallengeSuccess()"
-
-    ></app-ace-editor>
-
-  </div>
+</div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--Old information divs to check for functionality-->

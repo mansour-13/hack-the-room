@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../assets/_ff60438e-3a07-44cf-a4b1-bc19eab0ea66.jpeg");
+  background-image: url("../../assets/pictures/cpaceCover.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,3 +57,42 @@ body {
   margin-right: 10px;
 
 }
+.water-button {
+  position: relative;
+  background-color: transparent; /* Hintergrundfarbe des Buttons */
+  border: none;
+  color: transparent;
+  width: 400px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 24px;
+  margin: 20px;
+}
+
+/* Wasser-Effekt */
+.water-button::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 400px;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
+  transform: scale(0.8); /* Skalierung des Effekts */
+  opacity: 0;
+  animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
+}
+
+@keyframes water-ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+.water-button:hover {
+  color: white; }
