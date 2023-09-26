@@ -96,9 +96,8 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
     alert(text);
     if (this.user && this.user.life) {
       this.user.life -= 1;
-      this.zone.run(()=>
-      {
-        this.userService.updateUserLife(this.user).subscribe(
+
+      this.userService.updateUserLife(this.user).subscribe(
           (response) => {
             console.log('User life updated:', response);
             this.router.navigate(['/escape-room']);
@@ -108,7 +107,6 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
             this.router.navigate(['/escape-room']);
           }
         );
-      });
     }
     this.router.navigate(['/escape-room']);
   }
@@ -158,6 +156,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   // }
 
   computeScore(timeLimit: number, timeRemaining: number): number {
+
     console.log('Time limit:', timeLimit);
     console.log('Time remaining:', timeRemaining);
 
