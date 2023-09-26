@@ -11,6 +11,21 @@
     <input type="password" id="password" name="password" [(ngModel)]="credentials.password">
     <label for="confirmPassword">Confirm Password</label>
     <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword">
+    <label >Choose a Profile Image</label>
+    <div class="profile-image">
+      <label>
+        <input type="radio" name="selectedAvatar" [value]="profileImageW" [(ngModel)]="credentials.profileImage">
+        <img [src]="profileImageW" [class.selected]="profileImageW === credentials.profileImage" (click)="selectAvatar(profileImageW)">
+      </label>
+      <label>
+        <input type="radio" name="selectedAvatar" [value]="profileImageM" [(ngModel)]="credentials.profileImage">
+        <img [src]="profileImageM" [class.selected]="profileImageM === credentials.profileImage" (click)="selectAvatar(profileImageM)">
+      </label>
+      <label>
+        <input type="radio" name="selectedAvatar" [value]="profileImageBS" [(ngModel)]="credentials.profileImage">
+        <img [src]="profileImageBS" [class.selected]="profileImageBS === credentials.profileImage" (click)="selectAvatar(profileImageBS)">
+      </label>
+    </div>
     <button (click)="register()">Register Now</button>
 
   </form>

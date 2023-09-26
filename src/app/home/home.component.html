@@ -10,6 +10,9 @@
 
 <div>
   <div *ngIf="isLoggedIn()" class="welcome">Welcome {{this.username}}</div>
+  <div *ngIf="isLoggedIn()" class="welcome">
+    <img [src]="this.user?.profileImage" alt="User Avatar">
+  </div>
   <div *ngIf="!isLoggedIn()" style="font-weight: bold">Ready to Play? Log in or Sign Up to Unlock the Game</div>
 </div>
 

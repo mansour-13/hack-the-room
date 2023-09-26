@@ -32,7 +32,7 @@ export class EscapeRoomComponent implements OnInit, OnDestroy {
   intro: string[] = animationTextData.articles[0].content;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-  @ViewChild('audioPlayer2') audioPlayer2!: ElementRef<HTMLAudioElement>;
+
 
 
   ngOnInit() {

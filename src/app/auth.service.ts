@@ -10,6 +10,9 @@ export class AuthService {
 
   private isLoggedIn?: boolean;
   private username?: string;
+  private profileImage?: string;
+
+
 
   constructor(private client : HttpClient) { }
 
@@ -27,7 +30,7 @@ export class AuthService {
       withCredentials: true // needed to that the cookie from the response is stored
     }).pipe(
       tap(() => {
-        this.username = credentials.username; // Set the username upon successful login
+        this.username = credentials.username;// Set the username upon successful login
       })
     )
   }
@@ -37,14 +40,16 @@ export class AuthService {
     });
   }
 
-  register(credentials: { username: string, password: string }) : Observable<string> {
+  register(credentials: { username: string; password: string; profileImage: string }) : Observable<string> {
     let httpParams = new HttpParams()
       .append("username", credentials.username)
-      .append("password", credentials.password);
+      .append("password", credentials.password)
+      .append("profileImage", credentials.profileImage);
 
     return this.client.post<string>(environment.baseUrl + "/register",{
       userName: credentials.username,
-      password: credentials.password
+      password: credentials.password,
+      profileImage: credentials.profileImage,
     },{
       params: httpParams,
       withCredentials: true // needed to that the cookie from the reponse is stored
@@ -59,6 +64,10 @@ export class AuthService {
     return this.username;
   }
 
+  getProfileImage(): string | undefined {
+  return this.profileImage;
+}
+
 
   login() {
     this.isLoggedIn = true;
@@ -67,4 +76,6 @@ export class AuthService {
   logout() {
     this.isLoggedIn = false;
   }
+
+
 }

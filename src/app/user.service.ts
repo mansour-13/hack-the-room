@@ -14,7 +14,8 @@ export interface User {
   idxActualLearnObject: number;
   life: number;
   score: number;
-  levelScore: number[]
+  levelScore: number[];
+  profileImage: string;
 }
 export interface Highscore {
   userName: String,
@@ -36,6 +37,7 @@ export class UserService {
   }
 
   // Step 3: Expose userSubject as public observable for other parts to subscribe
+
   get user$(): Observable<User | null> {
     return this.userSubject.asObservable();
   }
@@ -56,16 +58,6 @@ export class UserService {
       })
     );
   }
-
-  updateProfileImage(user: User): Observable<User> {
-    return this.client.put<User>(environment.baseUrl + "/user/updateImage", user).pipe(
-      tap(updatedUser => {
-        // Step 2: Emit new user data via the BehaviorSubject
-        this.userSubject.next(updatedUser);
-      })
-    );
-  }
-
 
   setScoreForLearnObjekt(score: number, idxLearnObject: number) {
     const requestBody = {
