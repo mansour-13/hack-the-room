@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User, UserService} from "../user.service";
 import {AuthService} from "../auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-user',
@@ -9,6 +10,8 @@ import {AuthService} from "../auth.service";
 })
 export class UserComponent implements OnInit {
   user?: User;
+
+  userSubscription?: Subscription;  // Declare a subscription
 
   constructor(private userService: UserService,
               private authService: AuthService) {
@@ -24,6 +27,14 @@ export class UserComponent implements OnInit {
         console.error('Error fetching user data:', error);
       }
     );
+    // Subscribe to user updates
+    this.userSubscription = this.userService.user$.subscribe(user => {
+      if (user) {
+
+        this.user = user;
+      }
+    });
+
   }
 
 
