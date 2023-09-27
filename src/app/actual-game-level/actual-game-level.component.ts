@@ -108,7 +108,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
         }
       );
     }
-    this.router.navigate(['/escape-room']);
+    // this.router.navigate(['/escape-room']);
   }
 
   handleCodeChallengeSuccess() {
@@ -138,9 +138,11 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       this.userService.updateUserIdxActualLearnObject(this.user).subscribe(
         (response) => {
           console.log('User idxActualLearnObject updated:', response);
+          // this.router.navigate(['/escape-room']);
         },
         (error) => {
           console.error('Error updating user idxActualLearnObject:', error);
+          // this.router.navigate(['/escape-room']);
         }
       );
     }
