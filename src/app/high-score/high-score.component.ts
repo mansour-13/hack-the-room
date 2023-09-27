@@ -16,6 +16,12 @@ export class HighScoreComponent implements OnInit {
     this.loadHighScores();
   }
 
+  audio() {
+    const audioButton = new Audio("assets/sounds/tür.mp3")
+    audioButton.volume= 0.05;
+    audioButton.play();
+  }
+
   private loadHighScores() {
     this.userService.getScore().subscribe(
       result => {

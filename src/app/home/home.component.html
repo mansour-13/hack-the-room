@@ -16,31 +16,16 @@
 
 </div>
 
-<!--<hr>-->
-<!--<button (click)="getGreeting()">Get Greeting</button>-->
-<!--<div *ngIf="greeting">-->
-<!--  <div>Message: {{greeting.message}}</div>-->
-<!--  <div>Audience: {{greeting.audience}}</div>-->
-<!--</div>-->
-<!--<hr>-->
-
-<!--<button (click)="getGreetingUser()">Get Greeting (User)</button>-->
-<!--<div *ngIf="greetingUser">-->
-<!--  <div>Message: {{greetingUser.message}}</div>-->
-<!--  <div>Audience: {{greetingUser.audience}}</div>-->
-<!--</div>-->
-
-<!--<div *ngIf="info">-->
-<!--{{info | json }}-->
-<!--</div>-->
-
-<div>
-  <button [disabled]="!isLoggedIn()" class="water-button" routerLink="/escape-room">Start Game</button>
-  <div *ngIf="!isLoggedIn()" [style.text-align]='"center"' style="font-weight: bold">Ready to Play? Log in or Sign Up to Unlock the Game</div>
-
-  <button class="water-button" routerLink="/about">About Game</button>
-  <br>
-  <button class="water-button" routerLink="/high-score">High Scores</button>
+<div class="transparent ">
+  <div class="transTogether" >
+  <button [disabled]="!isLoggedIn()" class="water-button" (click)="audio()" routerLink="/escape-room">Start Game</button>
+  <div *ngIf="!isLoggedIn()" [style.text-align]='"center"' style="font-weight: bold">Ready to Play? Log in or Sign Up to
+    Unlock the Game
+  </div>
+</div>
+<button class="water-button" (click)="audio()"  routerLink="/about">About Game</button>
+<br>
+<button class="water-button" (click)="audio()"  routerLink="/high-score">High Scores</button>
 </div>
 </body>
 

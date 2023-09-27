@@ -82,6 +82,7 @@ body {
   transform: scale(0.8); /* Skalierung des Effekts */
   opacity: 0;
   animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
+  animation-direction: alternate;
 }
 
 @keyframes water-ripple {
@@ -95,4 +96,15 @@ body {
   }
 }
 .water-button:hover {
-  color: white; }
+  color: white;
+}
+.transTogether{
+  color: transparent;
+}
+.transTogether:hover{
+  color: black;
+}
+
+
+
+

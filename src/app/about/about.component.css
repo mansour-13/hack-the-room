@@ -10,27 +10,13 @@
   height: 1000px;
 }
 
-/*button {
-  background-color: transparent;
-  border: black;
-  color: #ffffff;
-  padding: 10px 20px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}*/
-
-/* Wenn du Hover- oder Aktivitätsstile hinzufügen möchtest, könntest du etwas wie das folgende verwenden: */
-
 button:hover {
-  color: white; }
-/*
-button:active {
-  background-color: rgba(255, 255, 255, 0.4); !* Füge einen stärkeren Farbton hinzu, wenn der Button aktiviert wird (geklickt wird) *!
-}*/
+  color: white;
+}
+
 .water-button {
   position: relative;
-  background-color: transparent; /* Hintergrundfarbe des Buttons */
+  background-color: transparent;
   border: none;
   color: transparent;
   width: 400px;
@@ -41,7 +27,6 @@ button:active {
   margin: 20px;
 }
 
-/* Wasser-Effekt */
 .water-button::after {
   content: "";
   position: absolute;
@@ -49,10 +34,10 @@ button:active {
   left: 0px;
   width: 400px;
   height: 80%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
-  transform: scale(0.8); /* Skalierung des Effekts */
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 80%);
+  transform: scale(0.8);
   opacity: 0;
-  animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
+  animation: water-ripple 2s linear infinite;
 }
 
 @keyframes water-ripple {

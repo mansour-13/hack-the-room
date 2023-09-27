@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-
+  audio() {
+    const audioButton = new Audio("assets/sounds/tür.mp3")
+    audioButton.volume= 0.05;
+    audioButton.play();
+  }
 }
