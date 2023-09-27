@@ -23,7 +23,7 @@ public class User {
     private int life = 3;
     private int score = 0;
     private int levelscore[] = new int[6];
-    private String profileImage = "/images/spaceCadetW.jpeg";
+    private String profileImage;
 
     public User(int id, String userName, String password, boolean active, String roles, int idxActualLearnObject, int life, int score, int[] levelscore, String profileImage) {
         this.id = id;
