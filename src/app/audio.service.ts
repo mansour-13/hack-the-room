@@ -23,5 +23,4 @@ export class AudioService {
       console.error('Volume must be a value between 0 and 1.');
     }
   }
-
 }
