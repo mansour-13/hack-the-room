@@ -40,19 +40,15 @@
 .table-body-row td {
   padding-left: 20px;
   font-size: 2em;
-  color: gold;
+  color: aquamarine;
   font-weight: bold;
-}
-
-button:hover {
-  color: white;
 }
 
 .water-button {
   position: relative;
   background-color: transparent;
   border: none;
-  color: transparent;
+  color: white;
   width: 400px;
   cursor: pointer;
   overflow: hidden;

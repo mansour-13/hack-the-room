@@ -1,9 +1,8 @@
 <body>
 <nav class="nav-buttons">
-  <button *ngIf="isLoggedIn()" class="nav-button" (click)="sendLogout()">Logout</button>
-  <button *ngIf="isLoggedIn()" class="nav-button" routerLink="/user">User Profile</button>
-  <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/login">Login</button>
-  <button *ngIf="!isLoggedIn()" class="nav-button" routerLink="/register">Register</button>
+  <button *ngIf="isLoggedIn()" class="water-button" (click)="sendLogout()">Logout</button>
+  <button *ngIf="!isLoggedIn()" class="water-button" routerLink="/login">Login</button>
+  <button *ngIf="!isLoggedIn()" class="water-button" routerLink="/register">Register</button>
 </nav>
 
 <p class="title">Hack the Room</p>
@@ -16,13 +15,13 @@
 
 </div>
 
-<div class="transparent ">
+<div [style.visibility]="!mouseMoved ? 'hidden' : 'visible'" class="transparent">
   <div class="transTogether" >
   <button [disabled]="!isLoggedIn()" class="water-button" (click)="audio()" routerLink="/escape-room">Start Game</button>
   <div *ngIf="!isLoggedIn()" [style.text-align]='"center"' style="font-weight: bold">Ready to Play? Log in or Sign Up to
     Unlock the Game
   </div>
-</div>
+</div >
 <button class="water-button" (click)="audio()"  routerLink="/about">About Game</button>
 <br>
 <button class="water-button" (click)="audio()"  routerLink="/high-score">High Scores</button>

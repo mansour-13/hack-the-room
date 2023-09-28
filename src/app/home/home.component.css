@@ -6,7 +6,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1000px;
+  height: 1024px;
   margin: 0;
 }
 
@@ -61,8 +61,8 @@ body {
   position: relative;
   background-color: transparent; /* Hintergrundfarbe des Buttons */
   border: none;
-  color: transparent;
-  width: 400px;
+  color: white;
+  width: 300px;
   cursor: pointer;
   overflow: hidden;
   padding: 10px;
@@ -76,7 +76,7 @@ body {
   position: absolute;
   top: 5px;
   left: 0px;
-  width: 400px;
+  width: 300px;
   height: 80%;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
   transform: scale(0.8); /* Skalierung des Effekts */
@@ -104,7 +104,10 @@ body {
 .transTogether:hover{
   color: black;
 }
-
+.transparent{
+  place-items: center; /* Zentriert horizontal und vertikal */
+  height: 100vh;
+}
 
 
 

@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Highscore, User, UserService} from "../user.service";
+import {Component, HostListener, OnInit} from '@angular/core';
+import {Highscore, UserService} from "../user.service";
 
 @Component({
   selector: 'app-high-score',
@@ -9,8 +8,12 @@ import {Highscore, User, UserService} from "../user.service";
 })
 export class HighScoreComponent implements OnInit {
   highScores?: Highscore[];
+  mouseMoved: boolean = false;
+  mouseInactiveTimeout: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.startMouseInactiveTimer();
+  }
 
   ngOnInit(): void {
     this.loadHighScores();
@@ -18,7 +21,7 @@ export class HighScoreComponent implements OnInit {
 
   audio() {
     const audioButton = new Audio("assets/sounds/tür.mp3")
-    audioButton.volume= 0.05;
+    audioButton.volume = 0.05;
     audioButton.play();
   }
 
@@ -31,6 +34,26 @@ export class HighScoreComponent implements OnInit {
         console.error('Error fetching high scores:', error);
       }
     )
+  }
+
+  @HostListener('mousemove') onMouseMove() {
+    this.mouseMoved = true;
+    this.resetMouseInactiveTimer();
+  }
+
+  startMouseInactiveTimer() {
+    this.mouseInactiveTimeout = setInterval(() => {
+      if (!this.mouseMoved) {
+        // Maus war inaktiv, führen Sie Ihre Aktionen aus
+
+      }
+      this.mouseMoved = false; // Zurücksetzen auf inaktiv
+    }, 1000); // Hier können Sie die Zeit in Millisekunden anpassen
+  }
+
+  resetMouseInactiveTimer() {
+    clearTimeout(this.mouseInactiveTimeout);
+    this.startMouseInactiveTimer();
   }
 }
 
