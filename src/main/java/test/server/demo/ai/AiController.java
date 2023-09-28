@@ -36,7 +36,105 @@ public class AiController {
         return ResponseEntity.ok(Collections.singletonMap("result", result));
     }
 
-//    @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    // Working to include this PostMapping
+    @PostMapping(value = "/produceAHint", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> produceAHint(@RequestBody CodeComparisonRequest request) {
+        String promptToEvaluate = "Here is a coding challenge:\n\n" +
+                request.getCodeChallenge() +
+                "\n\nHere is a proposed solution:\n\n" +
+                request.getCode() +
+                "Give a hint to the user on what his proposed solution is missing to solve the challenge. The hint should not be longer than 3 sentences.";
+
+        String result = this.aiService.prompt(promptToEvaluate);
+        return ResponseEntity.ok(Collections.singletonMap("result", result));
+    }
+
+
+    // Working to include this PostMapping
+    @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
+        String promptToEvaluate =
+                "Your task is to work like a Java compiler. Here's a coding challenge:\n\n" +
+                        request.getCodeChallenge() +
+                        "\n\nHere's a proposed solution:\n\n" +
+                        request.getCode() +
+                        "\n\n1. Answer with a single word: true if correct of false if incorrect. Is the proposed solution returning a valid answer to the coding challenge? Remember, you are a compiler, so syntax is important to consider.\n" +
+                        "2. Please provide a kind and constructive explanation for your answer, but not longer than 3 sentences. It optimally should address the most critical part of the code.";
+
+        System.out.println("Coding challenge: " + request.getCodeChallenge());
+        System.out.println("Provided code: " + request.getCode());
+
+        String result = this.aiService.prompt(promptToEvaluate);
+        System.out.println("AI result: " + result);
+        Map<String, Object> resultMap = new HashMap<>();
+        Boolean responseBoolean = null;
+
+        if (result.toLowerCase().contains("true")) {
+            responseBoolean = true;
+        } else if (result.toLowerCase().contains("false")) {
+            responseBoolean = false;
+        }
+
+        if (responseBoolean != null) {
+            int index = result.indexOf(responseBoolean.toString()) + responseBoolean.toString().length();
+            String explanation = result.substring(index).trim().replaceFirst("[\\d]\\. ", ""); // remove any single-digit number followed by period and space
+
+            // If the result is false, trim the first 4 characters from the explanation
+            if (!responseBoolean) {
+                explanation = explanation.substring(5);
+            }
+
+            resultMap.put("result", responseBoolean);
+            resultMap.put("explanation", explanation);
+        } else {
+            // Handle cases where the response does not contain a recognizable boolean.
+            resultMap.put("result", false);
+            resultMap.put("explanation", "Unexpected AI response.");
+        }
+
+        System.out.println("Sending response: " + resultMap.toString());
+        return ResponseEntity.ok(resultMap);
+    }
+
+    // Working to include this PostMapping
+    @PostMapping(value = "/getSolutionToChallenge", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getSolutionToChallenge(@RequestBody String codeChallenge) {
+        String promptToEvaluate = "For this codeChallenge: " + codeChallenge + "\n. Give" +
+                " the solution to the challenge without any comments. Indicate a new line with \\n";
+
+        String result = this.aiService.prompt(promptToEvaluate);
+        System.out.println("ChatGPT solution: " + result);
+        return ResponseEntity.ok(Collections.singletonMap("result", result));
+    }
+
+
+
+    //        String[] parts = result.split("\n");
+//        if (parts.length >= 2) {
+//            String booleanResult = parts[0].split("\\.")[1].trim();
+//            String explanation = parts[1].split("\\.")[1].trim();
+//
+//            Map<String, Object> resultMap = new HashMap<>();
+//            resultMap.put("result", Boolean.parseBoolean(booleanResult));
+//            resultMap.put("explanation", explanation);
+//
+//            return ResponseEntity.ok(resultMap);
+//        }
+//        return ResponseEntity.ok(Collections.singletonMap("result", result));
+//    }
+
+    //Old version, just to save it
+    // Working to include this PostMapping
+//    @PostMapping(value = "/evaluateCode", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<?> evaluateCode(@RequestBody String code) {
+//        String promptToEvaluate = "The user is playing an escape room game. the following code is part of a challenge." +
+//                "Evaluate the given code for correctness: " + code + ". Give the answer in a style fitting the theme of the game.";
+//
+//        String result = this.aiService.prompt(promptToEvaluate);
+//        return ResponseEntity.ok(Collections.singletonMap("result", result));
+//    }
+
+    //    @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
 //        String promptToEvaluate =
 //                "Here's a coding challenge:\n\n" +
@@ -70,66 +168,4 @@ public class AiController {
 //    }
 
 // .replaceAll(Pattern.quote("+"), "%2B")
-    // Working to include this PostMapping
-    @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
-        String promptToEvaluate =
-                "Your task is to work like a Java compiler. Here's a coding challenge:\n\n" +
-                        request.getCodeChallenge() +
-                        "\n\nHere's a proposed solution:\n\n" +
-                        request.getCode() +
-                        "\n\n1. Is the proposed solution returning a valid answer to the coding challenge? Answer with only true if the answer is correct or only false if the answer is incorrect.\n" +
-                        "2. Please provide an explanation for your answer. If the solution is incorrect, please provide a hint on how to fix it." +
-                        "3. Give me an exact copy of the user input, without changes even if it's not correct."
-                        + "Indicate each linebreak with \\n";
-
-        System.out.println("Coding challenge: " + request.getCodeChallenge());
-        System.out.println("Provided code: " + request.getCode());
-
-        String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println("AI result: " + result);
-        String[] parts = result.split("\n");
-        if (parts.length >= 2) {
-            String booleanResult = parts[0].split("\\.")[1].trim();
-            String explanation = parts[1].split("\\.")[1].trim();
-
-            Map<String, Object> resultMap = new HashMap<>();
-            resultMap.put("result", Boolean.parseBoolean(booleanResult));
-            resultMap.put("explanation", explanation);
-
-            return ResponseEntity.ok(resultMap);
-        }
-        return ResponseEntity.ok(Collections.singletonMap("result", result));
-    }
-
-    // Working to include this PostMapping
-    @PostMapping(value = "/getSolutionToChallenge", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getSolutionToChallenge(@RequestBody String codeChallenge) {
-        String promptToEvaluate = "For this codeChallenge: " + codeChallenge + "\n. Give" +
-                " the solution to the challenge without any comments. Indicate a new line with \\n";
-
-        String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println("ChatGPT solution: " + result);
-        return ResponseEntity.ok(Collections.singletonMap("result", result));
-    }
-
-    //Old version, just to save it
-    // Working to include this PostMapping
-//    @PostMapping(value = "/evaluateCode", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<?> evaluateCode(@RequestBody String code) {
-//        String promptToEvaluate = "The user is playing an escape room game. the following code is part of a challenge." +
-//                "Evaluate the given code for correctness: " + code + ". Give the answer in a style fitting the theme of the game.";
-//
-//        String result = this.aiService.prompt(promptToEvaluate);
-//        return ResponseEntity.ok(Collections.singletonMap("result", result));
-//    }
-
-    // Working to include this PostMapping
-    @PostMapping(value = "/produceAHint", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> produceAHint(@RequestBody String code) {
-        String promptToEvaluate = "For the given code, give the user some intermediate hints on how to solve the riddle: " + code;
-
-        String result = this.aiService.prompt(promptToEvaluate);
-        return ResponseEntity.ok(Collections.singletonMap("result", result));
-    }
 }
