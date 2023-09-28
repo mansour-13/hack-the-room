@@ -9,6 +9,10 @@ export class AudioService {
     this._audio.play();
   }
 
+  switschLoop(onOf: boolean = false): void{
+    this._audio.loop = onOf;
+  }
+
   setAudio(value: HTMLAudioElement) {
     this._audio = value;
   }
