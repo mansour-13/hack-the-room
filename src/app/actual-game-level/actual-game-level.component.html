@@ -18,11 +18,11 @@
 </div>
 
 
-<div  class="story" *ngIf="levelData">
+<div class="story" *ngIf="levelData">
   {{levelData.theory}}
   <br>
   <br>
-  <h3 >What you need to know for this Task is:</h3>
+  <h3>What you need to know for this Task is:</h3>
 
   <p>{{levelData.story[0]}}</p>
   <ul>
@@ -31,25 +31,11 @@
 </div>
 
 <div class="terminal" *ngIf="levelData">
-
   <app-ace-editor
-  style="background-color: #bd1111 !important"
-
-  [codeChallenge]="levelData.task"
-  [codeSolution]="levelData.solution"
-  (codeChallengeSolved)="handleCodeChallengeSuccess()"
+    style="background-color: #bd1111 !important"
+    [codeChallenge]="levelData.task"
+    [codeSolution]="levelData.solution"
+    (codeChallengeSolved)="handleCodeChallengeSuccess()"
   ></app-ace-editor>
-
-
-
 </div>
 </body>
-
-
-<!--Old information divs to check for functionality-->
-<!--  [style.background-repeat]=" 'no-repeate' "-->
-<!--  <p>learn-objekt works!</p>-->
-<!--  <div>{{levelData?.name}}</div>-->
-
-<!--  <div>{{levelData?.image}}</div>-->
-<!--  <div>{{imageUrl}}</div>-->

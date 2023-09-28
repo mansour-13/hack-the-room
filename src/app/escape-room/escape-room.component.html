@@ -1,7 +1,7 @@
 <body>
 <nav class="navbar">
   <button routerLink="/" class="water-button">Back to Menu</button>
-  <button (click)="playAudio()" class="water-button">{{buttonText}}</button>
+<!--  <button (click)="playAudio()" class="water-button">{{buttonText}}</button>-->
 </nav>
 <div class="user">
   <app-user></app-user>
@@ -14,15 +14,11 @@
     <a [routerLink]="'/level/' + (i + 1)" class="image-link"
        [ngClass]="user.idxActualLearnObject > (i) ? 'image-link' : 'disabled'" (mouseenter)="showTooltip = true"
        (mouseleave)="showTooltip = false">
-      <img [src]="'../../assets/pictures/mission' + (i + 1) + '.png'">
+      <img [src]="'../../assets/pictures/mission' + (i + 1) + '.jpeg'">
       <div class="tooltip" [class.show-tooltip]="showTooltip" [class.flip-tooltip]="i > 3">
-         {{levels[i].story}}
+        {{levels[i].story}}
       </div>
     </a>
   </ng-container>
 </div>
-<audio #audioPlayer (ended)="audioEnded()">
-  <source src="assets/sounds/intro.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 </body>

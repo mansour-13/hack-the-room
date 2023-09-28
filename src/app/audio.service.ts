@@ -4,7 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AudioService {
+
   private _audio: HTMLAudioElement =new Audio("assets/sounds/intro.mp3");
+
+
   play() {
     this._audio.play();
   }

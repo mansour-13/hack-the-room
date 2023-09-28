@@ -1,7 +1,7 @@
 
 body {
-  /*background-image: url("../../assets/pictures/cockpi_micro.jpg");*/
-  background-size: cover;
+  background-size: 100% 100%;
+  height: 98vh;
   background-repeat: no-repeat;
   background-position: center;
   margin: 0;
@@ -43,7 +43,7 @@ body {
   background-color: rgba(62, 68, 70, 0.7);
   border-radius: 10px;
   width: 40vw;
-  height: 600px;
+  height: 580px;
   margin: 20px;
   padding: 20px;
   display: flex;

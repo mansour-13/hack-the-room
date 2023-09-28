@@ -1,5 +1,4 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Greeting} from "../greeting.service";
 import {AuthService} from "../auth.service";
 import {User, UserService} from "../user.service";
 import {AudioService} from "../audio.service";
@@ -64,11 +63,8 @@ export class HomeComponent implements OnInit {
 
   startMouseInactiveTimer() {
     this.mouseInactiveTimeout = setInterval(() => {
-      if (!this.mouseMoved) {
-        // Maus war inaktiv, führen Sie Ihre Aktionen aus
-      }
-      this.mouseMoved = false; // Zurücksetzen auf inaktiv
-    }, 1000); // Hier können Sie die Zeit in Millisekunden anpassen
+      this.mouseMoved = false;
+    }, 800);
   }
 
   resetMouseInactiveTimer() {
