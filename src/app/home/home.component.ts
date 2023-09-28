@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     this.startMouseInactiveTimer();
   }
 
-
   ngOnInit(): void {
     this.audioService.setAudio(new Audio("assets/sounds/darcSpaceAmbiente.wav"));
     this.audioService.switschLoop(true);
