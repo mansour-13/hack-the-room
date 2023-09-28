@@ -1,12 +1,37 @@
 <body>
-<div class="background-image">
-  <div [style.visibility]="!mouseMoved ? 'hidden' : 'visible'" class="up">
+  <nav class="nav-buttons">
     <button class=water-button (click)="audio()" routerLink="/">Back to Menu</button>
+  </nav>
+    <div class="story">
+
+      <p>Welcome to <em>"Hack the Room"</em>, an immersive and educational JavaScript adventure! This captivating game takes you on a journey through the world of programming, where you'll embark on a series of 6 thrilling missions, each designed to explore different aspects of JavaScript.</p>
+      <br>
+      <h2>Game Objective</h2>
+      <p>Your mission is to complete challenges within a time limit, using your JavaScript skills wisely. You have three lives to start with, so be strategic!</p>
+      <br>
+      <h2>Missions</h2>
+      <p>Each mission is a unique scenario with captivating stories and puzzles, focusing on practical JavaScript topics.</p>
+      <br>
+      <h2>Lives and Scoring</h2>
+      <p>Start with three lives, but be cautious—mistakes may cost you a life!
+        Speed and accuracy are your allies, as completing missions quickly earns you higher scores.
+        Earn a star for each successful mission, unlocking the next challenge in your journey.</p>
+      <br>
+      <h2>Learning Element</h2>
+      <p>"Hack the Room" enhances your JavaScript skills through real-world coding challenges, combining education with entertainment.</p>
+      <br>
+      <h2>Choices and Strategy</h2>
+      <p>Navigate and make decisions that impact your progress. Think strategically and adapt your coding strategies to the challenges.</p>
+      <br>
+      <h2>Progress Tracking</h2>
+      <p>Monitor your progress and scores as you advance through the missions. Aim for the leaderboard in the "High Scores" section.</p>
+      <p>Dive into the world of "Hack the Room" and discover the coder within!</p>
+
   </div>
-  <div class="middle">
+
+  <div class="help" >
     <p>
-      Wenn Dir das Spiel gefallen hat und oder du keine Leben mehr hast dann überweise uns doch bitte einen kleinen
-      Betrag um diese wieder auf zu füllen ;)
+      "Enjoyed the game or out of lives? Consider a small contribution to keep the adventure going!"
     </p>
     <a href="https://www.paypal.com/paypalme/HackTheRoom" target="_blank">
       <button (click)="fillLife()">
@@ -14,5 +39,4 @@
       </button>
     </a>
   </div>
-</div>
 </body>
