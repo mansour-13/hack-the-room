@@ -27,11 +27,12 @@ body {
 }
 
 .title {
-  color: lightblue;
-  font-size: 50px;
+  color: royalblue;
+  font-size: 5em;
   font-weight: bold;
-  margin: 100px;
   -webkit-text-stroke: 1px white;
+  text-shadow: 2px 2px 2px black;
+  margin: 100px;
 }
 
 .login-container {

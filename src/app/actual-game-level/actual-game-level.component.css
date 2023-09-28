@@ -105,3 +105,41 @@ body {
 }
 
 
+.water-button {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 400px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 24px;
+  margin: 20px;
+}
+
+.water-button::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 400px;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 80%);
+  transform: scale(0.8);
+  opacity: 0;
+  animation: water-ripple 2s linear infinite;
+}
+
+@keyframes water-ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+
