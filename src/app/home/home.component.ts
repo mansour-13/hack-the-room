@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
 
   audio() {
     const audioButton = new Audio("assets/sounds/tür.mp3")
-    audioButton.volume = 0.05;
+    audioButton.volume = 0.02;
     audioButton.play();
   }
 
