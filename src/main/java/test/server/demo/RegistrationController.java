@@ -1,6 +1,5 @@
 package test.server.demo;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -29,9 +28,7 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User newUser) {
-
         Optional<User> existingUser = userRepository.findByUserName(newUser.getUserName());
-
         if (existingUser.isPresent()) {
             return new ResponseEntity<>("Username already exists", HttpStatus.BAD_REQUEST);
         } else {

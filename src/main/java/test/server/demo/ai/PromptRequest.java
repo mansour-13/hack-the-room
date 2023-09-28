@@ -47,4 +47,14 @@ public class PromptRequest {
     public void setMaxTokens(Integer maxTokens) {
         this.maxTokens = maxTokens;
     }
+
+    @Override
+    public String toString() {
+        return "PromptRequest{" +
+                "content='" + prompt + '\'' +
+                ", secret='" + secret + '\'' +
+                ", invalidateCache=" + invalidateCache +
+                ", maxTokens=" + maxTokens +
+                '}';
+    }
 }

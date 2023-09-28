@@ -164,4 +164,8 @@ public class User {
     public void setRoles(String roles) {
         this.roles = roles;
     }
+
+    public int getLevelScore(int idLearnObject) {
+        return levelscore[idLearnObject];
+    }
 }

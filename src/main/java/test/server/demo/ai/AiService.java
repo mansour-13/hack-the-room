@@ -1,5 +1,8 @@
 package test.server.demo.ai;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +35,14 @@ public class AiService {
         // Remove cached result for the current prompt
         final Boolean invalidateCache = true;
         // The prompt you want to send to ChatGPT
-        ResponseEntity<String> response = restTemplate.postForEntity(url,
-                new PromptRequest(content, secret, invalidateCache, maxTokens),String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.valueOf("application/json;charset=UTF-8")); // Ensure it's using UTF-8 charset
+
+        PromptRequest request = new PromptRequest(content, secret, invalidateCache, maxTokens);
+        System.out.println("Prompt request: " + request);
+
+        HttpEntity<PromptRequest> entity = new HttpEntity<>(new PromptRequest(content, secret, invalidateCache, maxTokens), headers);
+        ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
             return response.getBody();
