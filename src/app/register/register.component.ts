@@ -19,9 +19,9 @@ export class RegisterComponent {
   confirmPassword = '';
   userService?: UserService;
 
-  profileImageW = environment.baseUrl + "/static/images/spaceCadetW.jpg";
-  profileImageM = environment.baseUrl + "/static/images/cpaseCadetM.jpg";
-  profileImageBS = environment.baseUrl + "/static/images/spaceCadetNB.jpg";
+  profileImageW = environment.baseUrl + "/images/spaceCadetW.jpg";
+  profileImageM = environment.baseUrl + "/images/cpaseCadetM.jpg";
+  profileImageBS = environment.baseUrl + "/images/spaceCadetNB.jpg";
 
   selectedAvatar?: string;
 
