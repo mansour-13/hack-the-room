@@ -121,7 +121,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       console.log('Score:', score);
       this.zone.run(() => {
         // @ts-ignore
-        this.addScore(score, this.user.idxActualLearnObject - 1)
+        this.addScore(score, this.levelId - 1);
       });
     }
 
