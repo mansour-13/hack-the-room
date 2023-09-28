@@ -27,14 +27,14 @@ body {
   cursor: pointer;
 }
 
-.nav-button {
+/*.nav-button {
   position: relative;
   padding: 10px;
   font-size: 20px;
   margin: 30px 10px 10px;
   text-align: center;
   cursor: pointer;
-}
+}*/
 
 .title {
   color: lightblue;
@@ -79,6 +79,33 @@ body {
   top: 5px;
   left: 0px;
   width: 400px;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
+  transform: scale(0.8); /* Skalierung des Effekts */
+  opacity: 0;
+  animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
+  animation-direction: alternate;
+}
+.water-button1 {
+  position: relative;
+  background-color: transparent; /* Hintergrundfarbe des Buttons */
+  border: none;
+  color: white;
+  width: 150px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+}
+
+/* Wasser-Effekt */
+.water-button1::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 150px;
   height: 80%;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
   transform: scale(0.8); /* Skalierung des Effekts */
