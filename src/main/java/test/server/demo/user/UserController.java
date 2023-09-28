@@ -17,12 +17,12 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
 
-        User user1 = new User(2,"Frank", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 600);
-        User user2 = new User(3,"Sarah", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 3, 2, 555);
-        User user3 = new User(4,"Angela", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 6, 3, 346);
-        User user4 = new User(5,"James", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 125);
-        User user5 = new User(6,"John", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 855);
-        User user6 = new User(7,"Sonia", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 50);
+        User user1 = new User(1,"Frank", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 600);
+        User user2 = new User(2,"Sarah", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 3, 2, 555);
+        User user3 = new User(3,"Angela", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 6, 3, 346);
+        User user4 = new User(4,"James", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 125);
+        User user5 = new User(5,"John", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 855);
+        User user6 = new User(6,"Sonia", "$2a$10$bIz3AKMYei4tDzm3ViUfi.orP956BME83WxszZHh9GMaqxz.lpVy2", true, "ROLE_USER", 1, 1, 50);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
