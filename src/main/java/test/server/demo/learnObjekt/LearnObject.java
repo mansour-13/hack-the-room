@@ -12,7 +12,7 @@ public class LearnObject {
     private int id;
     @Column(unique = true)
     private String name;
-    private String theorie;
+    private String theory;
 
     @ElementCollection
     @CollectionTable(name = "learn_object_stories", joinColumns = @JoinColumn(name = "learn_object_id"))
@@ -29,10 +29,10 @@ public class LearnObject {
 
     private String image;
 
-    public LearnObject(int id, String name, String theorie, List<String> story, String solution, String ending, String task, int timeLimit, String image) {
+    public LearnObject(int id, String name, String theory, List<String> story, String solution, String ending, String task, int timeLimit, String image) {
         this.id = id;
         this.name = name;
-        this.theorie = theorie;
+        this.theory = theory;
         this.story = story;
         this.solution = solution;
         this.ending = ending;
@@ -44,11 +44,10 @@ public class LearnObject {
     public LearnObject() {
     }
 
-    public LearnObject(int id, String name, String theorie, List<String> story, String solution, String task, int timeLimit, String image) {
+    public LearnObject(int id, String name, String theory, List<String> story, String solution, String task, int timeLimit, String image) {
         this.id = id;
         this.name = name;
-        this.theorie = theorie;
-
+        this.theory = theory;
         this.story = story;
         this.solution = solution;
         this.task = task;
@@ -72,11 +71,9 @@ public class LearnObject {
         return name;
     }
 
-
-    public String getTheorie() {
-        return theorie;
+    public String getTheory() {
+        return theory;
     }
-
 
     public List<String> getStory() {
         return story;
@@ -101,6 +98,4 @@ public class LearnObject {
     public String getImage() {
         return image;
     }
-
-
 }

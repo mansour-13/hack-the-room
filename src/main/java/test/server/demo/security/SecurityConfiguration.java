@@ -59,9 +59,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/", "/greeting", "/logout", "/current-user").permitAll()
                         .requestMatchers(HttpMethod.GET, "/level/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/current-user").permitAll()
-
                         .requestMatchers(HttpMethod.GET, "/user/*").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/images/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/score").permitAll()
                         .requestMatchers(HttpMethod.POST, "/score/*/*/*").permitAll()
                         .requestMatchers("/", "/greeting", "/logout").permitAll()
