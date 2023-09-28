@@ -109,7 +109,7 @@ public class LearnObjectController {
         LearnObject temp3 = new LearnObject(
                 3,
                 "SpaceStation Sequencer",
-                "",
+                "BlaBla",
                 Arrays.asList(
                         "As you move deeper into the spacestation, you discover a locked door. A holographic interface appears in front of you, prompting you to solve a sequence to gain entry.",
                         "The sequence seems to follow the Fibonacci pattern: 0, 1, 1, 2, 3, 5, 8, ...",
@@ -152,7 +152,7 @@ public class LearnObjectController {
         LearnObject temp4 = new LearnObject(
                 4,
                 "SpaceStation Array Multiplier",
-                "",
+                "BlaBLa",
                 Arrays.asList(
                         "You've reached the engineering deck of the spacestation. Another holographic interface stands in your way, displaying a grid of numbers, reminiscent of an array.",
                         "To bypass this system, it prompts you: 'Multiply every element in this array by a given factor'.",
@@ -201,7 +201,7 @@ public class LearnObjectController {
         LearnObject temp5 = new LearnObject(
                 5,
                 "SpaceStation Fuel Calculator",
-                "",
+                "BlaBLa",
                 Arrays.asList(
                         "After bypassing the engineering deck, you arrive at the fuel chamber of the spacestation. A digital meter indicates the total amount of fuel and the number of engines that need to be fed.",
                         "A voice echoes: 'To power up the engines evenly, determine how much fuel each engine should receive'.",
@@ -246,7 +246,7 @@ public class LearnObjectController {
         LearnObject temp6 = new LearnObject(
                 6,
                 "SpaceStation Storage Checker",
-                "",
+                "BlaBLa",
                 Arrays.asList(
                         "On your journey through the spacestation, you stumble upon a row of storage units. Each storage unit has a numeric code and only units with an odd code are accessible.",
                         "To verify if a storage unit is accessible, the station's computer system prompts you to check if the code of a storage unit is odd.",

@@ -71,7 +71,10 @@ public class UserController {
     public ResponseEntity<User> setScore(@RequestBody UserDTO request) {
         System.out.println(request);
         User user = this.userRepository.findByUserName(request.getUsername()).orElseThrow();
-        user.setLevelScore(request.getId_learnObject(), request.getScore());
+        if (user.getLevelScore(request.getId_learnObject()) < request.getScore()) {
+            user.setLevelScore(request.getId_learnObject(), request.getScore());
+        }
+//        user.setLevelScore(request.getId_learnObject(), request.getScore());
         this.userRepository.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
