@@ -19,25 +19,27 @@
 
 
 <div  class="story" *ngIf="levelData">
-  {{levelData.story}}
+  {{levelData.theory}}
   <br>
   <br>
   <h3 >What you need to know for this Task is:</h3>
-  <p>
-    {{levelData.theory}}
-  </p>
+
+  <p>{{levelData.story[0]}}</p>
+  <ul>
+    <li *ngFor="let item of levelData.story.slice(1, size)">{{item}}</li>
+  </ul>
 </div>
 
 <div class="terminal" *ngIf="levelData">
 
   <app-ace-editor
+  style="background-color: #bd1111 !important"
 
-    [codeChallenge]="levelData.task"
-
-    [codeSolution]="levelData.solution"
-
-    (codeChallengeSolved)="handleCodeChallengeSuccess()"
+  [codeChallenge]="levelData.task"
+  [codeSolution]="levelData.solution"
+  (codeChallengeSolved)="handleCodeChallengeSuccess()"
   ></app-ace-editor>
+
 
 
 </div>

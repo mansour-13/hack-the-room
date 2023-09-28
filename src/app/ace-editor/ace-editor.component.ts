@@ -8,14 +8,17 @@ declare var ace: any;
 
 @Component({
   selector: 'app-ace-editor',
-  template: '<div id="editor" style="height: 400px; width: auto"></div>' +
+  template:
+
+    '<div id="editor" style="height: 300px; width: auto"></div>' +
     '<button (click)="compareSolutionToUser()">Run</button>' +
     '<button (click)="getHint()">Hint</button>' +
-    '<button (click)="getSolution()">Solution</button>' +
-    '<button (click)="getSolutionFromBackend()">Super-Solution</button>' +
+    // '<button (click)="getSolution()">Solution</button>' +
+    '<button (click)="getSolutionFromBackend()">Solution</button>' +
     '<button (click)="resetChallenge()">Reset</button>' +
 
     '<div id="output">{{output}}</div>',
+
 
   styleUrls: ['./ace-editor.component.css']
 })
@@ -72,18 +75,20 @@ export class AceEditorComponent implements AfterViewInit {
       }
 
       this.aiService.getBinaryAnswerToCode(code, this.codeChallenge, this.codeSolution).subscribe(response => {
-        this.output = response.result.toString(); // Convert the boolean to a string
-
+        console.log('Received AI response:', response);
         if (response.result === true) { // Check if the result is true
           this.codeChallengeSolved.emit();
+          return;
         }
-
+        this.output = response.explanation!; // Convert the boolean to a string
+        console.log('Updated output:', this.output);
       });
   }
 
   getHint() {
     const code = this.editor.getValue();
-    this.aiService.produceAHint(code).subscribe(response => {
+
+    this.aiService.produceAHint(code, this.codeChallenge, this.codeSolution).subscribe(response => {
       this.output = response.result;
     });
   }

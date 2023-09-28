@@ -5,6 +5,70 @@
   <title>Hack the Room</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Base container for the editor */
+    body {
+      background-color: #1e1e1e !important;
+    }
+
+    #editor.ace_editor {
+      background-color: #2b2b2b;
+      color: #f8f8f2;
+    }
+
+    /* Gutter */
+    .ace_gutter {
+      background-color: #1e1e1e;
+      color: #8B8682;
+    }
+
+    /* Gutter cells (line numbers) */
+    .ace_gutter-cell {
+      background-color: #1e1e1e;
+      color: #8B8682;
+    }
+
+    /* Gutter active line highlighting */
+    .ace_gutter-active-line {
+      background-color: #333;
+    }
+
+    /* Print margin line */
+    .ace_print-margin {
+      border-left: 1px solid #555;
+    }
+
+    /* Current line background highlight */
+    .ace_active-line {
+      background-color: #3e3d32;
+    }
+
+    /* Cursor color */
+    .ace_cursor {
+      color: #f8f8f2;
+    }
+
+    /* Text layers */
+    .ace_text-layer .ace_comment {
+      color: #75715e;
+    }
+
+    .ace_text-layer .ace_keyword, .ace_text-layer .ace_storage {
+      color: #f92672;
+    }
+
+    .ace_text-layer .ace_variable, .ace_text-layer .ace_identifier {
+      color: #66d9ef;
+    }
+
+    .ace_text-layer .ace_string {
+      color: #e6db74;
+    }
+
+    .ace_text-layer .ace_numeric {
+      color: #ae81ff;
+    }
+  </style>
 
 <!--  Based on external image-->
 <!-- <link rel="icon" href="https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f614/u1f614_u1f614.png">-->

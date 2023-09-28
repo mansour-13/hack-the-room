@@ -16,8 +16,13 @@ export class AiService {
   evaluateCode(code: string) {
     return this.http.post<{result: string}>(`${this.API_URL}/evaluateCode`, code);
   }
-  produceAHint(code: string) {
-    return this.http.post<{result: string}>(`${this.API_URL}/produceAHint`, code);
+  produceAHint(code: string, codeChallenge: string | undefined, codeSolution: string | undefined) {
+    const payload = {
+      code: code,
+      codeChallenge: codeChallenge,
+      codeSolution: codeSolution
+    };
+    return this.http.post<{result: string}>(`${this.API_URL}/produceAHint`, payload);
   }
 
   getBinaryAnswerToCode(code: string, codeChallenge: string | undefined, codeSolution: string | undefined) {

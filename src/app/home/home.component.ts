@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.audioService.setAudio(new Audio("assets/sounds/ronald-kah-lucid-dream-full.mp3"));
+    this.audioService.setAudio(new Audio("assets/sounds/background.mp3"));
     this.audioService.play();
     const username = this.authService.getUsername();
     this.userService.getUserByUsername(username).subscribe(

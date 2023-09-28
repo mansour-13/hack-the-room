@@ -17,10 +17,16 @@
 /*  color: rgb(232, 230, 227);*/
 /*}*/
 
-#editor .ace_gutter {
-  background-color: aliceblue;
-}
+/*#editor > .ace_gutter {*/
+/*  background-color: aliceblue;*/
+/*  !* any other properties you want to set for the gutter *!*/
+/*}*/
 
+/*:host .ace-tm .ace_gutter {*/
+/*  background-color: rgb(7, 122, 199);*/
+/*  background-image: none;*/
+/*  color: rgb(200, 195, 188);*/
+/*}*/
 /** {*/
 /*  scrollbar-color: #454a4d #202324;*/
 /*}*/

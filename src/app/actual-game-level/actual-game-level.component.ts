@@ -22,6 +22,8 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
 
   user?: User;
 
+  size: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private levelService: LevelService,
@@ -70,6 +72,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       data =>
       {
       this.levelData = data;
+      this.size = this.levelData.story.length;
       this.imageUrl = environment.baseUrl + this.levelData.image;
     });
   }
@@ -108,7 +111,7 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
           }
         );
     }
-    this.router.navigate(['/escape-room']);
+    // this.router.navigate(['/escape-room']);
   }
 
   handleCodeChallengeSuccess() {

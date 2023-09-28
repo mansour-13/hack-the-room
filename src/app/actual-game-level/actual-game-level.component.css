@@ -50,6 +50,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
 }
 
 .terminal {
@@ -95,6 +96,12 @@ body {
 
 .user {
   grid-area: user;
+}
+
+.ace-tm .ace_gutter {
+  background-color: rgb(7, 122, 199);
+  background-image: none;
+  color: rgb(200, 195, 188);
 }
 
 
