@@ -44,10 +44,6 @@ public class LearnObjectController {
                         "        String emergencyMessage = \"Houston, we have a problem\";  \n" +
                         "        System.out.println(emergencyMessage); \n" +
                         "    }\n" +
-                        "\n" +
-                        "    public static void printEmergencyEmitter() {\n" +
-                        "        System.out.println(\"Houston, we have a problem\");\n" +
-                        "    }\n" +
                         "}",
                 "public class EmergencyEmitter {\n" +
                         "\n" +

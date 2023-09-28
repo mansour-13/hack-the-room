@@ -58,7 +58,7 @@ public class AiController {
                         request.getCodeChallenge() +
                         "\n\nHere's a proposed solution:\n\n" +
                         request.getCode() +
-                        "\n\n1. Answer with a single word: true if correct of false if incorrect. Is the proposed solution returning a valid answer to the coding challenge? Remember, you are a compiler, so syntax is important to consider.\n" +
+                        "\n\n1. Answer with a single word: True if correct of False if incorrect. Is the proposed solution returning a valid answer to the coding challenge? Remember, you are a compiler, so syntax is important to consider.\n" +
                         "2. Please provide a kind and constructive explanation for your answer, but not longer than 3 sentences. It optimally should address the most critical part of the code.";
 
         System.out.println("Coding challenge: " + request.getCodeChallenge());
