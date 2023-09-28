@@ -1,11 +1,9 @@
 <!--<p>high-score works!</p>-->
 <body>
-  <nav>
+  <nav [style.visibility]="!mouseMoved ? 'hidden' : 'visible'">
     <button routerLink="/" (click)="audio()" class="water-button">Back to Menu</button>
   </nav>
   <h1 class="table-header">Hall of Fame</h1>
-
-
   <table>
     <thead>
     <tr class="table-title-row">
