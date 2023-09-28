@@ -27,29 +27,28 @@ body {
   cursor: pointer;
 }
 
-/*.nav-button {
+.nav-button {
   position: relative;
   padding: 10px;
   font-size: 20px;
   margin: 30px 10px 10px;
   text-align: center;
   cursor: pointer;
-}*/
+}
 
 .title {
-  color: lightblue;
-  font-size: 50px;
+  color: royalblue;
+  font-size: 6em;
   font-weight: bold;
-  margin: 70px;
+  margin: 50px;
   -webkit-text-stroke: 1px white;
 }
 
 .welcome {
   color: darkblue;
-  font-size: 40px;
-  font-weight: bold;
-  margin: 20px;
-  -webkit-text-stroke: 1px white;
+  font-size: 4em;
+  margin: 10px;
+  -webkit-text-stroke: 1px black;
 }
 .welcome img{
   width: 200px;
@@ -57,18 +56,19 @@ body {
   border-radius: 50%;
   align-self: center;
   align-content: center;
+  justify-items: center;
 }
+
 .water-button {
   position: relative;
   background-color: transparent; /* Hintergrundfarbe des Buttons */
   border: none;
-  color: transparent;
+  color: white;
   width: 400px;
   cursor: pointer;
   overflow: hidden;
   padding: 10px;
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 24px;
   margin: 20px;
 }
 
@@ -81,36 +81,9 @@ body {
   width: 400px;
   height: 80%;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
-  transform: scale(0.8); /* Skalierung des Effekts */
+  transform: scale(0.8);
   opacity: 0;
-  animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
-  animation-direction: alternate;
-}
-.water-button1 {
-  position: relative;
-  background-color: transparent; /* Hintergrundfarbe des Buttons */
-  border: none;
-  color: white;
-  width: 150px;
-  cursor: pointer;
-  overflow: hidden;
-  padding: 10px;
-  font-size: 16px;
-  margin: 10px;
-}
-
-/* Wasser-Effekt */
-.water-button1::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 0px;
-  width: 150px;
-  height: 80%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 10%, transparent 70%); /* Radialer Wasser-Effekt */
-  transform: scale(0.8); /* Skalierung des Effekts */
-  opacity: 0;
-  animation: water-ripple 3s linear infinite; /* Animation für den Wasser-Effekt */
+  animation: water-ripple 3s linear infinite;
   animation-direction: alternate;
 }
 
@@ -125,7 +98,7 @@ body {
   }
 }
 .water-button:hover {
-  color: mistyrose;
+  color: white;
 }
 .transTogether{
   color: transparent;
@@ -133,7 +106,10 @@ body {
 .transTogether:hover{
   color: black;
 }
-
+.transparent{
+  place-items: center;
+  height: 100vh;
+}
 
 
 
