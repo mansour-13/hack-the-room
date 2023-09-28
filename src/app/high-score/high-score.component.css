@@ -16,7 +16,7 @@ body {
   background-size: cover;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
 }
 
 .table-header {
@@ -101,12 +101,12 @@ table {
   }
 }
 .water-button:hover {
-  color: black;
+  color: white;
 }
 .transTogether{
   color: transparent;
 }
 .transTogether:hover{
-  color: black;
+  color: white;
 }
 
