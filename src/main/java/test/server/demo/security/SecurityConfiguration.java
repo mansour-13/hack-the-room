@@ -70,7 +70,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/getBinaryAnswerToCode").permitAll()
                         .requestMatchers(HttpMethod.POST, "/getSolutionToChallenge").permitAll()
                         .requestMatchers("/greeting-user").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/images/*").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/images/*").permitAll()
 
                         .requestMatchers("/greeting-admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
