@@ -70,7 +70,7 @@ export class AnimationTextComponent implements OnInit {
 
         // Use RxJS to display words one by one with delay
         of(...words).pipe(
-          concatMap(word => of(word).pipe(delay(200))),
+          concatMap(word => of(word).pipe(delay(350))),
           takeUntil(this.stop$)
         ).subscribe({
           next: word => {

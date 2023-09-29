@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.audioService.setAudio(new Audio("assets/sounds/darcSpaceAmbiente.wav"));
+    this.audioService.setAudio(new Audio("assets/sounds/background.mp3"));
+    this.audioService.setVolume(0.02);
     this.audioService.switschLoop(true);
     this.audioService.play();
     const username = this.authService.getUsername();
