@@ -1,18 +1,18 @@
 ### Register a new user
-POST {{host}}/register
-Content-Type: application/json
+#POST {{host}}/register
+#Content-Type: application/json
 
-{
-  "userName": "newuser",
-  "password": "newpassword"
-}
+//{
+//  "userName": "newuser",
+//  "password": "newpassword"
+//}
 
 ### Login request
-POST {{host}}/login
-Content-Type: application/x-www-form-urlencoded
-
-username=newuser
-&password=newpassword
+#POST {{host}}/login
+#Content-Type: application/x-www-form-urlencoded
+#
+#username=newuser
+#&password=newpassword
 
 ### Check for current user
 GET {{host}}/current-user

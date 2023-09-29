@@ -168,4 +168,5 @@ public class User {
     public int getLevelScore(int idLearnObject) {
         return levelscore[idLearnObject];
     }
+
 }

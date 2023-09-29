@@ -33,8 +33,6 @@ public class LearnObjectController {
                         " \"Houston, we have a problem\".",
                 Arrays.asList(
                         "You're in a tight spot, and the emergency emitter is your only hope. Use your coding skills to program it.",
-                        "public static void main",
-                        "Defining and using variables",
                         "`System.out.println` for printing to the console",
                         "The space station might be your only hope. But wait, isn't there an escape pod on this spaceship?"
                 ),
