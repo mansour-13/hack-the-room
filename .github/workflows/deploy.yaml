@@ -31,6 +31,6 @@ jobs:
         uses: dokku/github-action@master
         with:
           branch: main
-          git_remote_url: 'ssh://dokku@168.119.171.224/spring-boot-template'
+          git_remote_url: 'ssh://dokku@168.119.171.224/api-hack-the-room'
           git_push_flags: '--force'
           ssh_private_key: ${{ secrets.SSH_KEY_PRIVATE }}
