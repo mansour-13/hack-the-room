@@ -25,7 +25,6 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private levelService: LevelService,
-    private audioService: AudioService,
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
@@ -55,14 +54,10 @@ export class ActualGameLevelComponent implements OnInit, OnDestroy {
       this.loadLevelData(this.levelId);
     }
 
-    this.audioService.play();
-    this.audioService.setVolume(0.3);
     console.log('Level Id:', this.levelId);
   }
 
   ngOnDestroy() {
-    // Pause audio when the component is destroyed
-    this.audioService.pause();
   }
 
   loadLevelData(levelId: number): void {

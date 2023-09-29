@@ -38,7 +38,7 @@ export class AboutComponent {
   }
 
   fillLife(): void {
-    if (this.user && this.user.life) {
+    if (this.user) {
       this.user.life = 3;
       this.userService.updateUserLife(this.user).subscribe(
         (response) => {
