@@ -53,19 +53,29 @@ public class AiController {
     // Working to include this PostMapping
     @PostMapping(value = "/getBinaryAnswerToCode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBinaryAnswerToCode(@RequestBody CodeComparisonRequest request) {
-        String promptToEvaluate =
-                "Your task is to work like a Java compiler. Here's a coding challenge:\n\n" +
-                        request.getCodeChallenge() +
-                        "\n\nHere's a proposed solution:\n\n" +
-                        request.getCode() +
-                        "\n\n1. Answer with a single word: True if correct of False if incorrect. Is the proposed solution returning a valid answer to the coding challenge? Remember, you are a compiler, so syntax is important to consider.\n" +
-                        "2. Please provide a kind and constructive explanation for your answer, but not longer than 3 sentences. It optimally should address the most critical part of the code.";
 
-        System.out.println("Coding challenge: " + request.getCodeChallenge());
-        System.out.println("Provided code: " + request.getCode());
+        //        System.out.println("Coding challenge: " + request.getCodeChallenge());
+        //        System.out.println("Provided code: " + request.getCode());
+        //        System.out.println("AI result: " + result);
+//       "Please focus on evaluating the 'code-to-evaluate' against the requirements in the 'assignment'
+
+        String promptToEvaluate =
+                "You are given two code snippets. The first snippet, 'assignment', is describing the task for a user to solve in the second snippet, 'code-to-evaluate'.\n\n" +
+
+                        "Please focus on evaluating the 'code-to-evaluate' .\n\n" +
+
+                        "=== assignment ===\n" +
+                        request.getCodeChallenge() +
+                        "\n=== end of assignment ===\n\n" +
+
+                        "=== code-to-evaluate ===\n" +
+                        request.getCode() +
+                        "\n=== end of code-to-evaluate ===\n\n" +
+
+                        "1. Has the 'code-to-evaluate' satisfied all the requirements from the 'assignment'? Is the 'code-to-evaluate' valid code that will compile? Respond with 'True' if yes and 'False' if no.\n" +
+                        "2. Kindly provide a concise and constructive explanation for your answer, focusing on the most critical aspects, max 3 sentences.";
 
         String result = this.aiService.prompt(promptToEvaluate);
-        System.out.println("AI result: " + result);
         Map<String, Object> resultMap = new HashMap<>();
         Boolean responseBoolean = null;
 
@@ -81,7 +91,7 @@ public class AiController {
 
             // If the result is false, trim the first 4 characters from the explanation
             if (!responseBoolean) {
-                explanation = explanation.substring(5);
+                explanation = explanation.substring(4);
             }
 
             resultMap.put("result", responseBoolean);

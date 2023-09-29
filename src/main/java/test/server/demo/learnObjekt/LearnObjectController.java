@@ -48,15 +48,15 @@ public class LearnObjectController {
                 "public class EmergencyEmitter {\n" +
                         "\n" +
                         "    public static void main(String[] args) {\n" +
-                        "        // TODO: Set the emergencyMessage to:\n" +
-                        "        // Houston, we have a problem \n" +
-                        "        // But set the right variable type first! \n" +
-                        "        emergencyMessage = \"\"; \n" +
+                        "        /* TODO: Set the emergencyMessage to:\n" +
+                        "        Houston, we have a problem */ \n" +
+                        "        String emergencyMessage = \"\"; \n" +
 
-                        "        // TODO: Use the message to emit the emergency signal:\n" +
+                        "        // TODO: Use the emergencyMessage inside the println-function to emit the emergency signal:\n" +
                         "        System.out.println(); \n" +
                         "\n" +
-                        "    }\n",
+                        "    }\n" +
+                        "}",
                 180,
                 "/images/learnObject1_Waffenkammer.jpg");
         learnObjectRepository.save(temp1);
