@@ -1,41 +1,59 @@
-# Welcome to *hack-the-room*
+# "Hack the Room" Web Application - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
-## ⭐️ How to adapt this template
-- If the repo name changes - account for this in `package.json/build` step (to change base-ref for routing)
-- Current url: https://hack-the-room.bulbt.com
+**"Hack the Room"** is a web application project that aims to provide an interactive learning experience through
+gamification. The project leverages the GPT-3 API to create educational games that teach users various topics, with a
+focus on coding challenges.
 
-- Or use the following bash script
-```bash
-brew install gnu-sed
-# Frontend 
-grep -ilr "hack-the-room" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/hack-the-room/hack-the-room/g
- 
-# Backend
-grep -ilr "api-hack-the-room" .| grep -v "docs/" | grep -v ".gitignore"| grep -v "package-lock.json" | grep -v ".angular/" | grep -v ".node_modules/" | grep -v ".git/" | grep -v ".idea/" | xargs gsed -i s/api-hack-the-room/api-hack-the-room/g
-```
+## Introduction
 
+Welcome to the frontend part of the "Hack the Room" project! This section of the project is responsible for delivering
+an engaging user interface and interactive experiences for our educational games. In this document, you will find an
+overview of the core components and functionalities of the frontend.
 
-## Development server
+- **Backend Repository**: Services in the frontend are responsible for making API calls to the backend (located in
+  the [api-hack-the-room repository](https://github.com/your-github-username/api-hack-the-room)), handling user
+  authentication, and managing game state.
+- **Current URL**: The frontend of the "Hack the Room" web application is currently hosted
+  at [https://hack-the-room.bulbt.com](https://hack-the-room.bulbt.com). You can access the live version of the
+  application at this URL.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+Before diving into the project, make sure you have the following prerequisites installed on your system:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Node.js](https://nodejs.org/) - Required for running Angular applications.
+- [Angular CLI](https://cli.angular.io/) - A command-line tool for working with Angular projects.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To get the frontend up and running on your local machine, follow these simple steps:
 
-## Running unit tests
+1. **Clone the Project**: Begin by cloning the project repository to your local machine.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Navigate to the Frontend Directory**: Open a terminal and navigate to the project's frontend directory.
 
-## Running end-to-end tests
+3. **Install Dependencies**: Run `npm install` to install all the required dependencies for the project.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. **Start the Development Server**: Use the command `ng serve` to start a development server. The application will be
+   accessible at `http://localhost:4200/`.
 
-## Further help
+## Project Structure
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The frontend is built using Angular, TypeScript, and HTML/CSS. It consists of various components that handle different
+parts of the application, such as user registration, login, and the actual escape room challenges. Some of the key components include:
+
+- **HomeComponent:** The main landing page of the application.
+- **AboutComponent:** An about page with information about the project.
+- **LoginComponent:** A page for user login.
+- **RegisterComponent:** A page for user registration.
+- **EscapeRoomComponent:** The main page for the game.
+- **HighScoreComponent:** A page displaying high scores.
+- **UserComponent:** A user profile page.
+- **ActualGameLevelComponent:** A page for playing a specific game level.
+-
+The application uses Angular's built-in routing to navigate between different components and views. The routing
+configuration can be found in the `app-routing.module.ts` file.
+
+Thank you for being a part of the "Hack the Room" project. If you have any questions or need assistance, please feel
+free to reach out.
+
